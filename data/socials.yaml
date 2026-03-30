@@ -1,0 +1,17 @@
+- platform: "GitHub"
+  url: "https://github.com/jasper"
+  label: "github/jasper"
+  icon: "github"
+  priority: 1
+
+- platform: "LinkedIn"
+  url: "https://linkedin.com/in/jasper"
+  label: "linkedin/jasper"
+  icon: "linkedin"
+  priority: 2
+
+- platform: "Email"
+  url: "mailto:jasper@example.com"
+  label: "jasper@example.com"
+  icon: "email"
+  priority: 3

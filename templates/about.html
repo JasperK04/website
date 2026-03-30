@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">About Me</h1>
+  <p class="page-subtitle">Background, skills, and interests</p>
+</div>
+
+<div class="card" style="margin-bottom:1.5rem;">
+  <div class="card-header">
+    <div>
+      <div class="card-title">{{ profile.name }}</div>
+      <div class="card-subtitle">{{ profile.title }}</div>
+    </div>
+    {% if profile.available %}
+      <span class="badge badge-success">Available</span>
+    {% endif %}
+  </div>
+  <div class="card-body" style="white-space: pre-line;">{{ profile.bio }}</div>
+  <div class="card-footer">
+    {% if profile.location %}
+      <span class="tag">📍 {{ profile.location }}</span>
+    {% endif %}
+    {% if profile.email %}
+      <a href="mailto:{{ profile.email }}" class="tag">✉ {{ profile.email }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% if profile.skills %}
+<div class="section-title">Technical Skills</div>
+<div class="skills-grid" style="margin-bottom:2rem;">
+  {% for category in profile.skills %}
+  <div class="skill-category">
+    <div class="skill-category-title">{{ category.category }}</div>
+    <div class="skill-items">
+      {% for item in category['items'] %}
+        <span class="tag tag-accent">{{ item }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="section-title">Connect</div>
+<div style="display:flex; flex-direction:column; gap:0.4rem;">
+  {% for social in socials %}
+  <a href="{{ social.url }}" class="btn" target="_blank" rel="noopener" style="max-width:280px;">
+    {{ social.platform }} — {{ social.label }}
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

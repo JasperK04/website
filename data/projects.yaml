@@ -1,0 +1,31 @@
+- name: "flask_api_demo"
+  display_name: "Flask API Demo"
+  description: "A production-ready REST API built with Flask, featuring JWT authentication, rate limiting, and comprehensive error handling."
+  goal: "Demonstrate best practices for building scalable Flask APIs with proper authentication and documentation."
+  github: "https://github.com/jasper/flask-api-demo"
+  demo: "https://flask-api-demo.example.com"
+  main_file: "app.py"
+  code_path: "flask_api_demo/"
+  files:
+    - "app.py"
+    - "auth.py"
+    - "models.py"
+    - "README.md"
+  priority: 1
+  tags: ["flask", "api", "rest", "python", "backend", "jwt"]
+  keywords: ["authentication", "rate limiting", "endpoints", "server", "web"]
+
+- name: "task_manager"
+  display_name: "Task Manager CLI"
+  description: "A command-line task management tool with persistent storage, tagging, and priority-based filtering."
+  goal: "Build a practical CLI app showcasing Python's standard library, file I/O, and clean architecture."
+  github: "https://github.com/jasper/task-manager"
+  main_file: "main.py"
+  code_path: "task_manager/"
+  files:
+    - "main.py"
+    - "storage.py"
+    - "README.md"
+  priority: 2
+  tags: ["cli", "python", "productivity", "sqlite"]
+  keywords: ["task", "todo", "command line", "argparse", "database"]

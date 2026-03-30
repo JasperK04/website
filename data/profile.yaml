@@ -1,0 +1,18 @@
+name: "Jasper K."
+title: "Software Developer"
+tagline: "Building clean, efficient, and maintainable software."
+bio: |
+  I'm a software developer passionate about Python, backend systems, and clean code.
+  I enjoy solving complex problems and turning ideas into working applications.
+  When I'm not coding, I'm reading about computer science theory or exploring open-source projects.
+avatar: "/static/img/avatar.png"
+location: "Netherlands"
+email: "jasper@example.com"
+available: true
+skills:
+  - category: "Languages"
+    items: ["Python", "JavaScript", "HTML/CSS", "SQL", "Bash"]
+  - category: "Frameworks"
+    items: ["Flask", "SQLAlchemy", "Jinja2", "pytest"]
+  - category: "Tools"
+    items: ["Git", "Docker", "Linux", "VS Code", "PostgreSQL"]
