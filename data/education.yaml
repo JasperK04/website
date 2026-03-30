@@ -1,28 +1,54 @@
-- institution: "University of Technology"
-  degree: "Bachelor of Science in Computer Science"
-  field: "Software Engineering"
-  start: "2020"
-  end: "2024"
-  gpa: "3.8 / 4.0"
-  description: "Focused on algorithms, data structures, software architecture, and distributed systems."
+- institution: "Rijks Universiteit Groningen"
+  degree: "BSc Information Science"
+  field: "Information Science"
+  start: "2023"
+  end: "current"
+  description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in January 2027."
+  average_grade: "7.5"
+  thesis: 
+    title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation: An Evaluation under Execution Constraints"
+    grade: ""
+  minor:
+    name: "Educational Minor"
+    description: "Completed an educational minor focused on learning how to teach in the domain of computer science, gaining experience in curriculum design and completed an internship at a high school."
   highlights:
-    - "Dean's List for 3 consecutive years"
-    - "Thesis: Efficient Search Algorithms for Portfolio Systems"
-    - "Active member of the CS Study Group"
-  tags: ["computer science", "software engineering", "algorithms"]
-  keywords: ["university", "bachelor", "degree", "cs", "programming"]
+    - "Have been a TA for 'Programmeren I en II' since 2024, assisting students with Python programming assignments and providing support during lab sessions."
+    - "Have been part of the program committee for the bachelor's program in '24-'25."
+    - "Active member of ASCI, currently active as treasurer of the Career Committee, and vice-chair of the web committee."
+  tags: ["computer science", "software engineering", "algorithms", "LLM's"]
+  keywords: ["university", "bachelor", "degree", "cs", "programming", "machine learning", "computational linguistics", "LLM's", "thesis", "TA", "ASCI"]
   priority: 1
 
-- institution: "City College"
-  degree: "Associate Degree"
-  field: "Information Technology"
-  start: "2018"
-  end: "2020"
-  gpa: "3.9 / 4.0"
-  description: "Covered networking fundamentals, database management, and introductory programming."
-  highlights:
-    - "Graduated with Honors"
-    - "Completed advanced Python and database courses"
-  tags: ["information technology", "networking", "databases"]
-  keywords: ["college", "associate", "IT", "networking"]
+
+
+- institution: "University of Twente"
+  degree: "MSc Business Information Technology"
+  field: "Information Science"
+  start: "2027"
+  end: "future"
+  description: "Planning to pursue a Master's degree in Business Information Technology at the University of Twente, with a focus on data science, and the application of machine learning in business contexts. Expected to start in February 2027."
+  # average_grade: "7.5"
+  # thesis: 
+  #   title: ""
+  #   grade: ""
+  highlights: []
+  tags: ["data science", "software engineering", "algorithms", "LLM's", "business"]
+  keywords: ["university", "master", "degree", "cs", "programming", "machine learning", "LLM's"]
   priority: 2
+
+
+
+- institution: "Werkman College Groningen"
+  degree: "VWO"
+  start: "2018"
+  end: "2022"
+  description: "Completed VWO education with NT&NG profile."
+  average_grade: "6.1"
+  # thesis: 
+  #   title: "PWS: "
+  #   grade: "6.0"
+  highlights:
+    - "Vise-Chair of the student council"
+  tags: ["high school", "secondary education", "VWO", "NT&NG"]
+  keywords: ["high school", "secondary education", "VWO", "student council", "vice-chair", "NT", "NG"]
+  priority: 3

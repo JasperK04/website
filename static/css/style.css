@@ -415,6 +415,118 @@ h1, h2, h3, h4 {
 }
 
 /* ==============================
+   Education
+   ============================== */
+.search-results {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 1rem;
+}
+
+.search-results-query {
+  color: var(--text-primary);
+}
+
+.edu-meta {
+  text-align: right;
+}
+
+.edu-badge {
+  margin-top: 0.25rem;
+}
+
+.edu-section {
+  margin-top: 0.5rem;
+}
+
+.edu-section-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.edu-grade {
+  color: var(--text-muted);
+}
+
+.edu-minor-description {
+  margin-top: 0.35rem;
+}
+
+.edu-highlights-title {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.edu-highlights {
+  margin-top: 0.75rem;
+}
+
+.no-results-clear {
+  margin-top: 1rem;
+}
+
+/* ==============================
+   About
+   ============================== */
+.about-card {
+  margin-bottom: 1.5rem;
+}
+
+.about-bio {
+  white-space: pre-line;
+}
+
+.about-skills-grid {
+  margin-bottom: 2rem;
+}
+
+.connect-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.connect-link {
+  max-width: 280px;
+}
+
+/* ==============================
+   Home
+   ============================== */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+/* ==============================
+   Jobs
+   ============================== */
+.job-location {
+  margin-top: 0.2rem;
+}
+
+.job-meta {
+  text-align: right;
+}
+
+.job-current-badge {
+  margin-top: 0.25rem;
+}
+
+/* ==============================
+   Projects
+   ============================== */
+.project-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+/* ==============================
    Tags / Badges
    ============================== */
 .tag {

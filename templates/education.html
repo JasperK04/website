@@ -28,61 +28,87 @@
   {% endif %}
 </form>
 
-{% if query %}
-  <p style="color:var(--text-muted); font-size:0.82rem; margin-bottom:1rem;">
-    Results for <strong style="color:var(--text-primary);">"{{ query }}"</strong>
-    — {{ items|length }} found
-  </p>
-{% endif %}
+<div id="search-results">
+  {% if query %}
+    <p class="search-results">
+      Results for <strong class="search-results-query">"{{ query }}"</strong>
+      — {{ items|length }} found
+    </p>
+  {% endif %}
 
-{% if items %}
-  {% for item in items %}
-  <div class="card edu-card">
-    <div class="card-header">
-      <div>
-        <div class="card-title">{{ item.institution }}</div>
-        <div class="edu-degree">{{ item.degree }}</div>
-        {% if item.field %}
-          <div class="card-subtitle">{{ item.field }}</div>
+  {% if items %}
+    {% for item in items %}
+    <div class="card edu-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">{{ item.institution }}</div>
+          <div class="edu-degree">{{ item.degree }}</div>
+          {% if item.field %}
+            <div class="card-subtitle">{{ item.field }}</div>
+          {% endif %}
+        </div>
+        <div class="edu-meta">
+          <div class="card-meta">{{ item.start }} – {{ item.end }}</div>
+          {% if item.gpa %}
+            <div class="badge badge-info edu-badge">GPA {{ item.gpa }}</div>
+          {% endif %}
+          {% if item.average_grade %}
+            <div class="badge badge-info edu-badge">Average {{ item.average_grade }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if item.description %}
+      <div class="card-body">{{ item.description }}</div>
+      {% endif %}
+
+      {% if item.thesis %}
+      <div class="card-body edu-section">
+        <strong class="edu-section-title">Thesis:</strong> {{ item.thesis.title }}
+        {% if item.thesis.grade %}
+          <span class="edu-grade">(Grade {{ item.thesis.grade }})</span>
         {% endif %}
       </div>
-      <div style="text-align:right;">
-        <div class="card-meta">{{ item.start }} – {{ item.end }}</div>
-        {% if item.gpa %}
-          <div class="badge badge-info" style="margin-top:0.25rem;">GPA {{ item.gpa }}</div>
+      {% endif %}
+
+      {% if item.minor %}
+      <div class="card-body edu-section">
+        <strong class="edu-section-title">Minor:</strong> {{ item.minor.name }}
+        {% if item.minor.description %}
+          <div class="edu-minor-description">{{ item.minor.description }}</div>
         {% endif %}
       </div>
+      {% endif %}
+
+      {% if item.highlights %}
+      <div class="card-body edu-highlights-title">
+        Highlights
+      </div>
+      <ul class="highlights edu-highlights">
+        {% for h in item.highlights %}
+          <li>{{ h }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if item.tags %}
+      <div class="card-footer">
+        {% for tag in item.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
+    {% endfor %}
 
-    {% if item.description %}
-    <div class="card-body">{{ item.description }}</div>
-    {% endif %}
-
-    {% if item.highlights %}
-    <ul class="highlights" style="margin-top:0.75rem;">
-      {% for h in item.highlights %}
-        <li>{{ h }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-
-    {% if item.tags %}
-    <div class="card-footer">
-      {% for tag in item.tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
+  {% else %}
+    <div class="no-results">
+      <div class="no-results-icon">🔍</div>
+      <p>No education entries found{% if query %} for "{{ query }}"{% endif %}.</p>
+      {% if query %}
+        <a href="{{ url_for('main.education') }}" class="btn no-results-clear">Clear search</a>
+      {% endif %}
     </div>
-    {% endif %}
-  </div>
-  {% endfor %}
-
-{% else %}
-  <div class="no-results">
-    <div class="no-results-icon">🔍</div>
-    <p>No education entries found{% if query %} for "{{ query }}"{% endif %}.</p>
-    {% if query %}
-      <a href="{{ url_for('main.education') }}" class="btn" style="margin-top:1rem;">Clear search</a>
-    {% endif %}
-  </div>
-{% endif %}
+  {% endif %}
+</div>
 {% endblock %}

@@ -37,6 +37,7 @@ def create_app(env: str | None = None) -> Flask:
     )
 
     app.config.from_object(get_config(env))
+    app.config["BASE_DIR"] = _BASE_DIR
 
     app.register_blueprint(main)
 
