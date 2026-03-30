@@ -14,7 +14,7 @@
     <p>{{ project.description }}</p>
   </div>
   <div class="project-info-links">
-    <a href="{{ url_for('projects') }}" class="btn">← Back</a>
+    <a href="{{ url_for('main.projects') }}" class="btn">← Back</a>
     {% if project.demo %}
       <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
         🚀 Live Demo

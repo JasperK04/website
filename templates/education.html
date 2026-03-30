@@ -8,7 +8,7 @@
 </div>
 
 <!-- Search -->
-<form class="search-bar" method="get" action="{{ url_for('education') }}" role="search">
+<form class="search-bar" method="get" action="{{ url_for('main.education') }}" role="search">
   <div class="search-input-wrap">
     <span class="search-icon">🔍</span>
     <input
@@ -24,7 +24,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Search</button>
   {% if query %}
-    <a href="{{ url_for('education') }}" class="btn">Clear</a>
+    <a href="{{ url_for('main.education') }}" class="btn">Clear</a>
   {% endif %}
 </form>
 
@@ -81,7 +81,7 @@
     <div class="no-results-icon">🔍</div>
     <p>No education entries found{% if query %} for "{{ query }}"{% endif %}.</p>
     {% if query %}
-      <a href="{{ url_for('education') }}" class="btn" style="margin-top:1rem;">Clear search</a>
+      <a href="{{ url_for('main.education') }}" class="btn" style="margin-top:1rem;">Clear search</a>
     {% endif %}
   </div>
 {% endif %}

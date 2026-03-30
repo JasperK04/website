@@ -183,6 +183,31 @@ h1, h2, h3, h4 {
 }
 
 /* ==============================
+   Theme Toggle Button
+   ============================== */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--theme-btn-bg);
+  border: 1px solid var(--theme-btn-border);
+  border-radius: 6px;
+  color: var(--theme-btn-text);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  width: 100%;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--theme-btn-hover);
+  border-color: var(--border-active);
+}
+
+/* ==============================
    Hamburger Menu Button
    ============================== */
 .hamburger {

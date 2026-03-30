@@ -7,6 +7,8 @@
   <meta name="description" content="{{ profile.tagline }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   {% block extra_css %}{% endblock %}
+  <!-- Load theme script in <head> to apply data-theme before first paint -->
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
 
@@ -39,19 +41,19 @@
       <nav class="sidebar-nav">
         <div class="nav-section-label">Menu</div>
 
-        <a href="{{ url_for('index') }}" class="nav-link">
+        <a href="{{ url_for('main.index') }}" class="nav-link">
           <span class="nav-icon">🏠</span> Home
         </a>
-        <a href="{{ url_for('about') }}" class="nav-link">
+        <a href="{{ url_for('main.about') }}" class="nav-link">
           <span class="nav-icon">👤</span> About
         </a>
-        <a href="{{ url_for('education') }}" class="nav-link">
+        <a href="{{ url_for('main.education') }}" class="nav-link">
           <span class="nav-icon">🎓</span> Education
         </a>
-        <a href="{{ url_for('jobs') }}" class="nav-link">
+        <a href="{{ url_for('main.jobs') }}" class="nav-link">
           <span class="nav-icon">💼</span> Experience
         </a>
-        <a href="{{ url_for('projects') }}" class="nav-link">
+        <a href="{{ url_for('main.projects') }}" class="nav-link">
           <span class="nav-icon">🔧</span> Projects
         </a>
       </nav>
@@ -62,6 +64,13 @@
             {{ social.label }}
           </a>
         {% endfor %}
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          aria-label="Switch to light mode"
+          title="Switch to light mode"
+        >☀️</button>
       </footer>
     </aside>
 
