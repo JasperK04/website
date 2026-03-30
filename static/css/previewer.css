@@ -104,6 +104,29 @@
   gap: 0.5rem;
 }
 
+.code-pane-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#copy-code-btn {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+}
+
+/* Project detail helpers */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.project-goal {
+  margin-top: 1rem;
+}
+
 .code-filename {
   font-size: 0.8rem;
   color: var(--text-primary);

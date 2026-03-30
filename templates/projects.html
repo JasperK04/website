@@ -28,68 +28,70 @@
   {% endif %}
 </form>
 
-{% if query %}
-  <p style="color:var(--text-muted); font-size:0.82rem; margin-bottom:1rem;">
-    Results for <strong style="color:var(--text-primary);">"{{ query }}"</strong>
-    — {{ items|length }} found
-  </p>
-{% endif %}
+<div id="search-results">
+  {% if query %}
+    <p class="search-results">
+      Results for <strong class="search-results-query">"{{ query }}"</strong>
+      — {{ items|length }} found
+    </p>
+  {% endif %}
 
-{% if items %}
-<div class="project-grid">
-  {% for project in items %}
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">{{ project.display_name or project.name }}</div>
-      <div class="card-meta">
+  {% if items %}
+  <div class="project-grid">
+    {% for project in items %}
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">{{ project.display_name or project.name }}</div>
+        <div class="card-meta">
+          {% if project.demo %}
+            <span class="badge badge-success">Live demo</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if project.description %}
+      <div class="card-body">{{ project.description }}</div>
+      {% endif %}
+
+      {% if project.tags %}
+      <div class="project-tag-list">
+        {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="card-footer">
+        <!-- Always show code previewer -->
+        <a href="{{ url_for('main.project_detail', project_name=project.name) }}" class="btn"
+           aria-label="View code for {{ project.display_name or project.name }}">
+          🔍 View Code
+        </a>
+
         {% if project.demo %}
-          <span class="badge badge-success">Live demo</span>
+          <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
+            🚀 Live Demo
+          </a>
+        {% endif %}
+
+        {% if project.github %}
+          <a href="{{ project.github }}" class="btn" target="_blank" rel="noopener">
+            ⭐ GitHub
+          </a>
         {% endif %}
       </div>
     </div>
-
-    {% if project.description %}
-    <div class="card-body">{{ project.description }}</div>
-    {% endif %}
-
-    {% if project.tags %}
-    <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.6rem;">
-      {% for tag in project.tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <div class="card-footer">
-      <!-- Always show code previewer -->
-      <a href="{{ url_for('main.project_detail', project_name=project.name) }}" class="btn"
-         aria-label="View code for {{ project.display_name or project.name }}">
-        🔍 View Code
-      </a>
-
-      {% if project.demo %}
-        <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
-          🚀 Live Demo
-        </a>
-      {% endif %}
-
-      {% if project.github %}
-        <a href="{{ project.github }}" class="btn" target="_blank" rel="noopener">
-          ⭐ GitHub
-        </a>
-      {% endif %}
-    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
+
+  {% else %}
+    <div class="no-results">
+      <div class="no-results-icon">🔧</div>
+      <p>No projects found{% if query %} for "{{ query }}"{% endif %}.</p>
+      {% if query %}
+        <a href="{{ url_for('main.projects') }}" class="btn no-results-clear">Clear search</a>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
-
-{% else %}
-  <div class="no-results">
-    <div class="no-results-icon">🔧</div>
-    <p>No projects found{% if query %} for "{{ query }}"{% endif %}.</p>
-    {% if query %}
-      <a href="{{ url_for('main.projects') }}" class="btn" style="margin-top:1rem;">Clear search</a>
-    {% endif %}
-  </div>
-{% endif %}
 {% endblock %}

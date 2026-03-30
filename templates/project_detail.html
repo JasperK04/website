@@ -30,7 +30,7 @@
 
 <!-- Tags -->
 {% if project.tags %}
-<div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1rem;">
+<div class="project-tags">
   {% for tag in project.tags %}
     <span class="tag">{{ tag }}</span>
   {% endfor %}
@@ -58,7 +58,10 @@
     <div class="code-pane" role="region" aria-label="Code viewer">
       <div class="code-pane-header">
         <span class="code-filename" id="code-filename">Loading…</span>
-        <span class="code-lang-badge" id="code-lang-badge"></span>
+        <div class="code-pane-actions">
+          <button class="btn" id="copy-code-btn" type="button" disabled>Copy</button>
+          <span class="code-lang-badge" id="code-lang-badge"></span>
+        </div>
       </div>
       <div class="code-block" id="code-pane-content">
         <div class="code-loading">Select a file to view its contents.</div>
@@ -69,7 +72,7 @@
 </div><!-- #previewer-root -->
 
 {% if project.goal %}
-<div class="card" style="margin-top:1rem;">
+<div class="card project-goal">
   <div class="card-header">
     <div class="card-title">Project Goal</div>
   </div>

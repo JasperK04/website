@@ -19,6 +19,7 @@
   const codePane = document.getElementById("code-pane-content");
   const codeFilename = document.getElementById("code-filename");
   const codeLangBadge = document.getElementById("code-lang-badge");
+  const copyBtn = document.getElementById("copy-code-btn");
 
   // -----------------------------------------------------------------------
   // File extension helpers
@@ -152,11 +153,16 @@
       codeCell.className = "line-code";
 
       const lineToks = lineMap[ln] || [];
+      let cursor = 0;
       lineToks.forEach(function (tok) {
+        if (tok.col > cursor) {
+          codeCell.appendChild(document.createTextNode(" ".repeat(tok.col - cursor)));
+        }
         const span = document.createElement("span");
         span.className = "tok-" + tok.type;
         span.textContent = tok.value;
         codeCell.appendChild(span);
+        cursor = tok.col + tok.value.length;
       });
 
       row.appendChild(numCell);
@@ -342,6 +348,7 @@
     currentFile = filename;
     codeFilename.textContent = filename;
     codeLangBadge.textContent = getLang(filename);
+    if (copyBtn) copyBtn.disabled = false;
 
     // Update active state in file list
     fileListEl.querySelectorAll(".file-item").forEach(function (li) {
@@ -360,6 +367,57 @@
   function buildCodeUrl(filename, suffix) {
     return "/code/" + encodeURIComponent(projectName) + "/" +
            encodeURIComponent(filename) + (suffix || "");
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        const ok = document.execCommand("copy");
+        document.body.removeChild(textarea);
+        if (ok) resolve(); else reject(new Error("Copy failed"));
+      } catch (err) {
+        document.body.removeChild(textarea);
+        reject(err);
+      }
+    });
+  }
+
+  function copyCurrentFile() {
+    if (!currentFile) return;
+    fetch(buildCodeUrl(currentFile))
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.text();
+      })
+      .then(function (text) {
+        return copyText(text);
+      })
+      .then(function () {
+        if (!copyBtn) return;
+        const prev = copyBtn.textContent;
+        copyBtn.textContent = "Copied";
+        setTimeout(function () {
+          copyBtn.textContent = prev;
+        }, 1200);
+      })
+      .catch(function () {
+        if (!copyBtn) return;
+        const prev = copyBtn.textContent;
+        copyBtn.textContent = "Copy failed";
+        setTimeout(function () {
+          copyBtn.textContent = prev;
+        }, 1200);
+      });
   }
 
   function loadFile(filename) {
@@ -418,6 +476,10 @@
     loadFile(mainFile);
   } else if (files.length > 0) {
     loadFile(files[0]);
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", copyCurrentFile);
   }
 
 })();
