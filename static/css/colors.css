@@ -26,30 +26,30 @@
   /* --- Borders --- */
   --border-subtle: #21262d;
   --border-muted:  #30363d;
-  --border-active: #388bfd;
+  --border-active: #b565f2;
 
   /* --- Text --- */
   --text-primary:    #e6edf3;
   --text-secondary:  #8b949e;
   --text-muted:      #6e7681;
-  --text-link:       #58a6ff;
-  --text-link-hover: #79c0ff;
+  --text-link:       #c77dff;
+  --text-link-hover: #e0aaff;
 
   /* --- Accent / brand --- */
-  --accent:        #388bfd;
-  --accent-hover:  #1f6feb;
-  --accent-subtle: #1f3a5f;
+  --accent:        #c77dff;
+  --accent-hover:  #a55eea;
+  --accent-subtle: #3b1f4a;
 
   /* --- Status --- */
-  --success:  #3fb950;
-  --warning:  #d29922;
-  --danger:   #f85149;
-  --info:     #79c0ff;
+  --success:  #ff6b6b;
+  --warning:  #ff8fab;
+  --danger:   #ff4d6d;
+  --info:     #c77dff;
 
   /* --- Tag / badge --- */
   --tag-bg:     #21262d;
-  --tag-text:   #8b949e;
-  --tag-border: #30363d;
+  --tag-text:   #c3b3ff;
+  --tag-border: #4a345f;
 
   /* --- Sidebar --- */
   --sidebar-bg:    #0d1117;
@@ -68,15 +68,15 @@
   /* ------------------------------------------------------------------ */
   /* Syntax highlighting                                                  */
   /* ------------------------------------------------------------------ */
-  --syn-keyword:   #ff7b72;   /* def, class, if, for, return … */
-  --syn-string:    #a5d6ff;   /* "hello", 'world', """docstrings""" */
-  --syn-comment:   #8b949e;   /* # comment */
-  --syn-number:    #79c0ff;   /* 42, 3.14, 0xff */
-  --syn-operator:  #ff7b72;   /* +, -, =, ==, (, ) … */
-  --syn-builtin:   #ffa657;   /* print, len, range … */
-  --syn-decorator: #d2a8ff;   /* @property, @app.route … */
+  --syn-keyword:   #ff6b6b;   /* def, class, if, for, return … */
+  --syn-string:    #e0aaff;   /* "hello", 'world', """docstrings""" */
+  --syn-comment:   #9a8c98;   /* # comment */
+  --syn-number:    #ff8fab;   /* 42, 3.14, 0xff */
+  --syn-operator:  #ff6b6b;   /* +, -, =, ==, (, ) … */
+  --syn-builtin:   #c77dff;   /* print, len, range … */
+  --syn-decorator: #a55eea;   /* @property, @app.route … */
   --syn-name:      #e6edf3;   /* regular identifiers */
-  --syn-error:     #f85149;   /* tokenization errors */
+  --syn-error:     #ff4d6d;   /* tokenization errors */
 
   /* Line number gutter */
   --syn-lineno-bg:     #161b22;
@@ -103,31 +103,31 @@
 
   /* --- Borders --- */
   --border-subtle: #d0d7de;
-  --border-muted:  #afb8c1;
-  --border-active: #0969da;
+  --border-muted:  #9aa4b2;
+  --border-active: #7b2cbf;
 
   /* --- Text --- */
   --text-primary:    #24292f;
-  --text-secondary:  #57606a;
-  --text-muted:      #8c959f;
-  --text-link:       #0969da;
-  --text-link-hover: #0550ae;
+  --text-secondary:  #3f4751;
+  --text-muted:      #5b6672;
+  --text-link:       #7b2cbf;
+  --text-link-hover: #5a189a;
 
   /* --- Accent / brand --- */
-  --accent:        #0969da;
-  --accent-hover:  #0550ae;
-  --accent-subtle: #ddf4ff;
+  --accent:        #7b2cbf;
+  --accent-hover:  #5a189a;
+  --accent-subtle: #f2e9ff;
 
   /* --- Status --- */
-  --success:  #1a7f37;
-  --warning:  #9a6700;
-  --danger:   #cf222e;
-  --info:     #0550ae;
+  --success:  #c1121f;
+  --warning:  #ff758f;
+  --danger:   #a4133c;
+  --info:     #7b2cbf;
 
   /* --- Tag / badge --- */
   --tag-bg:     #eaeef2;
-  --tag-text:   #57606a;
-  --tag-border: #d0d7de;
+  --tag-text:   #5a189a;
+  --tag-border: #d3b7ff;
 
   /* --- Sidebar --- */
   --sidebar-bg:    #f6f8fa;
@@ -146,15 +146,15 @@
   /* ------------------------------------------------------------------ */
   /* Syntax highlighting (GitHub Light palette)                           */
   /* ------------------------------------------------------------------ */
-  --syn-keyword:   #cf222e;   /* def, class, if, for, return … */
-  --syn-string:    #0a3069;   /* strings */
-  --syn-comment:   #6e7781;   /* # comment */
-  --syn-number:    #0550ae;   /* numbers */
-  --syn-operator:  #cf222e;   /* operators */
-  --syn-builtin:   #953800;   /* print, len, range … */
-  --syn-decorator: #8250df;   /* @property, @app.route … */
+  --syn-keyword:   #c1121f;   /* def, class, if, for, return … */
+  --syn-string:    #7b2cbf;   /* strings */
+  --syn-comment:   #8c7a90;   /* # comment */
+  --syn-number:    #ff758f;   /* numbers */
+  --syn-operator:  #c1121f;   /* operators */
+  --syn-builtin:   #5a189a;   /* print, len, range … */
+  --syn-decorator: #9d4edd;   /* @property, @app.route … */
   --syn-name:      #24292f;   /* regular identifiers */
-  --syn-error:     #cf222e;   /* tokenization errors */
+  --syn-error:     #a4133c;   /* tokenization errors */
 
   /* Line number gutter */
   --syn-lineno-bg:     #f6f8fa;
@@ -179,23 +179,23 @@
     --bg-elevated:   #eaeef2;
     --bg-overlay:    #d0d7de;
     --border-subtle: #d0d7de;
-    --border-muted:  #afb8c1;
-    --border-active: #0969da;
+    --border-muted:  #9aa4b2;
+    --border-active: #7b2cbf;
     --text-primary:    #24292f;
-    --text-secondary:  #57606a;
-    --text-muted:      #8c959f;
-    --text-link:       #0969da;
-    --text-link-hover: #0550ae;
-    --accent:        #0969da;
-    --accent-hover:  #0550ae;
-    --accent-subtle: #ddf4ff;
-    --success:  #1a7f37;
-    --warning:  #9a6700;
-    --danger:   #cf222e;
-    --info:     #0550ae;
+    --text-secondary:  #3f4751;
+    --text-muted:      #5b6672;
+    --text-link:       #7b2cbf;
+    --text-link-hover: #5a189a;
+    --accent:        #7b2cbf;
+    --accent-hover:  #5a189a;
+    --accent-subtle: #f2e9ff;
+    --success:  #c1121f;
+    --warning:  #ff758f;
+    --danger:   #a4133c;
+    --info:     #7b2cbf;
     --tag-bg:     #eaeef2;
-    --tag-text:   #57606a;
-    --tag-border: #d0d7de;
+    --tag-text:   #5a189a;
+    --tag-border: #d3b7ff;
     --sidebar-bg:    #f6f8fa;
     --sidebar-width: 240px;
     --scrollbar-bg:    #f6f8fa;
@@ -204,15 +204,15 @@
     --theme-btn-border: #d0d7de;
     --theme-btn-text:   #57606a;
     --theme-btn-hover:  #d0d7de;
-    --syn-keyword:   #cf222e;
-    --syn-string:    #0a3069;
-    --syn-comment:   #6e7781;
-    --syn-number:    #0550ae;
-    --syn-operator:  #cf222e;
-    --syn-builtin:   #953800;
-    --syn-decorator: #8250df;
+    --syn-keyword:   #c1121f;
+    --syn-string:    #7b2cbf;
+    --syn-comment:   #8c7a90;
+    --syn-number:    #ff758f;
+    --syn-operator:  #c1121f;
+    --syn-builtin:   #5a189a;
+    --syn-decorator: #9d4edd;
     --syn-name:      #24292f;
-    --syn-error:     #cf222e;
+    --syn-error:     #a4133c;
     --syn-lineno-bg:     #f6f8fa;
     --syn-lineno-text:   #8c959f;
     --syn-lineno-border: #d0d7de;
