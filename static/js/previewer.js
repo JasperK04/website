@@ -128,7 +128,7 @@
 
     const lineNums = Object.keys(lineMap)
       .map(Number)
-      .sort(function (a, b) { return a - b; });
+      .sort((a, b) => a - b);
 
     if (lineNums.length === 0) {
       codePane.innerHTML = '<div class="code-loading">Empty file</div>';
@@ -357,6 +357,11 @@
     codePane.innerHTML = '<div class="code-error">Error: ' + escHtml(msg) + '</div>';
   }
 
+  function buildCodeUrl(filename, suffix) {
+    return "/code/" + encodeURIComponent(projectName) + "/" +
+           encodeURIComponent(filename) + (suffix || "");
+  }
+
   function loadFile(filename) {
     if (filename === currentFile) return;
     setActiveFile(filename);
@@ -366,9 +371,7 @@
 
     if (ext === "py") {
       // Fetch tokenized version for syntax highlighting
-      const url = "/code/" + encodeURIComponent(projectName) + "/" +
-                  encodeURIComponent(filename) + "/tokens";
-      fetch(url)
+      fetch(buildCodeUrl(filename, "/tokens"))
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
           return res.json();
@@ -381,9 +384,7 @@
         });
     } else if (ext === "md") {
       // Fetch raw content and render as Markdown
-      const url = "/code/" + encodeURIComponent(projectName) + "/" +
-                  encodeURIComponent(filename);
-      fetch(url)
+      fetch(buildCodeUrl(filename))
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
           return res.text();
@@ -396,9 +397,7 @@
         });
     } else {
       // Fetch raw content and render with line numbers (no highlighting)
-      const url = "/code/" + encodeURIComponent(projectName) + "/" +
-                  encodeURIComponent(filename);
-      fetch(url)
+      fetch(buildCodeUrl(filename))
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
           return res.text();

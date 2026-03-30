@@ -62,7 +62,8 @@
 
     <div class="card-footer">
       <!-- Always show code previewer -->
-      <a href="{{ url_for('project_detail', project_name=project.name) }}" class="btn">
+      <a href="{{ url_for('project_detail', project_name=project.name) }}" class="btn"
+         aria-label="View code for {{ project.display_name or project.name }}">
         🔍 View Code
       </a>
 

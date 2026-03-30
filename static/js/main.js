@@ -3,6 +3,8 @@
 (function () {
   "use strict";
 
+  var MOBILE_BREAKPOINT = 768;
+
   // -----------------------------------------------------------------------
   // Hamburger / sidebar toggle
   // -----------------------------------------------------------------------
@@ -45,7 +47,7 @@
     // Close sidebar when a nav link is clicked on mobile
     sidebar.querySelectorAll(".nav-link").forEach(function (link) {
       link.addEventListener("click", function () {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) {
           closeSidebar();
         }
       });

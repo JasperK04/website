@@ -296,4 +296,5 @@ def serve_tokens(project: str, filename: str):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+    app.run(debug=debug)
