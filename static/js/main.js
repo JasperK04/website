@@ -71,17 +71,60 @@
   });
 
   // -----------------------------------------------------------------------
-  // Search form - debounced auto-submit
+  // Search form - debounced AJAX submit
   // -----------------------------------------------------------------------
   const searchInput = document.getElementById("search-input");
-  if (searchInput) {
+  const searchResults = document.getElementById("search-results");
+  if (searchInput && searchResults && searchInput.form) {
     let debounceTimer;
+
+    function buildSearchUrl() {
+      const form = searchInput.form;
+      const url = new URL(form.action, window.location.origin);
+      const params = new URLSearchParams(new FormData(form));
+      if ([...params.values()].every(function (value) { return !value; })) {
+        url.search = "";
+      } else {
+        url.search = params.toString();
+      }
+      return url.toString();
+    }
+
+    function updateResults(html, url) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const nextResults = doc.getElementById("search-results");
+      if (!nextResults) return;
+      searchResults.innerHTML = nextResults.innerHTML;
+      window.history.replaceState({}, "", url);
+      searchInput.focus();
+      searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+    }
+
+    function fetchResults() {
+      const url = buildSearchUrl();
+      fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        })
+        .then(function (html) {
+          updateResults(html, url);
+        })
+        .catch(function () {
+          // Fallback to full navigation if something goes wrong
+          window.location.assign(url);
+        });
+    }
 
     searchInput.addEventListener("input", function () {
       clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(function () {
-        searchInput.form.submit();
-      }, 400);
+      debounceTimer = setTimeout(fetchResults, 500);
+    });
+
+    searchInput.form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      fetchResults();
     });
 
     // Focus shortcut: press "/" to focus search
