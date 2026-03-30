@@ -1,18 +1,30 @@
-name: "Jasper K."
-title: "Software Developer"
-tagline: "Building clean, efficient, and maintainable software."
+name: "Jasper Kleine"
+title: "Information Science Student"
+tagline: ""
 bio: |
-  I'm a software developer passionate about Python, backend systems, and clean code.
-  I enjoy solving complex problems and turning ideas into working applications.
-  When I'm not coding, I'm reading about computer science theory or exploring open-source projects.
+  bla bla bla
 avatar: "/static/img/avatar.png"
 location: "Netherlands"
-email: "jasper@example.com"
-available: true
+email: "contact@jasperkleine.nl"
+available: false
 skills:
-  - category: "Languages"
-    items: ["Python", "JavaScript", "HTML/CSS", "SQL", "Bash"]
-  - category: "Frameworks"
-    items: ["Flask", "SQLAlchemy", "Jinja2", "pytest"]
-  - category: "Tools"
-    items: ["Git", "Docker", "Linux", "VS Code", "PostgreSQL"]
+  languages:
+    - Python
+    - JavaScript
+    - HTML/CSS
+    - SQL
+    - Bash
+
+  academic_focus:
+    - Python Programming
+    - Machine Learning
+    - Data Science
+    - Large Language Models
+    - Statistics
+    - UI/UX Design
+
+  experience:
+    - role: Teaching Assistant
+      focus: Assisting students with Programming
+    - role: Educational Minor
+      focus: Teaching & Computer Science

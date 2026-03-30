@@ -34,7 +34,7 @@
 
 <!-- Quick links -->
 <div class="section-title">Quick links</div>
-<div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:2rem;">
+<div class="quick-links">
   <a href="{{ url_for('main.about') }}" class="btn">👤 About Me</a>
   <a href="{{ url_for('main.education') }}" class="btn">🎓 Education</a>
   <a href="{{ url_for('main.jobs') }}" class="btn">💼 Experience</a>
@@ -45,12 +45,16 @@
 {% if profile.skills %}
 <div class="section-title">Skills</div>
 <div class="skills-grid">
-  {% for category in profile.skills %}
+  {% for category, items in profile.skills.items() %}
   <div class="skill-category">
-    <div class="skill-category-title">{{ category.category }}</div>
+    <div class="skill-category-title">{{ category | replace("_", " ") | title }}</div>
     <div class="skill-items">
-      {% for item in category['items'] %}
-        <span class="tag tag-accent">{{ item }}</span>
+      {% for item in items %}
+        {% if item.role is defined %}
+          <span class="tag tag-accent">{{ item.role }} - {{ item.focus }}</span>
+        {% else %}
+          <span class="tag tag-accent">{{ item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

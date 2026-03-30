@@ -7,7 +7,7 @@
   <p class="page-subtitle">Background, skills, and interests</p>
 </div>
 
-<div class="card" style="margin-bottom:1.5rem;">
+<div class="card about-card">
   <div class="card-header">
     <div>
       <div class="card-title">{{ profile.name }}</div>
@@ -17,7 +17,7 @@
       <span class="badge badge-success">Available</span>
     {% endif %}
   </div>
-  <div class="card-body" style="white-space: pre-line;">{{ profile.bio }}</div>
+  <div class="card-body about-bio">{{ profile.bio }}</div>
   <div class="card-footer">
     {% if profile.location %}
       <span class="tag">📍 {{ profile.location }}</span>
@@ -30,13 +30,17 @@
 
 {% if profile.skills %}
 <div class="section-title">Technical Skills</div>
-<div class="skills-grid" style="margin-bottom:2rem;">
-  {% for category in profile.skills %}
+<div class="skills-grid about-skills-grid">
+  {% for category, items in profile.skills.items() %}
   <div class="skill-category">
-    <div class="skill-category-title">{{ category.category }}</div>
+    <div class="skill-category-title">{{ category | replace("_", " ") | title }}</div>
     <div class="skill-items">
-      {% for item in category['items'] %}
-        <span class="tag tag-accent">{{ item }}</span>
+      {% for item in items %}
+        {% if item.role is defined %}
+          <span class="tag tag-accent">{{ item.role }} - {{ item.focus }}</span>
+        {% else %}
+          <span class="tag tag-accent">{{ item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -45,9 +49,9 @@
 {% endif %}
 
 <div class="section-title">Connect</div>
-<div style="display:flex; flex-direction:column; gap:0.4rem;">
+<div class="connect-links">
   {% for social in socials %}
-  <a href="{{ social.url }}" class="btn" target="_blank" rel="noopener" style="max-width:280px;">
+  <a href="{{ social.url }}" class="btn connect-link" target="_blank" rel="noopener">
     {{ social.platform }} — {{ social.label }}
   </a>
   {% endfor %}

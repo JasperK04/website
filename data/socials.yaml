@@ -1,17 +1,17 @@
 - platform: "GitHub"
-  url: "https://github.com/jasper"
-  label: "github/jasper"
+  url: "https://github.com/JasperK04"
+  label: "github"
   icon: "github"
   priority: 1
 
 - platform: "LinkedIn"
-  url: "https://linkedin.com/in/jasper"
-  label: "linkedin/jasper"
+  url: "https://www.linkedin.com/in/jasper-kleine-61716a211/"
+  label: "linkedin"
   icon: "linkedin"
   priority: 2
 
 - platform: "Email"
-  url: "mailto:jasper@example.com"
-  label: "jasper@example.com"
+  url: "mailto:contact@jasperkleine.nl"
+  label: "contact@jasperkleine.nl"
   icon: "email"
   priority: 3
