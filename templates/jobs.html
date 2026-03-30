@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Experience{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">Experience</h1>
+  <p class="page-subtitle">Professional background and roles</p>
+</div>
+
+<!-- Search -->
+<form class="search-bar" method="get" action="{{ url_for('main.jobs') }}" role="search">
+  <div class="search-input-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      type="text"
+      id="search-input"
+      name="q"
+      class="search-input"
+      placeholder="Search jobs… (press / to focus)"
+      value="{{ query }}"
+      autocomplete="off"
+      aria-label="Search jobs"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+  {% if query %}
+    <a href="{{ url_for('main.jobs') }}" class="btn">Clear</a>
+  {% endif %}
+</form>
+
+{% if query %}
+  <p style="color:var(--text-muted); font-size:0.82rem; margin-bottom:1rem;">
+    Results for <strong style="color:var(--text-primary);">"{{ query }}"</strong>
+    — {{ items|length }} found
+  </p>
+{% endif %}
+
+{% if items %}
+  {% for item in items %}
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">{{ item.role }}</div>
+        <div class="job-company">
+          {% if item.link %}
+            <a href="{{ item.link.url }}" target="_blank" rel="noopener">{{ item.company }}</a>
+          {% else %}
+            {{ item.company }}
+          {% endif %}
+        </div>
+        {% if item.location %}
+          <div class="card-meta" style="margin-top:0.2rem;">📍 {{ item.location }}</div>
+        {% endif %}
+      </div>
+      <div style="text-align:right;">
+        <div class="card-meta">{{ item.start }} – {{ item.end }}</div>
+        {% if item.end == "Present" %}
+          <span class="badge badge-success" style="margin-top:0.25rem;">Current</span>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if item.description %}
+    <div class="card-body">{{ item.description }}</div>
+    {% endif %}
+
+    {% if item.responsibilities %}
+    <ul class="responsibilities">
+      {% for r in item.responsibilities %}
+        <li>{{ r }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if item.tech %}
+    <div class="tech-stack">
+      {% for t in item.tech %}
+        <span class="tag tag-accent">{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if item.tags %}
+    <div class="card-footer">
+      {% for tag in item.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+{% else %}
+  <div class="no-results">
+    <div class="no-results-icon">💼</div>
+    <p>No jobs found{% if query %} for "{{ query }}"{% endif %}.</p>
+    {% if query %}
+      <a href="{{ url_for('main.jobs') }}" class="btn" style="margin-top:1rem;">Clear search</a>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

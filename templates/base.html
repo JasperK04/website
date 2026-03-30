@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Portfolio{% endblock %} — {{ profile.name }}</title>
+  <meta name="description" content="{{ profile.tagline }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_css %}{% endblock %}
+  <!-- Load theme script in <head> to apply data-theme before first paint -->
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+  <!-- Hamburger button (mobile) -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <div class="sidebar-avatar">
+          {% if profile.avatar %}
+            <img src="{{ profile.avatar }}" alt="{{ profile.name }}" onerror="this.style.display='none';this.parentElement.textContent='👤'">
+          {% else %}
+            👤
+          {% endif %}
+        </div>
+        <div class="sidebar-name">{{ profile.name }}</div>
+        <div class="sidebar-title">{{ profile.title }}</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Menu</div>
+
+        <a href="{{ url_for('main.index') }}" class="nav-link">
+          <span class="nav-icon">🏠</span> Home
+        </a>
+        <a href="{{ url_for('main.about') }}" class="nav-link">
+          <span class="nav-icon">👤</span> About
+        </a>
+        <a href="{{ url_for('main.education') }}" class="nav-link">
+          <span class="nav-icon">🎓</span> Education
+        </a>
+        <a href="{{ url_for('main.jobs') }}" class="nav-link">
+          <span class="nav-icon">💼</span> Experience
+        </a>
+        <a href="{{ url_for('main.projects') }}" class="nav-link">
+          <span class="nav-icon">🔧</span> Projects
+        </a>
+      </nav>
+
+      <footer class="sidebar-footer">
+        {% for social in socials %}
+          <a href="{{ social.url }}" class="social-link" target="_blank" rel="noopener">
+            {{ social.label }}
+          </a>
+        {% endfor %}
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          aria-label="Switch to light mode"
+          title="Switch to light mode"
+        >☀️</button>
+      </footer>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <main class="main-content" role="main">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div><!-- .layout -->
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

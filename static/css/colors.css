@@ -1,0 +1,223 @@
+/* colors.css - UI and syntax-highlighting design tokens
+ *
+ * Two themes are defined:
+ *   [data-theme="dark"]  — default dark theme (GitHub-dark palette)
+ *   [data-theme="light"] — light theme (GitHub-light palette)
+ *
+ * The <html> element carries the data-theme attribute.
+ * theme.js toggles it and persists the choice in localStorage.
+ * The OS preference is respected as the initial fallback via
+ * @media (prefers-color-scheme) inside each theme block.
+ */
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* --- Background layers --- */
+  --bg-base:       #0f1117;
+  --bg-surface:    #161b22;
+  --bg-elevated:   #1c2128;
+  --bg-overlay:    #21262d;
+
+  /* --- Borders --- */
+  --border-subtle: #21262d;
+  --border-muted:  #30363d;
+  --border-active: #388bfd;
+
+  /* --- Text --- */
+  --text-primary:    #e6edf3;
+  --text-secondary:  #8b949e;
+  --text-muted:      #6e7681;
+  --text-link:       #58a6ff;
+  --text-link-hover: #79c0ff;
+
+  /* --- Accent / brand --- */
+  --accent:        #388bfd;
+  --accent-hover:  #1f6feb;
+  --accent-subtle: #1f3a5f;
+
+  /* --- Status --- */
+  --success:  #3fb950;
+  --warning:  #d29922;
+  --danger:   #f85149;
+  --info:     #79c0ff;
+
+  /* --- Tag / badge --- */
+  --tag-bg:     #21262d;
+  --tag-text:   #8b949e;
+  --tag-border: #30363d;
+
+  /* --- Sidebar --- */
+  --sidebar-bg:    #0d1117;
+  --sidebar-width: 240px;
+
+  /* --- Scrollbar --- */
+  --scrollbar-bg:    #161b22;
+  --scrollbar-thumb: #30363d;
+
+  /* --- Theme toggle button --- */
+  --theme-btn-bg:     #21262d;
+  --theme-btn-border: #30363d;
+  --theme-btn-text:   #8b949e;
+  --theme-btn-hover:  #30363d;
+
+  /* ------------------------------------------------------------------ */
+  /* Syntax highlighting                                                  */
+  /* ------------------------------------------------------------------ */
+  --syn-keyword:   #ff7b72;   /* def, class, if, for, return … */
+  --syn-string:    #a5d6ff;   /* "hello", 'world', """docstrings""" */
+  --syn-comment:   #8b949e;   /* # comment */
+  --syn-number:    #79c0ff;   /* 42, 3.14, 0xff */
+  --syn-operator:  #ff7b72;   /* +, -, =, ==, (, ) … */
+  --syn-builtin:   #ffa657;   /* print, len, range … */
+  --syn-decorator: #d2a8ff;   /* @property, @app.route … */
+  --syn-name:      #e6edf3;   /* regular identifiers */
+  --syn-error:     #f85149;   /* tokenization errors */
+
+  /* Line number gutter */
+  --syn-lineno-bg:     #161b22;
+  --syn-lineno-text:   #6e7681;
+  --syn-lineno-border: #21262d;
+
+  /* Code block */
+  --syn-code-bg:    #0d1117;
+  --syn-code-text:  #e6edf3;
+  --syn-line-hover: #1c2128;
+}
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* --- Background layers --- */
+  --bg-base:       #ffffff;
+  --bg-surface:    #f6f8fa;
+  --bg-elevated:   #eaeef2;
+  --bg-overlay:    #d0d7de;
+
+  /* --- Borders --- */
+  --border-subtle: #d0d7de;
+  --border-muted:  #afb8c1;
+  --border-active: #0969da;
+
+  /* --- Text --- */
+  --text-primary:    #24292f;
+  --text-secondary:  #57606a;
+  --text-muted:      #8c959f;
+  --text-link:       #0969da;
+  --text-link-hover: #0550ae;
+
+  /* --- Accent / brand --- */
+  --accent:        #0969da;
+  --accent-hover:  #0550ae;
+  --accent-subtle: #ddf4ff;
+
+  /* --- Status --- */
+  --success:  #1a7f37;
+  --warning:  #9a6700;
+  --danger:   #cf222e;
+  --info:     #0550ae;
+
+  /* --- Tag / badge --- */
+  --tag-bg:     #eaeef2;
+  --tag-text:   #57606a;
+  --tag-border: #d0d7de;
+
+  /* --- Sidebar --- */
+  --sidebar-bg:    #f6f8fa;
+  --sidebar-width: 240px;
+
+  /* --- Scrollbar --- */
+  --scrollbar-bg:    #f6f8fa;
+  --scrollbar-thumb: #d0d7de;
+
+  /* --- Theme toggle button --- */
+  --theme-btn-bg:     #eaeef2;
+  --theme-btn-border: #d0d7de;
+  --theme-btn-text:   #57606a;
+  --theme-btn-hover:  #d0d7de;
+
+  /* ------------------------------------------------------------------ */
+  /* Syntax highlighting (GitHub Light palette)                           */
+  /* ------------------------------------------------------------------ */
+  --syn-keyword:   #cf222e;   /* def, class, if, for, return … */
+  --syn-string:    #0a3069;   /* strings */
+  --syn-comment:   #6e7781;   /* # comment */
+  --syn-number:    #0550ae;   /* numbers */
+  --syn-operator:  #cf222e;   /* operators */
+  --syn-builtin:   #953800;   /* print, len, range … */
+  --syn-decorator: #8250df;   /* @property, @app.route … */
+  --syn-name:      #24292f;   /* regular identifiers */
+  --syn-error:     #cf222e;   /* tokenization errors */
+
+  /* Line number gutter */
+  --syn-lineno-bg:     #f6f8fa;
+  --syn-lineno-text:   #8c959f;
+  --syn-lineno-border: #d0d7de;
+
+  /* Code block */
+  --syn-code-bg:    #ffffff;
+  --syn-code-text:  #24292f;
+  --syn-line-hover: #f6f8fa;
+}
+
+/* ============================================================
+   OS-level preference fallback (no stored preference yet)
+   ============================================================ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+
+    --bg-base:       #ffffff;
+    --bg-surface:    #f6f8fa;
+    --bg-elevated:   #eaeef2;
+    --bg-overlay:    #d0d7de;
+    --border-subtle: #d0d7de;
+    --border-muted:  #afb8c1;
+    --border-active: #0969da;
+    --text-primary:    #24292f;
+    --text-secondary:  #57606a;
+    --text-muted:      #8c959f;
+    --text-link:       #0969da;
+    --text-link-hover: #0550ae;
+    --accent:        #0969da;
+    --accent-hover:  #0550ae;
+    --accent-subtle: #ddf4ff;
+    --success:  #1a7f37;
+    --warning:  #9a6700;
+    --danger:   #cf222e;
+    --info:     #0550ae;
+    --tag-bg:     #eaeef2;
+    --tag-text:   #57606a;
+    --tag-border: #d0d7de;
+    --sidebar-bg:    #f6f8fa;
+    --sidebar-width: 240px;
+    --scrollbar-bg:    #f6f8fa;
+    --scrollbar-thumb: #d0d7de;
+    --theme-btn-bg:     #eaeef2;
+    --theme-btn-border: #d0d7de;
+    --theme-btn-text:   #57606a;
+    --theme-btn-hover:  #d0d7de;
+    --syn-keyword:   #cf222e;
+    --syn-string:    #0a3069;
+    --syn-comment:   #6e7781;
+    --syn-number:    #0550ae;
+    --syn-operator:  #cf222e;
+    --syn-builtin:   #953800;
+    --syn-decorator: #8250df;
+    --syn-name:      #24292f;
+    --syn-error:     #cf222e;
+    --syn-lineno-bg:     #f6f8fa;
+    --syn-lineno-text:   #8c959f;
+    --syn-lineno-border: #d0d7de;
+    --syn-code-bg:    #ffffff;
+    --syn-code-text:  #24292f;
+    --syn-line-hover: #f6f8fa;
+  }
+}

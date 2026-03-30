@@ -1,0 +1,28 @@
+- institution: "University of Technology"
+  degree: "Bachelor of Science in Computer Science"
+  field: "Software Engineering"
+  start: "2020"
+  end: "2024"
+  gpa: "3.8 / 4.0"
+  description: "Focused on algorithms, data structures, software architecture, and distributed systems."
+  highlights:
+    - "Dean's List for 3 consecutive years"
+    - "Thesis: Efficient Search Algorithms for Portfolio Systems"
+    - "Active member of the CS Study Group"
+  tags: ["computer science", "software engineering", "algorithms"]
+  keywords: ["university", "bachelor", "degree", "cs", "programming"]
+  priority: 1
+
+- institution: "City College"
+  degree: "Associate Degree"
+  field: "Information Technology"
+  start: "2018"
+  end: "2020"
+  gpa: "3.9 / 4.0"
+  description: "Covered networking fundamentals, database management, and introductory programming."
+  highlights:
+    - "Graduated with Honors"
+    - "Completed advanced Python and database courses"
+  tags: ["information technology", "networking", "databases"]
+  keywords: ["college", "associate", "IT", "networking"]
+  priority: 2

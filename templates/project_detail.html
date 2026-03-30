@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ project.display_name or project.name }}{% endblock %}
+{% block body_class %}previewer-page{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/previewer.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Project info bar -->
+<div class="project-info-bar">
+  <div class="project-info-left">
+    <h1>{{ project.display_name or project.name }}</h1>
+    <p>{{ project.description }}</p>
+  </div>
+  <div class="project-info-links">
+    <a href="{{ url_for('main.projects') }}" class="btn">← Back</a>
+    {% if project.demo %}
+      <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
+        🚀 Live Demo
+      </a>
+    {% endif %}
+    {% if project.github %}
+      <a href="{{ project.github }}" class="btn" target="_blank" rel="noopener">
+        ⭐ GitHub
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Tags -->
+{% if project.tags %}
+<div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1rem;">
+  {% for tag in project.tags %}
+    <span class="tag">{{ tag }}</span>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- Previewer root (JS reads data-* attributes) -->
+<div
+  id="previewer-root"
+  data-project="{{ project.name }}"
+  data-main-file="{{ project.main_file }}"
+  data-files='{{ project.files | tojson }}'
+>
+  <div class="previewer-layout">
+
+    <!-- File tree -->
+    <div class="file-tree" role="navigation" aria-label="File browser">
+      <div class="file-tree-header">Files</div>
+      <ul class="file-list" id="file-list" role="listbox" aria-label="Project files">
+        <!-- Populated by previewer.js -->
+      </ul>
+    </div>
+
+    <!-- Code pane -->
+    <div class="code-pane" role="region" aria-label="Code viewer">
+      <div class="code-pane-header">
+        <span class="code-filename" id="code-filename">Loading…</span>
+        <span class="code-lang-badge" id="code-lang-badge"></span>
+      </div>
+      <div class="code-block" id="code-pane-content">
+        <div class="code-loading">Select a file to view its contents.</div>
+      </div>
+    </div>
+
+  </div><!-- .previewer-layout -->
+</div><!-- #previewer-root -->
+
+{% if project.goal %}
+<div class="card" style="margin-top:1rem;">
+  <div class="card-header">
+    <div class="card-title">Project Goal</div>
+  </div>
+  <div class="card-body">{{ project.goal }}</div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/previewer.js') }}"></script>
+{% endblock %}

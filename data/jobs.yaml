@@ -1,0 +1,51 @@
+- company: "Tech Startup GmbH"
+  role: "Backend Developer"
+  start: "Jan 2024"
+  end: "Present"
+  location: "Amsterdam, NL (Hybrid)"
+  description: "Develop and maintain Flask-based microservices handling high-throughput data pipelines. Responsible for API design, database optimization, and CI/CD integration."
+  responsibilities:
+    - "Designed RESTful APIs serving 50k+ daily requests"
+    - "Optimized SQL queries reducing response time by 40%"
+    - "Implemented automated testing pipelines with pytest"
+    - "Collaborated in agile sprints with cross-functional teams"
+  tech: ["Python", "Flask", "PostgreSQL", "Docker", "Redis"]
+  link:
+    url: "https://techstartup.example.com"
+    label: "Company Website"
+  tags: ["backend", "flask", "microservices", "api", "python"]
+  keywords: ["startup", "developer", "backend", "rest", "postgresql"]
+  priority: 1
+
+- company: "Freelance"
+  role: "Full-Stack Developer"
+  start: "Jun 2022"
+  end: "Dec 2023"
+  location: "Remote"
+  description: "Built custom web applications and automation scripts for small businesses. Delivered 10+ projects on time within budget."
+  responsibilities:
+    - "Developed portfolio websites and e-commerce backends"
+    - "Automated data collection and reporting with Python scripts"
+    - "Provided technical consulting for non-technical clients"
+  tech: ["Python", "Flask", "JavaScript", "SQLite", "HTML/CSS"]
+  link:
+    url: "https://upwork.example.com/jasper"
+    label: "Profile"
+  tags: ["freelance", "fullstack", "automation", "web development"]
+  keywords: ["freelance", "client", "automation", "web", "python"]
+  priority: 2
+
+- company: "DataViz Corp"
+  role: "Junior Python Developer (Intern)"
+  start: "Sep 2021"
+  end: "May 2022"
+  location: "Rotterdam, NL"
+  description: "Assisted in building data visualization dashboards and backend ETL processes."
+  responsibilities:
+    - "Developed data parsers for CSV and JSON ingestion"
+    - "Wrote unit tests for existing data pipeline modules"
+    - "Participated in code reviews and documentation"
+  tech: ["Python", "Pandas", "Matplotlib", "Flask"]
+  tags: ["internship", "data", "python", "visualization", "etl"]
+  keywords: ["intern", "data science", "visualization", "pandas", "matplotlib"]
+  priority: 3
