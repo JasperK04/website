@@ -3,11 +3,12 @@
   field: "Information Science"
   start: "2023"
   end: "current"
+  courses_id: "rug-bsc-information-science"
   description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in January 2027."
-  average_grade: "7.5"
-  thesis: 
-    title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation: An Evaluation under Execution Constraints"
-    grade: ""
+  project:
+    - name: "Thesis"
+      title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation: An Evaluation under Execution Constraints"
+      grade: ""
   minor:
     name: "Educational Minor"
     description: "Completed an educational minor focused on learning how to teach in the domain of computer science, gaining experience in curriculum design and completed an internship at a high school."
@@ -27,10 +28,10 @@
   start: "2027"
   end: "future"
   description: "Planning to pursue a Master's degree in Business Information Technology at the University of Twente, with a focus on data science, and the application of machine learning in business contexts. Expected to start in February 2027."
-  # average_grade: "7.5"
-  # thesis: 
-  #   title: ""
-  #   grade: ""
+  # project: 
+  #   - name: ""
+  #     title: ""
+  #     grade: ""
   highlights: []
   tags: ["data science", "software engineering", "algorithms", "LLM's", "business"]
   keywords: ["university", "master", "degree", "cs", "programming", "machine learning", "LLM's"]
@@ -42,11 +43,13 @@
   degree: "VWO"
   start: "2018"
   end: "2022"
+  courses_id: "vwo-werkman"
   description: "Completed VWO education with NT&NG profile."
-  average_grade: "6.1"
-  # thesis: 
-  #   title: "PWS: "
-  #   grade: "6.0"
+  project: 
+    - name: "Profielwerkstuk"
+      title: "Energieopslag: Het opslaan van energie"
+      summary: "A research project on energy storage, exploring different methods of storing energy at different scales, from small scale batteries to large scale solutions like pumped hydro storage. The project included mostly literature review, evaluation was based on: safety, energy density, and environmental impact."
+      grade: "6.0"
   highlights:
     - "Vise-Chair of the student council"
   tags: ["high school", "secondary education", "VWO", "NT&NG"]

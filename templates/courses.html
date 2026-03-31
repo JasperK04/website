@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title or "Courses & Grades" }}{% endblock %}
+
+{% macro render_courses(courses) %}
+  {% if courses %}
+    <ul class="course-list">
+      {% for course in courses %}
+      <li class="course-row">
+        <div class="course-title-line">
+          <div class="course-title-left">
+            <span class="course-name">{{ course.name }}</span>
+            {% if course.ects %}
+              <span class="course-ects">{{ course.ects }} ECTS</span>
+            {% endif %}
+          </div>
+          {% if course.grade %}
+            <span class="course-grade">{{ course.grade }}</span>
+          {% endif %}
+        </div>
+        {% if course.topics %}
+          <div class="course-topics">
+            {% for topic in course.topics %}
+              <span class="tag">{{ topic }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if course.description %}
+          <div class="course-description">{{ course.description }}</div>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">{{ page_title or "Courses & Grades" }}</h1>
+  <p class="page-subtitle">Coursework, grades, and key topics</p>
+</div>
+
+{% if programs %}
+  {% for program in programs %}
+  <div class="card course-card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">{{ program.institution }}</div>
+        {% if program.program %}
+          <div class="card-subtitle">{{ program.program }}</div>
+        {% endif %}
+        {% if program.degree %}
+          <div class="card-subtitle">{{ program.degree }}</div>
+        {% endif %}
+      </div>
+      {% if program.average_grade or program.ects_total %}
+      <div class="edu-meta">
+        {% if program.average_grade %}
+          <div class="badge badge-info edu-badge">Average {{ program.average_grade }}</div>
+        {% endif %}
+        {% if program.ects_total %}
+          <div class="badge badge-info edu-badge">ECTS {{ program.ects_total }}</div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if program.description %}
+    <div class="card-body">{{ program.description }}</div>
+    {% endif %}
+
+    {% if program.layout == "grouped" and program.years %}
+      <div class="course-groups">
+        {% for year in program.years %}
+        <div class="course-group">
+          {% if year.year %}
+            <div class="course-group-title">Year {{ year.year }}</div>
+          {% endif %}
+
+          {% if year.semesters %}
+            {% for semester in year.semesters %}
+            <div class="course-subgroup">
+              {% if semester.semester %}
+                <div class="course-subgroup-title">Semester {{ semester.semester }}</div>
+              {% endif %}
+
+              {% if semester.courses %}
+                {{ render_courses(semester.courses) }}
+              {% endif %}
+
+              {% if semester.blocks %}
+                {% for block in semester.blocks %}
+                <div class="course-subgroup-block">
+                  {% if block.block %}
+                    <div class="course-subgroup-block-title">Block {{ block.block }}</div>
+                  {% endif %}
+                  {{ render_courses(block.courses) }}
+                </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            {% endfor %}
+          {% endif %}
+
+          {% if year.courses %}
+            {{ render_courses(year.courses) }}
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    {% elif program.courses %}
+      {{ render_courses(program.courses) }}
+    {% endif %}
+
+    {% if program.extra %}
+      <div class="course-extra-title">Extra courses</div>
+      {{ render_courses(program.extra) }}
+    {% endif %}
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="no-results">
+    <div class="no-results-icon">📚</div>
+    <p>No courses added yet.</p>
+  </div>
+{% endif %}
+{% endblock %}
