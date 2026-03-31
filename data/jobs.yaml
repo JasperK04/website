@@ -1,51 +1,191 @@
-- company: "Tech Startup GmbH"
-  role: "Backend Developer"
-  start: "Jan 2024"
-  end: "Present"
-  location: "Amsterdam, NL (Hybrid)"
-  description: "Develop and maintain Flask-based microservices handling high-throughput data pipelines. Responsible for API design, database optimization, and CI/CD integration."
+- company: "Hotel Aduard"
+  role: "Assistant cook"
+  type: "part-time"
+  start: "Jan 2025"
+  end: "current"
+  location: "Aduard"
+  description: "Working as an assistant cook at restaurant Aduard."
+  tech_relevant: false
   responsibilities:
-    - "Designed RESTful APIs serving 50k+ daily requests"
-    - "Optimized SQL queries reducing response time by 40%"
-    - "Implemented automated testing pipelines with pytest"
-    - "Collaborated in agile sprints with cross-functional teams"
-  tech: ["Python", "Flask", "PostgreSQL", "Docker", "Redis"]
-  link:
-    url: "https://techstartup.example.com"
-    label: "Company Website"
-  tags: ["backend", "flask", "microservices", "api", "python"]
-  keywords: ["startup", "developer", "backend", "rest", "postgresql"]
+    - "Assisting with food preparation and cooking"
+    - "Maintaining cleanliness and organization in the kitchen"
+    - "Coming up with new recipes and dishes to add to the menu"
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["assistant cook", "kitchen", "organization"]
+  keywords: ["assistant cook", "kitchen", "organization", "nederlands", "english", "food preparation", "cooking", "cleanliness", "new recipes", "menu"]
   priority: 1
 
-- company: "Freelance"
-  role: "Full-Stack Developer"
-  start: "Jun 2022"
-  end: "Dec 2023"
-  location: "Remote"
-  description: "Built custom web applications and automation scripts for small businesses. Delivered 10+ projects on time within budget."
+- company: "Rijks Universiteit Groningen"
+  department: "Information Science program"
+  role: "Teaching Assistant"
+  type: "part-time"
+  start: "Sep 2024"
+  end: "feb 2026"
+  location: "Groningen"
+  description: "Working as a teaching assistant for the course 'Introduction to Programming' at the University of Groningen. Assisting students with programming assignments and providing support during lectures."
+  tech_relevant: True
   responsibilities:
-    - "Developed portfolio websites and e-commerce backends"
-    - "Automated data collection and reporting with Python scripts"
-    - "Provided technical consulting for non-technical clients"
-  tech: ["Python", "Flask", "JavaScript", "SQLite", "HTML/CSS"]
-  link:
-    url: "https://upwork.example.com/jasper"
-    label: "Profile"
-  tags: ["freelance", "fullstack", "automation", "web development"]
-  keywords: ["freelance", "client", "automation", "web", "python"]
-  priority: 2
+    - "Assisting students with programming assignments and questions"
+    - "Assisting the professors with tasks such as providing feedback on assignments."
+    - "Helping to create and maintain course materials, such as assignment instructions."
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["teaching assistant", "programming", "university"]
+  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "student support", "course materials", "feedback", "assignments"]
+  priority: 1
 
-- company: "DataViz Corp"
-  role: "Junior Python Developer (Intern)"
-  start: "Sep 2021"
-  end: "May 2022"
-  location: "Rotterdam, NL"
-  description: "Assisted in building data visualization dashboards and backend ETL processes."
+- company: "NVAO"
+  department: "Accreditation for information Science at UVA"
+  role: "Panel Member"
+  type: "Contract"
+  start: "Jan 2026"
+  end: "Jan 2026"
+  location: "Amsterdam"
+  description: "I visited the University of Amsterdam as part of the accreditation committee for the Information Science program. I provided feedback on and asked questions about the program from a students perspective and participated in discussions about the program's strengths, weaknesses and future."
+  tech_relevant: True
   responsibilities:
-    - "Developed data parsers for CSV and JSON ingestion"
-    - "Wrote unit tests for existing data pipeline modules"
-    - "Participated in code reviews and documentation"
-  tech: ["Python", "Pandas", "Matplotlib", "Flask"]
-  tags: ["internship", "data", "python", "visualization", "etl"]
-  keywords: ["intern", "data science", "visualization", "pandas", "matplotlib"]
-  priority: 3
+    - "Read and evaluate the provided documents about the program."
+    - "Formulate and ask questions about the program during the site visit."
+    - "Provide feedback on the program during discussions with the committee and UVA's staff."
+    - "UVA passed the accreditation."
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["teaching assistant", "programming", "university"]
+  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "student support", "course materials", "feedback", "assignments"]
+  priority: 1
+
+- company: "Rijks Universiteit Groningen"
+  department: "Faculty of Arts - Communication"
+  role: "Student Ambassador"
+  type: "casual part-time"
+  start: "Sep 2025"
+  end: "Current"
+  location: "Groningen"
+  description: "Working as a student ambassador for the Information Science program at the University of Groningen. representing the student perspective open days and other events for prospective students."
+  tech_relevant: false
+  responsibilities:
+    - "Assisting with open days and other events for prospective students."
+    - "First point of contact for prospective students with questions about the program."
+  # tech: []
+  link:
+    url: "https://www.rug.nl/let/studeren-bij-ons/bachelor/voorlichting/studentambassadeurs/1-testimonials-25-26/jasper-kleine"
+    label: "external profile"
+  tags: ["student ambassador", "university"]
+  keywords: ["student ambassador", "university", "nederlands", "english", "prospective students", "events", "representation", "student perspective"]
+  priority: 5
+
+- company: "Rijks Universiteit Groningen"
+  department: "CIW & IK Program Committee"
+  role: "Committee Member"
+  type: "causal"
+  start: "Sep 2024"
+  end: "Aug 2025"
+  location: "Groningen"
+  description: "as part of this committee, I participate in meetings about current affairs and future plans for the Information Science program at the University of Groningen"
+  tech_relevant: true
+  responsibilities:
+    - "Providing feedback on current affairs and future plans for the Information Science program."
+    - "Representing the student perspective in discussions about the program."
+    - "Approving the TER for the program."
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["program committee", "university", "feedback", "representation", "discussions"]
+  keywords: ["program committee", "university", "feedback", "representation", "discussions", "nederlands", "english", "student perspective", "TER", "Information Science"]
+  priority: 6
+
+- company: "Rijks Universiteit Groningen"
+  department: "University student IT panel"
+  role: "Panel Member"
+  type: "causal"
+  start: "Nov 2024"
+  end: "Oct 2025"
+  location: "Groningen"
+  description: "as part of this panel, I participate in meetings about IT related topics at the University of Groningen and provide feedback on IT services and policies."
+  tech_relevant: True
+  responsibilities:
+    - "Providing feedback on current and future IT services and policies at the University of Groningen"
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["IT", "panel", "university", "feedback"]
+  keywords: ["IT", "panel", "university", "feedback", "nederlands", "english", "IT services", "IT policies", "meetings", "representation"]
+  priority: 9
+
+- company: "Hotel Aduard"
+  role: "Waiter and Host"
+  type: "part-time"
+  start: "Jan 2022"
+  end: "Jan 2025"
+  location: "Aduard"
+  description: "Worked as a waiter and host at restaurant Aduard. Gained experience with hospitality and teamwork."
+  tech_relevant: false
+  responsibilities:
+    - "Provided excellent customer service to guests"
+    - "Assisted in training new staff members"
+    - "Purchasing and Inventory management for the waiting staff"
+  # tech: []
+  # link:
+  #   url: "https://upwork.example.com/jasper"
+  #   label: "Profile"
+  tags: ["waiter", "host", "hospitality", "customer service", "teamwork"]
+  keywords: ["waiter", "host", "hospitality", "customer service", "teamwork", "nederlands", "english", "managing", "inventory", "purchasing", "training"]
+  priority: 10
+
+- company: "Restaurant de Baron"
+  role: "Bartender and Waiter"
+  type: "temporary"
+  start: "Jul 2021"
+  end: "Aug 2021"
+  location: "Wassenaar"
+  description: "Worked as a bartender and waiter as a summer job. Gained more experience in customer service and hospitality."
+  tech_relevant: false
+  responsibilities: []
+  tech: []
+  tags: ["bartender", "waiter", "hospitality", "summer job"]
+  keywords: ["bartender", "waiter", "hospitality", "summer job", "customer service", "nederlands", "english"]
+  priority: 10
+
+
+- company: "Brasserie Scheveningen"
+  role: "Bartender"
+  type: "temporary"
+  start: "Jul 2020"
+  end: "Aug 2020"
+  location: "Scheveningen"
+  description: "Worked as a bartender as a summer job again."
+  tech_relevant: false
+  # responsibilities: []
+  # tech: []
+  # link:
+  #   url: "https://techstartup.example.com"
+  #   label: "Company Website"
+  tags: ["bartender", "hospitality", "summer job"]
+  keywords: ["bartender", "hospitality", "summer", "job", "customer service", "nederlands", "english"]
+  priority: 10
+
+- company: "Brasserie Scheveningen"
+  role: "Bartender"
+  type: "temporary"
+  start: "Jul 2019"
+  end: "Aug 2019"
+  location: "Scheveningen"
+  description: "Worked as a bartender as a summer job."
+  tech_relevant: false
+  # responsibilities: []
+  # tech: []
+  # link:
+  #   url: "https://techstartup.example.com"
+  #   label: "Company Website"
+  tags: ["bartender", "hospitality", "summer job"]
+  keywords: ["bartender", "hospitality", "summer", "job", "customer service", "nederlands", "english"]
+  priority: 10
