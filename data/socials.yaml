@@ -1,12 +1,12 @@
 - platform: "GitHub"
   url: "https://github.com/JasperK04"
-  label: "github"
+  label: "JasperK04"
   icon: "github"
   priority: 1
 
 - platform: "LinkedIn"
   url: "https://www.linkedin.com/in/jasper-kleine-61716a211/"
-  label: "linkedin"
+  label: "Jasper Kleine"
   icon: "linkedin"
   priority: 2
 

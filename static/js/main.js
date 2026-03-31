@@ -127,6 +127,14 @@
       fetchResults();
     });
 
+    searchInput.form
+      .querySelectorAll('input[name="tech"]')
+      .forEach(function (toggle) {
+        toggle.addEventListener("change", function () {
+          fetchResults();
+        });
+      });
+
     // Focus shortcut: press "/" to focus search
     document.addEventListener("keydown", function (e) {
       if (

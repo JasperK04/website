@@ -11,9 +11,11 @@ skills:
   languages:
     - Python
     - JavaScript
+    - PHP
+    - Bash
+    - ProLog
     - HTML/CSS
     - SQL
-    - Bash
 
   academic_focus:
     - Python Programming
