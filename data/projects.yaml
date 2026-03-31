@@ -14,7 +14,7 @@
 - name: "this_project"
   display_name: "This Portfolio Website"
   description: "A personal portfolio website built using Flask, showcasing my projects, skills, and contact information. It serves as a central hub for potential employers and collaborators to learn more about me and my work."
-  github: "https://github.com/jasper/website"
+  github: "https://github.com/JasperK04/website"
   main_file: "README.md"
   code_path: "../../"
   files: []
