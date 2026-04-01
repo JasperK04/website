@@ -71,6 +71,11 @@ def _job_sort_key(item: dict) -> tuple[int, int, int]:
     return (1, -end_score, item.get("priority", 99))
 
 
+def _load_list(filename: str) -> list[dict]:
+    data = load_yaml(filename)
+    return data if isinstance(data, list) else []
+
+
 def _parse_float(value) -> float | None:
     if value is None:
         return None
@@ -151,7 +156,7 @@ def _apply_course_stats(programs: list[dict]) -> None:
 
 
 def _build_course_average_lookup() -> dict[str, float]:
-    programs = load_yaml("courses.yaml")
+    programs = _load_list("courses.yaml")
     _normalize_course_structure(programs)
     _apply_course_stats(programs)
     averages: dict[str, float] = {}
@@ -164,7 +169,7 @@ def _build_course_average_lookup() -> dict[str, float]:
 
 
 def _build_course_search_lookup() -> dict[str, list[str]]:
-    programs = load_yaml("courses.yaml")
+    programs = _load_list("courses.yaml")
     _normalize_course_structure(programs)
     lookup: dict[str, list[str]] = {}
     for program in programs:
@@ -220,7 +225,7 @@ def about():
 @main.route("/education")
 def education():
     query = request.args.get("q", "")
-    items = load_yaml("education.yaml")
+    items = _load_list("education.yaml")
     averages = _build_course_average_lookup()
     course_search = _build_course_search_lookup()
     for item in items:
@@ -243,7 +248,7 @@ def education():
 @main.route("/courses")
 @main.route("/courses/<program_id>")
 def courses(program_id: str | None = None):
-    programs = load_yaml("courses.yaml")
+    programs = _load_list("courses.yaml")
     _normalize_course_structure(programs)
     _apply_course_stats(programs)
     page_title = "Courses & Grades"
@@ -263,7 +268,7 @@ def jobs():
     query = request.args.get("q", "")
     tech = request.args.get("tech", "all")
     tech = "tech" if tech == "tech" else "all"
-    items = load_yaml("jobs.yaml")
+    items = _load_list("jobs.yaml")
     if query:
         items = search_items(items, query)
     else:
@@ -276,7 +281,7 @@ def jobs():
 @main.route("/projects")
 def projects():
     query = request.args.get("q", "")
-    items = load_yaml("projects.yaml")
+    items = _load_list("projects.yaml")
     items = (
         search_items(items, query)
         if query
@@ -333,7 +338,7 @@ def serve_tokens(project: str, filename: str):
 
 
 def _resolve_code_path(project: str, filename: str) -> Path:
-    """Sanitise and resolve a code file path; abort 404 if not found."""
+    """Sanitize and resolve a code file path; abort 404 if not found."""
     base_dir = Path(current_app.config["BASE_DIR"]).resolve()
     project_data = _get_project_by_name(project)
     code_root = _resolve_project_root(project, project_data)
@@ -354,7 +359,7 @@ def _resolve_code_path(project: str, filename: str) -> Path:
 
 
 def _get_project_by_name(project_name: str) -> dict | None:
-    projects_data = load_yaml("projects.yaml")
+    projects_data = _load_list("projects.yaml")
     return next((p for p in projects_data if p.get("name") == project_name), None)
 
 
