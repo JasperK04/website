@@ -19,7 +19,7 @@
   main_file: "README.md"
   code_path: "../../"
   files: []
-  priority: 1
+  priority: 2
   tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript"]
   keywords: ["python", "portfolio", "website", "projects", "skills", "contact", "js"]
 
@@ -32,7 +32,7 @@
   main_file: "README.md"
   code_path: "marketplace/"
   files: []
-  priority: 2
+  priority: 4
   tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
   keywords: ["python", "website", "projects", "REST API", "CRUD", "Database", "Token Authentication", "JSON", "Faker"]
 
@@ -58,6 +58,44 @@
   main_file: "README.md"
   code_path: "MLP_project/"
   files: []
-  priority: 4
-  tags: ["Machine Learning", "Neural Networks", "Torch", "Preprocessing", "Data Analysis", "Model Evaluation"]
-  keywords: ["python", "PyTorch", "data", "models", "evaluation", "classification", "analysis", "Finetuning", "BERT", "Naive Bayes", "SVM", "Logistic Regression", "LSTM", "Ensembles", "Cross-Validation"]
+  priority: 6
+  tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation"]
+  keywords: ["python", "Torch", "data", "models", "evaluation", "classification", "analysis", "Finetuning", "BERT", "Naive Bayes", "SVM", "Logistic Regression", "LSTM", "Ensembles", "Cross-Validation"]
+
+- name: "Thesis"
+  display_name: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
+  Course: "Bachelor Thesis"
+  description: "Future work"
+  github: "https://github.com/JasperK04/thesis"
+  # demo: "https://autodiff-engine.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "BSc_Thesis/"
+  files: []
+  priority: 1
+  tags: ["Research", "LLMs", "Code Generation", "Prompting", "Multi-Agent Systems"]
+  keywords: ["research", "thesis", "LLMs", "AI", "Multi agents", "efficiency", "academic writing", "analysis", "ablation studie", "Fine-tuning", "prompt engineering"]
+
+- name: "KTP"
+  display_name: "Fastener Recommendation System"
+  Course: "Knowledge Technology Practical"
+  description: "The Fastener Recommendation System is a web application designed to assist users in selecting the appropriate fasteners for their projects. It provides recommendations based on user input, such as material type, load requirements, and environmental conditions. The system utilizes an expert knowledge base of fasteners and their properties to generate suggestions. The system has three main models; A Domain Model, A Rule Model and A Problem Solving Model. The system required a user interface for which we used Flask."
+  github: "https://github.com/JasperK04/KTP"
+  demo: "https://fastener-system.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "KTP_project/"
+  files: []
+  priority: 5
+  tags: ["Inference Engine", "Knowledge Representation", "Rule Base", "Expert Interviews"]
+  keywords: ["knowledge technology", "expert system", "RB-system", "Flask", "expert Knowledge", "Domain Model", "Rule Model", "Problem Solving Model", "Enums", "PyTest"]
+
+- name: "recipes"
+  display_name: "Personal Recipe Website"
+  description: "A website where I store my personal recipes. The website allows me to easily add, edit and view my recipes. This is currently a work in progress"
+  github: "https://github.com/JasperK04/recipe_site"
+  demo: "https://recipes.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "recipes/"
+  files: []
+  priority: 10
+  tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
+  keywords: ["python", "flask", "recipes", "website", "web development", "filtering", "search", "accounts"]

@@ -73,15 +73,15 @@
           🔍 View Code
         </a>
 
-        {% if project.demo %}
-          <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
-            🚀 Live Demo
-          </a>
-        {% endif %}
-
         {% if project.github %}
           <a href="{{ project.github }}" class="btn" target="_blank" rel="noopener">
             ⭐ GitHub
+          </a>
+        {% endif %}
+
+        {% if project.demo %}
+          <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
+            🚀 Live Demo
           </a>
         {% endif %}
       </div>
