@@ -13,11 +13,51 @@
 
 - name: "this_project"
   display_name: "This Portfolio Website"
-  description: "A personal portfolio website built using Flask, showcasing my projects, skills, and contact information. It serves as a central hub for potential employers and collaborators to learn more about me and my work."
+  description: "A personal portfolio website built using Flask, showcasing my projects, skills, and contact information. It serves as a central hub for potential employers and collaborators to learn more about me and my work. all information is stored in YAML files, making it easy to update and maintain."
   github: "https://github.com/JasperK04/website"
+  demo: ""
   main_file: "README.md"
   code_path: "../../"
   files: []
   priority: 1
-  tags: ["python", "flask", "yaml", "html", "css", "javascript"]
+  tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript"]
   keywords: ["python", "portfolio", "website", "projects", "skills", "contact", "js"]
+
+- name: "Marketplace"
+  display_name: "Marketplace"
+  Course: "Database Driven Web Technology"
+  description: "A group project about building a web applition using Flask and SQLite. The project had to include Authentication, CRUD operations via a custom API, frontend and backend development."
+  github: "https://github.com/JasperK04/marketplace_project"
+  demo: "https://marketplace.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "marketplace/"
+  files: []
+  priority: 2
+  tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
+  keywords: ["python", "website", "projects", "REST API", "CRUD", "Database", "Token Authentication", "JSON", "Faker"]
+
+- name: "autodiff_engine"
+  display_name: "Automatic Differentiation Engine"
+  Course: "Object Oriented Programming for AI"
+  description: "An automatic differentiation engine in Python for gradient descent, also includes several simple models that use the engine. The implementation involves encapsulation, overloading, backpropagation and much more. The system is build upon Numpy for efficiency and ease of use."
+  github: "https://github.com/JasperK04/OOP_final_project"
+  # demo: "https://autodiff-engine.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "OOP_autodiff/"
+  files: []
+  priority: 3
+  tags: ["Automatic Differentiation", "Gradient Descent", "Numpy", "OOP", "Machine Learning", "Unittest"]
+  keywords: ["python", "autodiff", "machine learning", "neural networks", "backpropagation", "encapsulation", "overloading", "inheritance", "polymorphism"]
+
+- name: "MLP"
+  display_name: "AI detection using ensembles"
+  Course: "Machine Learning Project"
+  description: "A machine learning project focused on detecting AI-generated content using multiple models and ensembling them."
+  github: "https://github.com/JasperK04/MLP_final_project"
+  # demo: "https://autodiff-engine.jasperkleine.nl"
+  main_file: "README.md"
+  code_path: "MLP_project/"
+  files: []
+  priority: 4
+  tags: ["Machine Learning", "Neural Networks", "Torch", "Preprocessing", "Data Analysis", "Model Evaluation"]
+  keywords: ["python", "PyTorch", "data", "models", "evaluation", "classification", "analysis", "Finetuning", "BERT", "Naive Bayes", "SVM", "Logistic Regression", "LSTM", "Ensembles", "Cross-Validation"]
