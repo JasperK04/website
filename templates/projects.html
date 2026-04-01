@@ -41,7 +41,12 @@
     {% for project in items %}
     <div class="card">
       <div class="card-header">
-        <div class="card-title">{{ project.display_name or project.name }}</div>
+        <div class="card-header-main">
+          <div class="card-title">{{ project.display_name or project.name }}</div>
+          {% if project.Course %}
+            <div class="card-subtitle">Course: {{ project.Course }}</div>
+          {% endif %}
+        </div>
         <div class="card-meta">
           {% if "demo" in project %}
             <span class="badge badge-success">Live</span>

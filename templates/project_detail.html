@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/previewer.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
 {% endblock %}
 
 {% block content %}
@@ -13,6 +14,9 @@
 <div class="project-info-bar">
   <div class="project-info-left">
     <h1>{{ project.display_name or project.name }}</h1>
+    {% if project.Course %}
+      <div class="card-meta">Course: {{ project.Course }}</div>
+    {% endif %}
     <p>{{ project.description }}</p>
   </div>
   <div class="project-info-links">
@@ -93,6 +97,7 @@
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@3.0.0/dist/markdown-it-container.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
   <script src="{{ url_for('static', filename='js/markdown_renderer.js') }}"></script>
   <script src="{{ url_for('static', filename='js/previewer.js') }}"></script>
 {% endblock %}

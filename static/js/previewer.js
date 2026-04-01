@@ -272,7 +272,10 @@
    * Tokens: [{type, value, line, col}, ...]
    * Lines are reconstructed from tokens, then rendered row by row.
    */
-  function renderTokens(tokens) {
+  function renderTokensInto(tokens, container, opts) {
+    const config = opts || {};
+    const showLineNumbers = config.lineNumbers !== false;
+    const padBlankLines = config.padBlankLines !== false;
     // Group tokens by line number, preserving order
     const lineMap = {};
     tokens.forEach(function (tok) {
@@ -295,7 +298,7 @@
       .sort((a, b) => a - b);
 
     if (lineNums.length === 0) {
-      codePane.innerHTML = '<div class="code-loading">Empty file</div>';
+      container.innerHTML = '<div class="code-loading">Empty file</div>';
       return;
     }
 
@@ -305,18 +308,18 @@
     // Fill any gaps (blank lines between functions, etc.)
     let bracketStack = [];
     const maxLine = lineNums[lineNums.length - 1];
-    for (let ln = 0; ln <= maxLine + 1; ln++) {
+    const startLine = padBlankLines ? 0 : 1;
+    const endLine = padBlankLines ? maxLine + 1 : maxLine;
+    for (let ln = startLine; ln <= endLine; ln++) {
       const row = document.createElement("div");
       row.className = "code-row";
-
-      const numCell = document.createElement("span");
-      numCell.className = "line-num";
-      numCell.textContent = ln + 1;
 
       const codeCell = document.createElement("span");
       codeCell.className = "line-code";
 
-      const lineToks = ln === 0 || ln === maxLine + 1 ? [] : (lineMap[ln] || []);
+      const lineToks = (padBlankLines && (ln === 0 || ln === maxLine + 1))
+        ? []
+        : (lineMap[ln] || []);
       let cursor = 0;
       lineToks.forEach(function (tok) {
         if (tok.col > cursor) {
@@ -326,13 +329,22 @@
         cursor = tok.col + tok.value.length;
       });
 
-      row.appendChild(numCell);
+      if (showLineNumbers) {
+        const numCell = document.createElement("span");
+        numCell.className = "line-num";
+        numCell.textContent = ln + 1;
+        row.appendChild(numCell);
+      }
       row.appendChild(codeCell);
       table.appendChild(row);
     }
 
-    codePane.innerHTML = "";
-    codePane.appendChild(table);
+    container.innerHTML = "";
+    container.appendChild(table);
+  }
+
+  function renderTokens(tokens) {
+    renderTokensInto(tokens, codePane, { lineNumbers: true, padBlankLines: true });
   }
 
   function appendTokenWithBrackets(container, tok, bracketStack) {
@@ -422,6 +434,49 @@
     div.innerHTML = html;
     codePane.innerHTML = "";
     codePane.appendChild(div);
+    renderMarkdownCodeBlocks(div);
+  }
+
+  function renderMarkdownCodeBlocks(container) {
+    const blocks = Array.from(container.querySelectorAll(".md-codeblock[data-lang][data-code]"));
+    if (blocks.length === 0) return;
+
+    blocks.forEach(function (block) {
+      const lang = block.dataset.lang || "";
+      const encoded = block.dataset.code || "";
+      let source = "";
+      try {
+        source = decodeURIComponent(encoded);
+      } catch (err) {
+        source = "";
+      }
+
+      if (!source) {
+        block.innerHTML = '<div class="code-loading">Empty code block</div>';
+        return;
+      }
+
+      fetch("/code/" + encodeURIComponent(projectName) + "/snippet/tokens", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: source, language: lang }),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          renderTokensInto(data.tokens || [], block, { lineNumbers: false, padBlankLines: false });
+          const badge = document.createElement("span");
+          badge.className = "md-code-lang";
+          badge.textContent = lang;
+          block.appendChild(badge);
+        })
+        .catch(function () {
+          const escaped = escHtml(source);
+          block.innerHTML = "<pre><code>" + escaped + "</code></pre>";
+        });
+    });
   }
 
   // -----------------------------------------------------------------------

@@ -120,6 +120,26 @@
       breaks: false,
     });
 
+    md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+      const token = tokens[idx];
+      const info = (token.info || "").trim();
+      const lang = info.split(/\s+/)[0];
+      const hasLang = Boolean(lang);
+      const code = token.content || "";
+
+      if (!hasLang) {
+        return "<pre><code>" + md.utils.escapeHtml(code) + "</code></pre>";
+      }
+
+      const safeLang = md.utils.escapeHtml(lang);
+      const encoded = encodeURIComponent(code);
+      return (
+        '<div class="md-codeblock" data-lang="' + safeLang + '" data-code="' + encoded + '">' +
+        '<div class="code-loading">Rendering…</div>' +
+        "</div>"
+      );
+    };
+
     if (window.texmath && window.katex) {
       md.use(window.texmath, {
         engine: window.katex,

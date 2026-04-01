@@ -338,6 +338,34 @@ def serve_tokens(project: str, filename: str):
     return jsonify({"tokens": tokens, "source": source})
 
 
+@main.route("/code/<project>/snippet/tokens", methods=["POST"])
+def serve_snippet_tokens(project: str):
+    """Return tokenized source for Markdown code fences."""
+    payload = request.get_json(silent=True) or {}
+    source = payload.get("source", "") or ""
+    language = (payload.get("language", "") or "").strip().lower()
+
+    lang_map = {
+        "py": "python",
+        "python": "python",
+        "python3": "python",
+        "js": "javascript",
+        "javascript": "javascript",
+        "sh": "shell",
+        "bash": "shell",
+        "zsh": "shell",
+        "shell": "shell",
+    }
+    lang_key = lang_map.get(language, "")
+
+    if lang_key:
+        tokens = tokenize_source(source, lang_key, current_app.config["DATA_DIR"])
+    else:
+        tokens = tokenize_plain(source)
+
+    return jsonify({"tokens": tokens})
+
+
 # ---------------------------------------------------------------------------
 # Private helpers
 # ---------------------------------------------------------------------------

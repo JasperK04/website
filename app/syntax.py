@@ -23,6 +23,13 @@ def load_language_config(data_dir: Path) -> dict:
 
 def tokenize_source(source: str, language: str, data_dir: Path) -> "list[dict]":
     config = load_language_config(data_dir)
+    alias_map = {
+        "bash": "shell",
+        "sh": "shell",
+        "zsh": "shell",
+        "python3": "python",
+    }
+    language = alias_map.get(language, language)
     lang = config.get(language)
     if not lang:
         return tokenize_plain(source)
