@@ -4,9 +4,9 @@
 [submodule "static/projects/OOP_autodiff"]
 	path = static/projects/OOP_autodiff
 	url = git@github.com:JasperK04/OOP_final_project.git
-[submodule "static/projects/KT_project"]
-	path = static/projects/KT_project
-	url = git@github.com:JasperK04/KTP.git
 [submodule "static/projects/recipes"]
 	path = static/projects/recipes
 	url = git@github.com:JasperK04/recipe_site.git
+[submodule "static/projects/KTP_project"]
+	path = static/projects/KTP_project
+	url = git@github.com:JasperK04/KTP.git
