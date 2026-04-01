@@ -420,19 +420,10 @@ def _build_project_files(project_name: str, project_data: dict) -> list[str]:
     if main_file and main_file not in explicit_files:
         explicit_files = [main_file, *explicit_files]
 
-    whitelist_exts = {".py", ".js", ".md"}
-    blacklist_dirs = {
-        ".git",
-        ".venv",
-        "__pycache__",
-        "build",
-        "data",
-        "dist",
-        "node_modules",
-        "img",
-        "projects",
-        "css",
-    }
+        render_config = load_yaml("code_rendering.yaml")
+        render_config = render_config if isinstance(render_config, dict) else {}
+    whitelist_exts = set(render_config.get("whitelist_exts", [".py", ".js", ".md"]))
+    blacklist_dirs = set(render_config.get("blacklist_dirs", []))
 
     auto_files: list[str] = []
     for path in code_root.rglob("*"):

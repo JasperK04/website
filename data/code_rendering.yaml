@@ -1,0 +1,19 @@
+whitelist_exts:
+  - .py
+  - .js
+  - .java
+  - .md
+
+blacklist_dirs:
+  - .git
+  - .venv
+  - __pycache__
+  - build
+  - data
+  - dist
+  - node_modules
+  - img
+  - projects
+  - css
+  - migrations
+  - templates
