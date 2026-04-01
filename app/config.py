@@ -1,6 +1,7 @@
 """
 Configuration classes for the portfolio Flask app.
 """
+
 import os
 from pathlib import Path
 
@@ -10,7 +11,7 @@ BASE_DIR = Path(__file__).parent.parent
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key")
     DATA_DIR = BASE_DIR / "data"
-    CODE_DIR = BASE_DIR / "static" / "code"
+    CODE_DIR = BASE_DIR / "static" / "projects"
 
 
 class DevelopmentConfig(Config):

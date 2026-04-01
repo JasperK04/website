@@ -8,7 +8,7 @@ from pathlib import Path
 
 from flask import Blueprint, abort, current_app, jsonify, render_template, request
 
-from .syntax import tokenize_plain, tokenize_python
+from .syntax import tokenize_javascript, tokenize_plain, tokenize_python
 from .utils import load_yaml, search_items
 
 main = Blueprint("main", __name__)
@@ -318,11 +318,12 @@ def serve_tokens(project: str, filename: str):
     """Return tokenized source as JSON for the frontend syntax highlighter."""
     file_path = _resolve_code_path(project, filename)
     source = file_path.read_text(encoding="utf-8")
-    tokens = (
-        tokenize_python(source)
-        if file_path.name.endswith(".py")
-        else tokenize_plain(source)
-    )
+    if file_path.name.endswith(".py"):
+        tokens = tokenize_python(source)
+    elif file_path.name.endswith(".js"):
+        tokens = tokenize_javascript(source)
+    else:
+        tokens = tokenize_plain(source)
     return jsonify({"tokens": tokens, "source": source})
 
 
@@ -389,8 +390,9 @@ def _build_project_files(project_name: str, project_data: dict) -> list[str]:
         "data",
         "dist",
         "node_modules",
-        "static",
-        "venv",
+        "img",
+        "projects",
+        "css",
     }
 
     auto_files: list[str] = []

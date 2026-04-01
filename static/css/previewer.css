@@ -48,6 +48,14 @@
   overflow-y: auto;
 }
 
+.file-list[data-depth] {
+  padding: 0.2rem 0 0.2rem 0.6rem;
+}
+
+.file-list.collapsed {
+  display: none;
+}
+
 .file-item {
   padding: 0.4rem 0.875rem;
   font-size: 0.8rem;
@@ -77,6 +85,44 @@
 .file-icon {
   opacity: 0.6;
   font-size: 0.75rem;
+}
+
+.file-folder {
+  padding: 0.1rem 0;
+}
+
+.file-folder-toggle {
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.875rem;
+  text-align: left;
+}
+
+.file-folder-toggle:hover {
+  background: var(--bg-overlay);
+  color: var(--text-primary);
+}
+
+.folder-caret {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.folder-icon {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.folder-name {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ==============================
@@ -215,6 +261,10 @@
 .tok-name      { color: var(--syn-name); }
 .tok-error     { color: var(--syn-error); }
 .tok-other     { color: var(--syn-code-text); }
+
+.tok-bracket-1 { color: var(--syn-keyword); }
+.tok-bracket-2 { color: var(--syn-string); }
+.tok-bracket-3 { color: var(--syn-number); }
 
 /* Markdown rendering */
 .md-content {

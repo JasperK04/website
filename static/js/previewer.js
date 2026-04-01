@@ -65,40 +65,150 @@
   }
 
   // -----------------------------------------------------------------------
-  // Build file list sidebar
+  // Build file list sidebar (tree view)
   // -----------------------------------------------------------------------
   let currentFile = null;
 
-  files.forEach(function (filename) {
-    const li = document.createElement("li");
-    li.className = "file-item";
-    li.dataset.file = filename;
-    li.setAttribute("role", "button");
-    li.setAttribute("tabindex", "0");
+  function createNode(name) {
+    return { name: name, children: new Map(), files: [] };
+  }
 
-    const icon = document.createElement("span");
-    icon.className = "file-icon";
-    icon.textContent = getFileIcon(filename);
+  function insertPath(root, filepath) {
+    const parts = filepath.split("/");
+    let node = root;
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      const isFile = i === parts.length - 1;
+      if (isFile) {
+        node.files.push(filepath);
+        return;
+      }
+      if (!node.children.has(part)) {
+        node.children.set(part, createNode(part));
+      }
+      node = node.children.get(part);
+    }
+  }
 
-    const name = document.createElement("span");
-    name.textContent = filename;
+  function compressTree(node) {
+    const children = Array.from(node.children.values()).map(compressTree);
+    node.children = new Map(children.map(function (child) {
+      return [child.name, child];
+    }));
 
-    li.appendChild(icon);
-    li.appendChild(name);
+    while (node.files.length === 0 && node.children.size === 1) {
+      const onlyChild = node.children.values().next().value;
+      node.name = node.name ? node.name + "/" + onlyChild.name : onlyChild.name;
+      node.files = onlyChild.files;
+      node.children = onlyChild.children;
+    }
+    return node;
+  }
 
-    li.addEventListener("click", function () {
-      loadFile(filename);
+  function buildTree(fileList) {
+    const root = createNode("");
+    fileList.forEach(function (filepath) {
+      insertPath(root, filepath);
+    });
+    return compressTree(root);
+  }
+
+  function renderTree(node, container, depth) {
+    const entries = [];
+    node.children.forEach(function (child) {
+      entries.push({ type: "dir", node: child });
+    });
+    node.files.forEach(function (filepath) {
+      entries.push({ type: "file", filepath: filepath });
     });
 
-    li.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        loadFile(filename);
+    entries.sort(function (a, b) {
+      if (a.type !== b.type) {
+        return a.type === "dir" ? -1 : 1;
+      }
+      const nameA = a.type === "dir" ? a.node.name : a.filepath.split("/").pop();
+      const nameB = b.type === "dir" ? b.node.name : b.filepath.split("/").pop();
+      return nameA.localeCompare(nameB);
+    });
+
+    entries.forEach(function (entry) {
+      if (entry.type === "dir") {
+        const li = document.createElement("li");
+        li.className = "file-folder";
+
+        const header = document.createElement("button");
+        header.type = "button";
+        header.className = "file-folder-toggle";
+        header.setAttribute("aria-expanded", "true");
+
+        const caret = document.createElement("span");
+        caret.className = "folder-caret";
+        caret.textContent = "▾";
+
+        const folderIcon = document.createElement("span");
+        folderIcon.className = "folder-icon";
+        folderIcon.textContent = "📁";
+
+        const name = document.createElement("span");
+        name.className = "folder-name";
+        name.textContent = entry.node.name;
+
+        header.appendChild(caret);
+        header.appendChild(folderIcon);
+        header.appendChild(name);
+
+        const childList = document.createElement("ul");
+        childList.className = "file-list";
+        childList.dataset.depth = depth + 1;
+
+        header.addEventListener("click", function () {
+          const expanded = header.getAttribute("aria-expanded") === "true";
+          header.setAttribute("aria-expanded", expanded ? "false" : "true");
+          childList.classList.toggle("collapsed", expanded);
+          caret.textContent = expanded ? "▸" : "▾";
+        });
+
+        li.appendChild(header);
+        li.appendChild(childList);
+        container.appendChild(li);
+
+        renderTree(entry.node, childList, depth + 1);
+      } else {
+        const filename = entry.filepath;
+        const li = document.createElement("li");
+        li.className = "file-item";
+        li.dataset.file = filename;
+        li.setAttribute("role", "button");
+        li.setAttribute("tabindex", "0");
+
+        const icon = document.createElement("span");
+        icon.className = "file-icon";
+        icon.textContent = getFileIcon(filename);
+
+        const name = document.createElement("span");
+        name.textContent = filename.split("/").pop();
+
+        li.appendChild(icon);
+        li.appendChild(name);
+
+        li.addEventListener("click", function () {
+          loadFile(filename);
+        });
+
+        li.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            loadFile(filename);
+          }
+        });
+
+        container.appendChild(li);
       }
     });
+  }
 
-    fileListEl.appendChild(li);
-  });
+  const tree = buildTree(files);
+  renderTree(tree, fileListEl, 0);
 
   // -----------------------------------------------------------------------
   // Token renderer
@@ -140,6 +250,7 @@
     table.className = "code-table";
 
     // Fill any gaps (blank lines between functions, etc.)
+    let bracketStack = [];
     const maxLine = lineNums[lineNums.length - 1];
     for (let ln = 1; ln <= maxLine; ln++) {
       const row = document.createElement("div");
@@ -158,10 +269,7 @@
         if (tok.col > cursor) {
           codeCell.appendChild(document.createTextNode(" ".repeat(tok.col - cursor)));
         }
-        const span = document.createElement("span");
-        span.className = "tok-" + tok.type;
-        span.textContent = tok.value;
-        codeCell.appendChild(span);
+        appendTokenWithBrackets(codeCell, tok, bracketStack);
         cursor = tok.col + tok.value.length;
       });
 
@@ -172,6 +280,41 @@
 
     codePane.innerHTML = "";
     codePane.appendChild(table);
+  }
+
+  function appendTokenWithBrackets(container, tok, bracketStack) {
+    if (tok.type !== "op") {
+      const span = document.createElement("span");
+      span.className = "tok-" + tok.type;
+      span.textContent = tok.value;
+      container.appendChild(span);
+      return;
+    }
+
+    const chars = tok.value.split("");
+    chars.forEach(function (ch) {
+      if (!"()[]{}".includes(ch)) {
+        const span = document.createElement("span");
+        span.className = "tok-" + tok.type;
+        span.textContent = ch;
+        container.appendChild(span);
+        return;
+      }
+
+      const isOpening = "([{".includes(ch);
+      const depth = isOpening ? bracketStack.length + 1 : bracketStack.length;
+      const level = depth === 0 ? 1 : ((depth - 1) % 3) + 1;
+      const span = document.createElement("span");
+      span.className = "tok-bracket-" + level;
+      span.textContent = ch;
+      container.appendChild(span);
+
+      if (isOpening) {
+        bracketStack.push(ch);
+      } else if (bracketStack.length > 0) {
+        bracketStack.pop();
+      }
+    });
   }
 
   /**
@@ -427,7 +570,7 @@
 
     const ext = getExt(filename);
 
-    if (ext === "py") {
+    if (ext === "py" || ext === "js") {
       // Fetch tokenized version for syntax highlighting
       fetch(buildCodeUrl(filename, "/tokens"))
         .then(function (res) {

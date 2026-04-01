@@ -135,6 +135,75 @@ BUILTIN_NAMES = frozenset(
     ]
 )
 
+JS_KEYWORDS = frozenset(
+    [
+        "await",
+        "break",
+        "case",
+        "catch",
+        "class",
+        "const",
+        "continue",
+        "debugger",
+        "default",
+        "delete",
+        "do",
+        "else",
+        "export",
+        "extends",
+        "false",
+        "finally",
+        "for",
+        "function",
+        "if",
+        "import",
+        "in",
+        "instanceof",
+        "let",
+        "new",
+        "null",
+        "return",
+        "super",
+        "switch",
+        "this",
+        "throw",
+        "true",
+        "try",
+        "typeof",
+        "var",
+        "void",
+        "while",
+        "with",
+        "yield",
+    ]
+)
+
+JS_BUILTINS = frozenset(
+    [
+        "Array",
+        "Boolean",
+        "Date",
+        "JSON",
+        "Math",
+        "Number",
+        "Object",
+        "Promise",
+        "RegExp",
+        "String",
+        "Map",
+        "Set",
+        "WeakMap",
+        "WeakSet",
+        "console",
+        "document",
+        "window",
+        "globalThis",
+        "undefined",
+        "NaN",
+        "Infinity",
+    ]
+)
+
 
 def tokenize_python(source: str) -> "list[dict]":
     """
@@ -193,3 +262,178 @@ def tokenize_plain(source: str) -> "list[dict]":
         {"type": "other", "value": line + "\n", "line": i, "col": 0}
         for i, line in enumerate(source.splitlines(), 1)
     ]
+
+
+def tokenize_javascript(source: str) -> "list[dict]":
+    """
+    Tokenize JavaScript source into lightweight semantic tokens.
+
+    Each dict contains:
+        type  – CSS class name (keyword, string, comment, number, op, builtin, name)
+        value – raw token text
+        line  – 1-based line number
+        col   – 0-based column offset
+    """
+    tokens: list[dict] = []
+    i = 0
+    line = 1
+    col = 0
+    length = len(source)
+
+    operators = {
+        "===",
+        "!==",
+        "==",
+        "!=",
+        ">=",
+        "<=",
+        "=>",
+        "++",
+        "--",
+        "+=",
+        "-=",
+        "*=",
+        "/=",
+        "%=",
+        "&&",
+        "||",
+        "??",
+        "?.",
+        "<<",
+        ">>",
+        "**",
+    }
+
+    def add_token(tok_type: str, value: str, start_line: int, start_col: int) -> None:
+        if "\n" in value:
+            parts = value.split("\n")
+            for idx, part in enumerate(parts):
+                part_line = start_line + idx
+                part_col = start_col if idx == 0 else 0
+                tokens.append(
+                    {
+                        "type": tok_type,
+                        "value": part,
+                        "line": part_line,
+                        "col": part_col,
+                    }
+                )
+        else:
+            tokens.append(
+                {"type": tok_type, "value": value, "line": start_line, "col": start_col}
+            )
+
+    while i < length:
+        ch = source[i]
+
+        if ch == "\n":
+            line += 1
+            col = 0
+            i += 1
+            continue
+
+        if ch.isspace():
+            col += 1
+            i += 1
+            continue
+
+        if ch == "/" and i + 1 < length and source[i + 1] == "/":
+            start_line, start_col = line, col
+            end = source.find("\n", i)
+            if end == -1:
+                end = length
+            value = source[i:end]
+            add_token("comment", value, start_line, start_col)
+            col += len(value)
+            i = end
+            continue
+
+        if ch == "/" and i + 1 < length and source[i + 1] == "*":
+            start_line, start_col = line, col
+            j = i + 2
+            while j < length - 1 and not (source[j] == "*" and source[j + 1] == "/"):
+                if source[j] == "\n":
+                    line += 1
+                    col = 0
+                else:
+                    col += 1
+                j += 1
+            j = min(j + 2, length)
+            value = source[i:j]
+            add_token("comment", value, start_line, start_col)
+            i = j
+            continue
+
+        if ch in {"'", '"', "`"}:
+            quote = ch
+            start_line, start_col = line, col
+            j = i + 1
+            escaped = False
+            while j < length:
+                c = source[j]
+                if c == "\n" and quote != "`":
+                    break
+                if escaped:
+                    escaped = False
+                elif c == "\\":
+                    escaped = True
+                elif c == quote:
+                    j += 1
+                    break
+                j += 1
+            value = source[i:j]
+            add_token("string", value, start_line, start_col)
+            lines = value.split("\n")
+            if len(lines) > 1:
+                line += len(lines) - 1
+                col = len(lines[-1])
+            else:
+                col += len(value)
+            i = j
+            continue
+
+        if ch.isdigit():
+            start_line, start_col = line, col
+            j = i + 1
+            while j < length and (source[j].isdigit() or source[j] in {".", "_"}):
+                j += 1
+            value = source[i:j]
+            add_token("number", value, start_line, start_col)
+            col += len(value)
+            i = j
+            continue
+
+        if ch.isalpha() or ch in {"_", "$"}:
+            start_line, start_col = line, col
+            j = i + 1
+            while j < length and (source[j].isalnum() or source[j] in {"_", "$"}):
+                j += 1
+            value = source[i:j]
+            if value in JS_KEYWORDS:
+                tok_type = "keyword"
+            elif value in JS_BUILTINS:
+                tok_type = "builtin"
+            else:
+                tok_type = "name"
+            add_token(tok_type, value, start_line, start_col)
+            col += len(value)
+            i = j
+            continue
+
+        start_line, start_col = line, col
+        two = source[i : i + 2]
+        three = source[i : i + 3]
+        if three in operators:
+            add_token("op", three, start_line, start_col)
+            col += 3
+            i += 3
+        elif two in operators:
+            add_token("op", two, start_line, start_col)
+            col += 2
+            i += 2
+        else:
+            add_token("op", ch, start_line, start_col)
+            col += 1
+            i += 1
+
+    return tokens
