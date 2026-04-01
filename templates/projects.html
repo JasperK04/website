@@ -43,7 +43,7 @@
       <div class="card-header">
         <div class="card-title">{{ project.display_name or project.name }}</div>
         <div class="card-meta">
-          {% if project.demo %}
+          {% if "demo" in project %}
             <span class="badge badge-success">Live demo</span>
           {% endif %}
         </div>
