@@ -215,7 +215,8 @@
   display: flex;
   flex-direction: column;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.825rem;
+  font-weight: normal;
+  font-size: 0.9rem;
   line-height: 1.65;
   min-width: 100%;
 }

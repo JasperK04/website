@@ -53,12 +53,12 @@
       py: "🐍",
       js: "📜",
       ts: "📘",
+      java: "☕",
       html: "🌐",
       css: "🎨",
       md: "📝",
       json: "📋",
       yaml: "📋",
-      yml: "📋",
       sh: "⚙️",
     };
     return icons[ext] || "📄";
@@ -252,18 +252,18 @@
     // Fill any gaps (blank lines between functions, etc.)
     let bracketStack = [];
     const maxLine = lineNums[lineNums.length - 1];
-    for (let ln = 1; ln <= maxLine; ln++) {
+    for (let ln = 0; ln <= maxLine + 1; ln++) {
       const row = document.createElement("div");
       row.className = "code-row";
 
       const numCell = document.createElement("span");
       numCell.className = "line-num";
-      numCell.textContent = ln;
+      numCell.textContent = ln + 1;
 
       const codeCell = document.createElement("span");
       codeCell.className = "line-code";
 
-      const lineToks = lineMap[ln] || [];
+      const lineToks = ln === 0 || ln === maxLine + 1 ? [] : (lineMap[ln] || []);
       let cursor = 0;
       lineToks.forEach(function (tok) {
         if (tok.col > cursor) {
@@ -324,6 +324,8 @@
     const lines = source.split("\n");
     // Remove trailing empty line from split
     if (lines[lines.length - 1] === "") lines.pop();
+    lines.unshift("");
+    lines.push("");
 
     const table = document.createElement("div");
     table.className = "code-table";

@@ -8,7 +8,7 @@ from pathlib import Path
 
 from flask import Blueprint, abort, current_app, jsonify, render_template, request
 
-from .syntax import tokenize_javascript, tokenize_plain, tokenize_python
+from .syntax import tokenize_plain, tokenize_source
 from .utils import load_yaml, search_items
 
 main = Blueprint("main", __name__)
@@ -319,9 +319,9 @@ def serve_tokens(project: str, filename: str):
     file_path = _resolve_code_path(project, filename)
     source = file_path.read_text(encoding="utf-8")
     if file_path.name.endswith(".py"):
-        tokens = tokenize_python(source)
+        tokens = tokenize_source(source, "python", current_app.config["DATA_DIR"])
     elif file_path.name.endswith(".js"):
-        tokens = tokenize_javascript(source)
+        tokens = tokenize_source(source, "javascript", current_app.config["DATA_DIR"])
     else:
         tokens = tokenize_plain(source)
     return jsonify({"tokens": tokens, "source": source})
