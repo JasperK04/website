@@ -4,6 +4,8 @@
 
 {% block extra_css %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/previewer.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.css">
 {% endblock %}
 
 {% block content %}
@@ -27,7 +29,7 @@
     {% endif %}
   </div>
   {% if "demo" in project %}
-    <span class="badge badge-success">Live demo</span>
+    <span class="badge badge-success">Live</span>
   {% endif %}
 </div>
 
@@ -47,6 +49,7 @@
   data-project="{{ project.name }}"
   data-main-file="{{ project.main_file }}"
   data-files='{{ project.files | tojson }}'
+  data-asset-root="{{ project.asset_root or '' }}"
 >
   <div class="previewer-layout">
 
@@ -86,5 +89,10 @@
 {% endblock %}
 
 {% block extra_js %}
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@3.0.0/dist/markdown-it-container.min.js"></script>
+  <script src="{{ url_for('static', filename='js/markdown_renderer.js') }}"></script>
   <script src="{{ url_for('static', filename='js/previewer.js') }}"></script>
 {% endblock %}

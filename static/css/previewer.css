@@ -334,6 +334,60 @@
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
 
+.md-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  margin: 0.75rem 0;
+}
+
+.md-content .admonition {
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  padding: 0.75rem 0.9rem;
+  margin: 0.75rem 0;
+}
+
+.md-content .admonition-title {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+}
+
+.md-content .admonition.note {
+  border-left-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.24);
+}
+
+.md-content .admonition.tip {
+  border-left-color: #22c55e;
+  background: rgba(34, 197, 94, 0.24);
+}
+
+.md-content .admonition.important {
+  border-left-color: #a855f7;
+  background: rgba(168, 85, 247, 0.26);
+}
+
+.md-content .admonition.warning {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.28);
+}
+
+.md-content .admonition.caution {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.28);
+}
+
+.md-content .admonition-title {
+  color: inherit;
+}
+
 /* ==============================
    Project header info
    ============================== */

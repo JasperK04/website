@@ -297,6 +297,12 @@ def project_detail(project_name: str):
     if not project:
         abort(404)
     project_data = dict(project)
+    code_root = _resolve_project_root(project_name, project_data)
+    code_dir: Path = current_app.config["CODE_DIR"]
+    try:
+        project_data["asset_root"] = code_root.relative_to(code_dir).as_posix()
+    except ValueError:
+        project_data["asset_root"] = None
     project_data["files"] = _build_project_files(project_name, project_data)
     return render_template("project_detail.html", project=project_data)
 
@@ -404,7 +410,8 @@ def _build_project_files(project_name: str, project_data: dict) -> list[str]:
     for path in code_root.rglob("*"):
         if not path.is_file():
             continue
-        if any(part in blacklist_dirs for part in path.parts):
+        rel_parts = path.relative_to(code_root).parts
+        if any(part in blacklist_dirs for part in rel_parts):
             continue
         if path.suffix.lower() not in whitelist_exts:
             continue

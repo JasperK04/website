@@ -1,3 +1,6 @@
 [submodule "static/projects/marketplace"]
 	path = static/projects/marketplace
 	url = git@github.com:JasperK04/marketplace_project.git
+[submodule "static/projects/OOP_autodiff"]
+	path = static/projects/OOP_autodiff
+	url = git@github.com:JasperK04/OOP_final_project.git

@@ -11,8 +11,54 @@
 
   const projectName = previewerEl.dataset.project;
   const mainFile = previewerEl.dataset.mainFile;
+  const assetRoot = previewerEl.dataset.assetRoot;
   const filesAttr = previewerEl.dataset.files;
   const files = JSON.parse(filesAttr || "[]");
+
+  const storagePrefix = "previewer:" + projectName + ":";
+
+  function getStorage(key) {
+    try {
+      return window.localStorage.getItem(storagePrefix + key);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function setStorage(key, value) {
+    try {
+      window.localStorage.setItem(storagePrefix + key, value);
+    } catch (err) {
+      return;
+    }
+  }
+
+  function clearProjectState() {
+    try {
+      const keys = [];
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const key = window.localStorage.key(i);
+        if (key && key.startsWith(storagePrefix)) {
+          keys.push(key);
+        }
+      }
+      keys.forEach(function (key) {
+        window.localStorage.removeItem(key);
+      });
+    } catch (err) {
+      return;
+    }
+  }
+
+  (function handleNavigationReset() {
+    const navEntries = window.performance && window.performance.getEntriesByType
+      ? window.performance.getEntriesByType("navigation")
+      : [];
+    const navType = navEntries.length > 0 ? navEntries[0].type : "navigate";
+    if (navType !== "reload") {
+      clearProjectState();
+    }
+  })();
 
   // DOM targets
   const fileListEl = document.getElementById("file-list");
@@ -113,7 +159,7 @@
     return compressTree(root);
   }
 
-  function renderTree(node, container, depth) {
+  function renderTree(node, container, depth, parentPath) {
     const entries = [];
     node.children.forEach(function (child) {
       entries.push({ type: "dir", node: child });
@@ -133,17 +179,20 @@
 
     entries.forEach(function (entry) {
       if (entry.type === "dir") {
+        const folderPath = parentPath ? parentPath + "/" + entry.node.name : entry.node.name;
         const li = document.createElement("li");
         li.className = "file-folder";
 
         const header = document.createElement("button");
         header.type = "button";
         header.className = "file-folder-toggle";
-        header.setAttribute("aria-expanded", "true");
+        const saved = getStorage("folder:" + folderPath);
+        const isExpanded = saved === "expanded";
+        header.setAttribute("aria-expanded", isExpanded ? "true" : "false");
 
         const caret = document.createElement("span");
         caret.className = "folder-caret";
-        caret.textContent = "▾";
+        caret.textContent = isExpanded ? "▾" : "▸";
 
         const folderIcon = document.createElement("span");
         folderIcon.className = "folder-icon";
@@ -160,19 +209,23 @@
         const childList = document.createElement("ul");
         childList.className = "file-list";
         childList.dataset.depth = depth + 1;
+        if (!isExpanded) {
+          childList.classList.add("collapsed");
+        }
 
         header.addEventListener("click", function () {
           const expanded = header.getAttribute("aria-expanded") === "true";
           header.setAttribute("aria-expanded", expanded ? "false" : "true");
           childList.classList.toggle("collapsed", expanded);
           caret.textContent = expanded ? "▸" : "▾";
+          setStorage("folder:" + folderPath, expanded ? "collapsed" : "expanded");
         });
 
         li.appendChild(header);
         li.appendChild(childList);
         container.appendChild(li);
 
-        renderTree(entry.node, childList, depth + 1);
+        renderTree(entry.node, childList, depth + 1, folderPath);
       } else {
         const filename = entry.filepath;
         const li = document.createElement("li");
@@ -208,7 +261,7 @@
   }
 
   const tree = buildTree(files);
-  renderTree(tree, fileListEl, 0);
+  renderTree(tree, fileListEl, 0, "");
 
   // -----------------------------------------------------------------------
   // Token renderer
@@ -356,8 +409,14 @@
    * Uses a simple hand-written Markdown→HTML converter
    * (no external dependencies, pure JS).
    */
-  function renderMarkdown(source) {
-    const html = markdownToHtml(source);
+  function renderMarkdown(source, filename) {
+    const html = window.renderMarkdownEnhanced
+      ? window.renderMarkdownEnhanced(source, {
+        projectName: projectName,
+        assetRoot: assetRoot,
+        currentFile: filename,
+      })
+      : markdownToHtml(source);
     const div = document.createElement("div");
     div.className = "md-content";
     div.innerHTML = html;
@@ -568,6 +627,7 @@
   function loadFile(filename) {
     if (filename === currentFile) return;
     setActiveFile(filename);
+    setStorage("lastFile", filename);
     showLoading();
 
     const ext = getExt(filename);
@@ -593,7 +653,7 @@
           return res.text();
         })
         .then(function (text) {
-          renderMarkdown(text);
+          renderMarkdown(text, filename);
         })
         .catch(function (err) {
           showError(err.message);
@@ -617,10 +677,12 @@
   // -----------------------------------------------------------------------
   // Initial load: load main_file on page load
   // -----------------------------------------------------------------------
-  if (mainFile) {
-    loadFile(mainFile);
-  } else if (files.length > 0) {
-    loadFile(files[0]);
+  const storedFile = getStorage("lastFile");
+  const initialFile = storedFile && files.includes(storedFile)
+    ? storedFile
+    : (mainFile || files[0]);
+  if (initialFile) {
+    loadFile(initialFile);
   }
 
   if (copyBtn) {
