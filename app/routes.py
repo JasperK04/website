@@ -196,6 +196,36 @@ def _build_course_search_lookup() -> dict[str, list[str]]:
     return lookup
 
 
+def _build_course_search_items() -> list[dict]:
+    programs = _load_list("courses.yaml")
+    _normalize_course_structure(programs)
+    items: list[dict] = []
+    for program in programs:
+        program_name = program.get("program")
+        institution = program.get("institution")
+        degree = program.get("degree")
+        for course in _iter_courses(program):
+            entry = dict(course)
+            entry["program"] = program_name
+            entry["institution"] = institution
+            entry["degree"] = degree
+            keywords: list[str] = []
+            for value in (program_name, institution, degree):
+                if value:
+                    keywords.append(str(value))
+            description = course.get("description")
+            if description:
+                keywords.append(str(description))
+            topics = course.get("topics")
+            if isinstance(topics, list):
+                keywords.extend(str(topic) for topic in topics)
+            elif topics:
+                keywords.append(str(topics))
+            entry["keywords"] = keywords
+            items.append(entry)
+    return items
+
+
 # ---------------------------------------------------------------------------
 # Context processor — inject profile + socials into every template
 # ---------------------------------------------------------------------------
@@ -290,6 +320,49 @@ def projects():
         else sorted(items, key=lambda x: x.get("priority", 99))
     )
     return render_template("projects.html", items=items, query=query)
+
+
+@main.route("/search")
+def global_search():
+    query = request.args.get("q", "").strip()
+    projects: list[dict] = []
+    education_items: list[dict] = []
+    jobs_items: list[dict] = []
+    courses_items: list[dict] = []
+    has_results = False
+
+    if query:
+        projects = search_items(_load_list("projects.yaml"), query)[:3]
+
+        education_items = _load_list("education.yaml")
+        averages = _build_course_average_lookup()
+        course_search = _build_course_search_lookup()
+        for item in education_items:
+            courses_id = item.get("courses_id")
+            if courses_id and courses_id in averages:
+                item["average_grade"] = f"{averages[courses_id]:.1f}"
+            if courses_id and courses_id in course_search:
+                keywords = item.get("keywords") or []
+                if not isinstance(keywords, list):
+                    keywords = [str(keywords)]
+                item["keywords"] = keywords + course_search[courses_id]
+        education_items = search_items(education_items, query)[:3]
+
+        jobs_items = search_items(_load_list("jobs.yaml"), query)[:3]
+
+        courses_items = search_items(_build_course_search_items(), query)[:3]
+
+        has_results = any([projects, education_items, jobs_items, courses_items])
+
+    return render_template(
+        "search.html",
+        query=query,
+        projects=projects,
+        education=education_items,
+        jobs=jobs_items,
+        courses=courses_items,
+        has_results=has_results,
+    )
 
 
 @main.route("/projects/<project_name>")

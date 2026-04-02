@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">Search</h1>
+  <p class="page-subtitle">Top results across projects, education, jobs, and courses</p>
+</div>
+
+<form class="search-bar" method="get" action="{{ url_for('main.global_search') }}" role="search">
+  <div class="search-input-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      type="text"
+      id="search-input"
+      name="q"
+      class="search-input"
+      placeholder="Search everything…"
+      value="{{ query }}"
+      autocomplete="off"
+      aria-label="Search everything"
+    >
+  </div>
+  {% if query %}
+    <a href="{{ url_for('main.global_search') }}" class="btn">Clear</a>
+  {% endif %}
+</form>
+
+{% if query %}
+  {% if has_results %}
+    <div class="search-section">
+      <h2 class="section-title">Projects</h2>
+      {% if projects %}
+        {% for project in projects %}
+          {% include "components/cards/project_card.html" %}
+        {% endfor %}
+      {% else %}
+        <div class="search-empty">No project matches.</div>
+      {% endif %}
+    </div>
+
+    <div class="search-section">
+      <h2 class="section-title">Education</h2>
+      {% if education %}
+        {% for item in education %}
+          {% include "components/cards/education_card.html" %}
+        {% endfor %}
+      {% else %}
+        <div class="search-empty">No education matches.</div>
+      {% endif %}
+    </div>
+
+    <div class="search-section">
+      <h2 class="section-title">Experience</h2>
+      {% if jobs %}
+        {% for item in jobs %}
+          {% include "components/cards/job_card.html" %}
+        {% endfor %}
+      {% else %}
+        <div class="search-empty">No job matches.</div>
+      {% endif %}
+    </div>
+
+    <div class="search-section">
+      <h2 class="section-title">Courses</h2>
+      {% if courses %}
+        {% for course in courses %}
+          {% include "components/cards/course_result.html" %}
+        {% endfor %}
+      {% else %}
+        <div class="search-empty">No course matches.</div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="no-results">
+      <div class="no-results-icon">🔍</div>
+      <p>No results found for "{{ query }}".</p>
+    </div>
+  {% endif %}
+{% else %}
+  <div class="no-results">
+    <div class="no-results-icon">🔍</div>
+    <p>Type a query to search across the site.</p>
+  </div>
+{% endif %}
+{% endblock %}

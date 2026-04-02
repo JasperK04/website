@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">{{ item.role }}</div>
+      <div class="job-company">
+        {% if item.link %}
+          <div>{{ item.company }}</div>
+        {% else %}
+          {{ item.company }}
+        {% endif %}
+      </div>
+      {% if item.department or item.type %}
+        <div class="card-meta job-context">
+          {% if item.department %}{{ item.department }}{% endif %}
+          {% if item.department and item.type %} / {% endif %}
+          {% if item.type %}{{ item.type }}{% endif %}
+        </div>
+      {% endif %}
+      {% if item.location %}
+        <div class="card-meta job-location">📍 {{ item.location }}</div>
+      {% endif %}
+    </div>
+    <div class="job-meta">
+      <div class="card-meta">
+        {% if item.start and item.end %}
+          {{ item.start }} - {{ item.end }}
+        {% else %}
+          {{ item.start or item.end }}
+        {% endif %}
+      </div>
+      {% if item.link and item.link.label %}
+        <a class="job-link" href="{{ item.link.url }}" target="_blank" rel="noopener">
+          🔗 {{ item.link.label }}
+        </a>
+      {% endif %}
+      {% if item.end and item.end|lower in ["present", "current"] %}
+        <span class="badge badge-success job-current-badge">Current</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if item.description %}
+  <div class="card-body">{{ item.description }}</div>
+  {% endif %}
+
+  {% if item.responsibilities %}
+  <ul class="responsibilities">
+    {% for r in item.responsibilities %}
+      <li>{{ r }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if item.tech %}
+  <div class="tech-stack">
+    {% for t in item.tech %}
+      <span class="tag tag-accent">{{ t }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if item.tags %}
+  <div class="card-footer">
+    {% for tag in item.tags %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

@@ -36,7 +36,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["teaching assistant", "programming", "university"]
-  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "student support", "course materials", "feedback", "assignments"]
+  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "python", "student support", "course materials", "feedback", "assignments"]
   priority: 1
 
 - company: "NVAO"

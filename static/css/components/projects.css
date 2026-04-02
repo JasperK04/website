@@ -17,3 +17,17 @@
   flex-direction: column;
   gap: 0;
 }
+
+@media (max-width: 480px) {
+  .project-grid .card-footer .btn {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .project-grid .card-footer .btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

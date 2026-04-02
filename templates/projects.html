@@ -22,7 +22,6 @@
       aria-label="Search projects"
     >
   </div>
-  <button type="submit" class="btn btn-primary">Search</button>
   {% if query %}
     <a href="{{ url_for('main.projects') }}" class="btn">Clear</a>
   {% endif %}
@@ -53,54 +52,7 @@
   {% if items %}
   <div class="project-grid">
     {% for project in items %}
-    <div class="card">
-      <div class="card-header">
-        <div class="card-header-main">
-          <div class="card-title">{{ project.display_name or project.name }}</div>
-          {% if project.Course %}
-            <div class="card-subtitle">Course: {{ project.Course }}</div>
-          {% endif %}
-        </div>
-        <div class="card-meta">
-          {% if "demo" in project %}
-            <span class="badge badge-success">Live</span>
-          {% endif %}
-        </div>
-      </div>
-
-      {% if project.description %}
-      <div class="card-body">{{ project.description }}</div>
-      {% endif %}
-
-
-      {% if project.tags %}
-      <div class="project-tag-list">
-        {% for tag in project.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      <div class="card-footer">
-        <!-- Always show code previewer -->
-        <a href="{{ url_for('main.project_detail', project_name=project.name) }}" class="btn"
-           aria-label="View code for {{ project.display_name or project.name }}">
-          🔍 View Code
-        </a>
-
-        {% if project.github %}
-          <a href="{{ project.github }}" class="btn" target="_blank" rel="noopener">
-            ⭐ GitHub
-          </a>
-        {% endif %}
-
-        {% if project.demo %}
-          <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
-            🚀 Live Demo
-          </a>
-        {% endif %}
-      </div>
-    </div>
+      {% include "components/cards/project_card.html" %}
     {% endfor %}
   </div>
 

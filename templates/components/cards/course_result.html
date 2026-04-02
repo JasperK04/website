@@ -1,0 +1,32 @@
+<div class="card course-result">
+  <div class="course-result-header">
+    <div>
+      <div class="course-result-title">{{ course.name }}</div>
+      <div class="course-result-meta">
+        {% if course.institution %}{{ course.institution }}{% endif %}
+        {% if course.program %} · {{ course.program }}{% endif %}
+        {% if course.degree %} · {{ course.degree }}{% endif %}
+      </div>
+    </div>
+    <div class="course-result-badges">
+      {% if course.grade %}
+        <span class="badge badge-info">{{ course.grade }}</span>
+      {% endif %}
+      {% if course.ects %}
+        <span class="badge badge-info">{{ course.ects }} ECTS</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if course.topics %}
+  <div class="course-result-topics">
+    {% for topic in course.topics %}
+      <span class="tag">{{ topic }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if course.description %}
+  <div class="course-result-description">{{ course.description }}</div>
+  {% endif %}
+</div>

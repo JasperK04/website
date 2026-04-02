@@ -22,7 +22,6 @@
       aria-label="Search education"
     >
   </div>
-  <button type="submit" class="btn btn-primary">Search</button>
   {% if query %}
     <a href="{{ url_for('main.education') }}" class="btn">Clear</a>
   {% endif %}
@@ -52,85 +51,7 @@
 
   {% if items %}
     {% for item in items %}
-    <div class="card edu-card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">{{ item.institution }}</div>
-          <div class="edu-degree">{{ item.degree }}</div>
-          <!-- {% if item.field %}
-            <div class="card-subtitle">{{ item.field }}</div>
-          {% endif %} -->
-        </div>
-        <div class="edu-meta">
-          <div class="card-meta">
-            {% if item.start and item.end %}
-              {{ item.start }} - {{ item.end }}
-            {% else %}
-              {{ item.start or item.end }}
-            {% endif %}
-          </div>
-          {% if item.gpa %}
-            <div class="badge badge-info edu-badge">GPA {{ item.gpa }}</div>
-          {% endif %}
-          {% if item.average_grade %}
-            <div class="badge badge-info edu-badge">Average {{ item.average_grade }}</div>
-          {% endif %}
-        </div>
-      </div>
-
-      {% if item.description %}
-      <div class="card-body">{{ item.description }}</div>
-      {% endif %}
-
-
-      {% if item.project %}
-        {% for project in item.project %}
-        <div class="card-body edu-section">
-          <strong class="edu-section-title">{{ project.name }}:</strong> {{ project.title }}
-          {% if project.grade %}
-            <span class="edu-grade">(Grade {{ project.grade }})</span>
-          {% endif %}
-          {% if project.summary %}
-            <div class="edu-minor-description">{{ project.summary }}</div>
-          {% endif %}
-        </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if item.minor %}
-      <div class="card-body edu-section">
-        <strong class="edu-section-title">Minor:</strong> {{ item.minor.name }}
-        {% if item.minor.description %}
-          <div class="edu-minor-description">{{ item.minor.description }}</div>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {% if item.highlights %}
-      <div class="card-body edu-highlights-title">
-        Highlights
-      </div>
-      <ul class="highlights edu-highlights">
-        {% for h in item.highlights %}
-          <li>{{ h }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-      {% if item.tags %}
-      <div class="card-footer">
-        {% for tag in item.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {% if item.courses_id %}
-      <div class="edu-courses-link">
-        <a class="btn" href="{{ url_for('main.courses', program_id=item.courses_id) }}">Courses & Grades</a>
-      </div>
-      {% endif %}
-    </div>
+      {% include "components/cards/education_card.html" %}
     {% endfor %}
 
   {% else %}

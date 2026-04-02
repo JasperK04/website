@@ -28,3 +28,17 @@
   flex-wrap: wrap;
   gap: 0.35rem;
 }
+
+.skill-items .tag {
+  font-size: 0.68rem;
+  white-space: nowrap;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.skill-items .tag::-webkit-scrollbar {
+  display: none;
+}

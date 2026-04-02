@@ -101,3 +101,56 @@
   text-transform: uppercase;
   color: var(--text-muted);
 }
+
+.course-result {
+  padding: 1rem 1.2rem;
+}
+
+.course-result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.course-result-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.course-result-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.course-result-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.course-result-topics {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.course-result-description {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.search-section {
+  margin-top: 1.5rem;
+}
+
+.search-empty {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}

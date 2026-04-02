@@ -91,3 +91,25 @@
 
   .page-title { font-size: 1.35rem; }
 }
+
+@media (max-width: 360px) {
+  .main-content {
+    padding: 3.25rem 0.85rem 1.25rem;
+  }
+
+  .search-bar {
+    gap: 0.5rem;
+  }
+
+  .card {
+    padding: 0.9rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .main-content {
+    padding: 3rem 0.7rem 1.1rem;
+  }
+
+  .page-title { font-size: 1.2rem; }
+}

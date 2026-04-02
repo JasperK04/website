@@ -30,6 +30,22 @@
     <a href="{{ url_for('main.projects') }}" class="nav-link">
       <span class="nav-icon">🔧</span> Projects
     </a>
+
+    <div class="nav-section-label">Search</div>
+    <form class="sidebar-search" method="get" action="{{ url_for('main.global_search') }}" role="search">
+      <div class="sidebar-search-input">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          name="q"
+          class="search-input"
+          placeholder="Search..."
+          value="{{ request.args.get('q', '') }}"
+          autocomplete="off"
+          aria-label="Search all content"
+        >
+      </div>
+    </form>
   </nav>
 
   <footer class="sidebar-footer">

@@ -67,3 +67,28 @@
 .edu-courses-link {
   margin-top: 0.75rem;
 }
+
+@media (max-width: 480px) {
+  .edu-card .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .edu-meta {
+    text-align: left;
+    width: 100%;
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    align-items: center;
+  }
+
+  .edu-meta .card-meta {
+    margin-right: 0;
+  }
+
+  .edu-badge {
+    margin-top: 0;
+  }
+}
