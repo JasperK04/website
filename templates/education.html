@@ -34,6 +34,20 @@
       Results for <strong class="search-results-query">"{{ query }}"</strong>
       — {{ items|length }} found
     </p>
+    {% set ns = namespace(matches=[]) %}
+    {% for item in items %}
+      {% if item._fuzzy_matches %}
+        {% set ns.matches = ns.matches + item._fuzzy_matches %}
+      {% endif %}
+    {% endfor %}
+    {% if ns.matches %}
+      <div class="search-matches">
+        <span class="search-matches-label">Fuzzy matches:</span>
+        {% for word in ns.matches|unique %}
+          <span class="tag">{{ word }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
   {% endif %}
 
   {% if items %}
@@ -48,7 +62,13 @@
           {% endif %} -->
         </div>
         <div class="edu-meta">
-          <div class="card-meta">{{ item.start }} – {{ item.end }}</div>
+          <div class="card-meta">
+            {% if item.start and item.end %}
+              {{ item.start }} - {{ item.end }}
+            {% else %}
+              {{ item.start or item.end }}
+            {% endif %}
+          </div>
           {% if item.gpa %}
             <div class="badge badge-info edu-badge">GPA {{ item.gpa }}</div>
           {% endif %}
@@ -61,6 +81,7 @@
       {% if item.description %}
       <div class="card-body">{{ item.description }}</div>
       {% endif %}
+
 
       {% if item.project %}
         {% for project in item.project %}

@@ -34,6 +34,20 @@
       Results for <strong class="search-results-query">"{{ query }}"</strong>
       — {{ items|length }} found
     </p>
+    {% set ns = namespace(matches=[]) %}
+    {% for project in items %}
+      {% if project._fuzzy_matches %}
+        {% set ns.matches = ns.matches + project._fuzzy_matches %}
+      {% endif %}
+    {% endfor %}
+    {% if ns.matches %}
+      <div class="search-matches">
+        <span class="search-matches-label">Fuzzy matches:</span>
+        {% for word in ns.matches|unique %}
+          <span class="tag">{{ word }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
   {% endif %}
 
   {% if items %}
@@ -57,6 +71,7 @@
       {% if project.description %}
       <div class="card-body">{{ project.description }}</div>
       {% endif %}
+
 
       {% if project.tags %}
       <div class="project-tag-list">
