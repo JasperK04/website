@@ -4,6 +4,7 @@ Registered as the 'main' Blueprint.
 """
 
 import os
+import random
 from pathlib import Path
 
 from flask import Blueprint, abort, current_app, jsonify, render_template, request
@@ -246,7 +247,15 @@ def inject_globals():
 
 @main.route("/")
 def index():
-    return render_template("index.html")
+    profile = load_yaml("profile.yaml")
+    tagline = None
+    if isinstance(profile, dict):
+        value = profile.get("tagline")
+        if isinstance(value, list) and value:
+            tagline = random.choice(value)
+        elif isinstance(value, str):
+            tagline = value
+    return render_template("index.html", tagline=tagline)
 
 
 @main.route("/about")

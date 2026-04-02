@@ -31,22 +31,26 @@
       grade: "8.5"
       ects: "5"
       topics: ["Python", "Inheritance", "Encapsulation", "Polymorphism", "Abstraction", "Duck typing"]
-      description: ""
+      description: "Introduces object-oriented programming in Python, covering encapsulation, inheritance, polymorphism, and testing practices for building robust applications."
+      keywords: ["oop", "python", "classes", "encapsulation", "inheritance", "polymorphism", "abstraction", "unit testing", "design patterns", "software design"]
     - name: "Computer Architecture"
       grade: "8.5"
       ects: "5"
       topics: ["Assembly language", "architectures", "Binary Operations", "Input/Output systems"]
-      description: ""
+      description: "Covers the LC-3 ISA, assembly programming, and core architecture topics like datapaths, memory, I/O, and digital logic."
+      keywords: ["computer architecture", "lc-3", "assembly", "isa", "datapath", "memory", "io", "binary", "logic gates", "finite state machines"]
     - name: "Knowledge Technology Practical"
       grade: "6.5"
       ects: "5"
       topics: ["Python", "Knowledge Base Systems", "Inference Engines", "Group project", "Knowledge representation"]
-      description: ""
+      description: "Designs and builds a knowledge system based on expert input, focusing on rule-based representation, inference, and system evaluation."
+      keywords: ["knowledge systems", "expert system", "rule-based", "inference", "knowledge acquisition", "knowledge representation", "evaluation", "project"]
     - name: "Algorithms and Data Structures for AI"
       grade: ""
       ects: "5"
       topics: ["Python", "Algorithms", "Data structures", "Complexity analysis"]
-      description: ""
+      description: "Introduces core data structures and algorithms in Python with an emphasis on complexity analysis and correct program design."
+      keywords: ["algorithms", "data structures", "complexity", "python", "graphs", "trees", "queues", "stacks", "analysis", "pseudocode"]
   years:
     - year: 1
       semesters:
@@ -58,34 +62,40 @@
                   grade: "9.5"
                   ects: "5"
                   topics: ["Python", "Programming basics", "Control structures", "Built-in functions"]
-                  description: ""
+                  description: "Introduces core programming concepts in Python on Linux, emphasizing problem solving, algorithms, and modular design."
+                  keywords: ["python", "programming basics", "control structures", "algorithms", "problem solving", "linux", "imperative programming", "modular design"]
                 - name: "Linguistics for Language Technology"
                   grade: "9.1"
                   ects: "5"
                   topics: ["Linguistics", "Syntax", "Semantics", "Pragmatics"]
-                  description: ""
+                  description: "Provides linguistic foundations for NLP, covering morphology, syntax, semantics, pragmatics, and linguistic diversity."
+                  keywords: ["linguistics", "morphology", "syntax", "semantics", "pragmatics", "nlp", "linguistic analysis", "typology"]
                 - name: "Inleiding informatiekunde"
                   grade: "5.7"
                   ects: "5"
                   topics: ["History of information science", "Literature", "research methods", "Jupyter Notebooks"]
-                  description: ""
+                  description: "Introduces Information Science as a multidisciplinary field and develops academic writing skills with LaTeX."
+                  keywords: ["information science", "humanities", "latex", "academic writing", "multidisciplinary", "research", "information systems"]
             - block: "B"
               courses:
                 - name: "Inleiding Wetenschappelijk Onderzoek"
                   grade: "8.1"
                   ects: "5"
                   topics: ["Research methods", "Academic writing", "peer review", "reproducibility"]
-                  description: ""
+                  description: "Covers the research process, literature review, research ethics, and writing scientific reports."
+                  keywords: ["research methods", "literature review", "research ethics", "replicability", "validity", "scientific writing", "study design", "citation"]
                 - name: "Introduction to Programming II"
                   grade: "10.0"
                   ects: "5"
                   topics: ["Python", "Turtle Graphics", "Random", "Recursion"]
-                  description: ""
+                  description: "Builds on Programming I with data structures, recursion, and object-oriented concepts in Python on Linux."
+                  keywords: ["python", "data structures", "recursion", "oop", "control structures", "algorithms", "problem solving", "linux"]
                 - name: "Text Manipulation"
                   grade: "7.7"
                   ects: "5"
                   topics: ["Bash", "grep", "sed", "shell scripting"]
-                  description: ""
+                  description: "Introduces Linux/Unix text processing with pipes, regular expressions, and command-line tools for searching and transforming text."
+                  keywords: ["linux", "unix", "bash", "grep", "sed", "regex", "pipes", "text processing", "shell scripting", "frequency lists"]
         - semester: 2
           blocks:
             - block: "A"
@@ -95,34 +105,40 @@
                   grade: "6.6"
                   ects: "5"
                   topics: ["Multimodality", "Communication theories", "Social Media", "Society"]
-                  description: ""
+                  description: "Explores computer-mediated communication, digital culture, and how platforms shape interaction, norms, and information flows."
+                  keywords: ["digital communication", "computer-mediated", "social media", "multimodality", "algorithms", "fake news", "filter bubbles", "communication theory", "analysis"]
                 - name: "Advanced Programming"
                   grade: "7.5"
                   ects: "5"
                   topics: ["Python", "Classes", "Regular Expressions", "Pytest", "Git"]
-                  description: ""
+                  description: "Covers advanced Python programming, modular design, version control, and data structures for text processing."
+                  keywords: ["python", "advanced programming", "modules", "regex", "pytest", "git", "version control", "data structures", "text processing", "teamwork"]
                 - name: "Webtechnology"
                   grade: "8.0"
                   ects: "5"
                   topics: ["HTML", "CSS", "bootstrap"]
-                  description: ""
+                  description: "Introduces web fundamentals with HTML, CSS and usability principles for building interactive pages."
+                  keywords: ["html", "css", "usability", "ui evaluation", "web basics", "frontend", "web development"]
             - block: "B"
               courses:
                 - name: "Annotation for Machine Learning"
                   grade: "6.4"
                   ects: "5"
                   topics: ["Inter-annotator agreement", "Annotation tools", "Annotation guidelines", "Evaluation metrics"]
-                  description: ""
+                  description: "Focuses on NLP data annotation, corpus creation, and evaluation to train and compare machine learning models."
+                  keywords: ["nlp", "annotation", "corpus", "gold standard", "inter-annotator", "feature engineering", "ml", "evaluation", "dataset"]
                 - name: "Project textanalysis"
                   grade: "8.8"
                   ects: "5"
                   topics: ["python", "Text analysis", "Natural language processing", "Spacy"]
-                  description: ""
+                  description: "Hands-on NLP course using spaCy and NLTK to build text-processing pipelines and a team project."
+                  keywords: ["nlp", "text analysis", "spacy", "nltk", "tokenization", "ner", "sentiment", "python", "team project"]
                 - name: "Webprogramming"
                   grade: "9.9"
                   ects: "5"
                   topics: ["PHP", "JavaScript", "HTML", "CSS", "Git"]
-                  description: ""
+                  description: "Builds interactive web applications using PHP, JavaScript, jQuery, AJAX, and templating, with a group project."
+                  keywords: ["php", "javascript", "html", "css", "jquery", "ajax", "json", "templating", "apache", "ftp", "web app", "group project"]
     - year: 2
       semesters:
         - semester: 1
@@ -134,34 +150,40 @@
                   grade: "7.5"
                   ects: "5"
                   topics: ["mySQL", "Database design", "SQL", "Normalization", "noSQL"]
-                  description: ""
+                  description: "Covers relational database design, SQL querying, normalization, and introduces NoSQL systems."
+                  keywords: ["sql", "relational databases", "er model", "normalization", "functional dependencies", "nosql", "database design", "queries"]
                 - name: "Introduction to Neural Networks"
                   grade: "9.3"
                   ects: "5"
                   topics: ["Python", "Neural networks", "Keras", "Tensorflow"]
-                  description: ""
+                  description: "Introduces neural network fundamentals and training with Python-based deep learning frameworks."
+                  keywords: ["neural networks", "deep learning", "python", "keras", "tensorflow", "training", "backpropagation", "ml"]
                 - name: "Search engines"
                   grade: "10.0"
                   ects: "5"
                   topics: ["TF-IDF", "Indexing", "Page Ranking"]
-                  description: ""
+                  description: "Explores information retrieval, indexing, ranking models, and evaluation for large-scale search systems."
+                  keywords: ["information retrieval", "tf-idf", "indexing", "ranking", "pagerank", "evaluation", "search models", "python"]
             - block: "B"
               courses:
                 - name: "Conversational Interfaces"
                   grade: "8.2"
                   ects: "5"
                   topics: ["AIML", "Rasa", "Chatbots", "Dialogue management"]
-                  description: ""
+                  description: "Introduces chatbots and dialogue systems with a focus on NLP, dialogue management, and evaluation."
+                  keywords: ["chatbots", "dialogue systems", "nlp", "conversation", "rasa", "dialogue management", "evaluation"]
                 - name: "Database Driven Web Technology"
                   grade: "9.1"
                   ects: "5"
                   topics: ["Python", "Flask", "SQLite", "Web development"]
-                  description: ""
+                  description: "Develops server-side web apps with relational databases, covering MVC, security, performance, and CRUD workflows."
+                  keywords: ["php", "mysql", "relational db", "web apps", "mvc", "security", "privacy", "crud", "api", "version control"]
                 - name: "Logic Programming"
                   grade: "8.8"
                   ects: "5"
                   topics: ["Prolog", "Logic", "Programming", "recursion"]
-                  description: ""
+                  description: "Introduces Prolog and declarative programming with unification, recursion, and backtracking."
+                  keywords: ["prolog", "logic programming", "unification", "recursion", "backtracking", "declarative", "search"]
         - semester: 2
           blocks:
             - block: "A"
@@ -171,34 +193,40 @@
                   grade: "9.5"
                   ects: "5"
                   topics: ["Python", "FormalGrammars", "Finite stateautomata", "Context free grammars"]
-                  description: ""
+                  description: "Studies grammar formalisms such as CFGs and dependency grammars, with parsing and treebanks."
+                  keywords: ["cfg", "dcg", "dependency grammar", "parsing", "treebanks", "prolog", "syntax", "Chomsky Normal Form", "python"]
                 - name: "Human Computer Interaction"
                   grade: "8.2"
                   ects: "5"
                   topics: ["UX design", "Prototyping", "Usability testing", "Figma"]
-                  description: ""
+                  description: "Covers user-centered design, prototyping, and evaluation methods for interactive systems."
+                  keywords: ["hci", "ux", "usability", "prototyping", "user research", "evaluation", "vr", "ar", "interface design"]
                 - name: "Statistics I"
                   grade: "7.4"
                   ects: "5"
                   topics: ["R", "correlation", "regression", "hypothesis testing", "p-values", "z-scores"]
-                  description: ""
+                  description: "Introduces descriptive and inferential statistics with hypothesis testing and regression using R."
+                  keywords: ["statistics", "descriptive", "inferential", "hypothesis testing", "p-values", "regression", "correlation", "r"]
             - block: "B"
               courses:
                 - name: "Caleidoscope"
                   grade: "7.1"
                   ects: "5"
                   topics: ["Topic models", "Units of creative potential", "Annotation of Misinformation", "LLM behavior", "LM and Cognitive Science"]
-                  description: ""
+                  description: "Examines digitization and analysis of structured and unstructured data across different media."
+                  keywords: ["data digitization", "structured data", "unstructured data", "multimodal", "storage", "analysis", "information science"]
                 - name: "Social Media"
                   grade: "7.5"
                   ects: "5"
                   topics: ["Social Media", "Communication", "Digital Networks", "Society"]
-                  description: ""
+                  description: "Analyzes social media communication using quantitative and qualitative methods, including network effects and language technology."
+                  keywords: ["social media", "network analysis", "communication", "trust", "anonymity", "data analysis", "language technology", "communities"]
                 - name: "Statistics II"
                   grade: "6.7"
                   ects: "5"
                   topics: ["R", "ANOVA", "Logistic Regression", "Mixed effects models", "t-tests"]
-                  description: ""
+                  description: "Advanced statistics focused on multivariable analysis, ANOVA, and regression models for research reporting."
+                  keywords: ["multivariate", "anova", "multiple regression", "logistic regression", "mixed effects", "r", "statistical reporting"]
     - year: 3
       semesters:
         - semester: 1
@@ -224,7 +252,8 @@
               grade: ""
               ects: "10"
               topics: ["Python", "Research", "LLM's", "Prompt engineering", "Code generation", "Evaluation", "Multi-agent systems"]
-              description: ""
+              description: "Independent research project in Information Science, including literature study, experiments, and formal reporting."
+              keywords: ["thesis", "research", "information science", "literature review", "experiments", "reporting", "programming"]
           blocks:
             - block: "A"
               courses:
@@ -232,21 +261,25 @@
                   grade: ""
                   ects: "5"
                   topics: ["Python", "PyTorch", "SVM", "Clustering", "Neural Networks", "BERT"]
-                  description: ""
+                  description: "Group project applying machine learning to real-world tasks with emphasis on evaluation and literature review."
+                  keywords: ["machine learning", "classification", "clustering", "image classification", "text classification", "literature review", "group project", "evaluation"]
                 - name: "Machine Translation"
                   grade: ""
                   ects: "5"
                   topics: ["Python", "NMT", "BLEU", "Transformer architecture", "Attention", "Fine-tuning"]
-                  description: ""
+                  description: "Introduces machine translation paradigms and neural MT, including training, evaluation, and societal implications."
+                  keywords: ["machine translation", "nmt", "transformer", "attention", "rnn", "evaluation", "bleu", "fairseq", "sequence to sequence"]
             - block: "B"
               courses:
                 - name: "Ethical aspects in NLP"
                   grade: ""
                   ects: "5"
                   topics: ["Ethics", "AI", "NLP", "Bias", "Fairness", "Accountability"]
-                  description: ""
+                  description: "Discusses ethical challenges in NLP, including bias, privacy, explainability, and responsible deployment."
+                  keywords: ["ethics", "bias", "fairness", "privacy", "explainability", "nlp", "responsibility", "open science"]
                 - name: "Language Technology"
                   grade: ""
                   ects: "5"
                   topics: ["Python", "NLP", "Computational Linguistics", "Text analysis"]
-                  description: ""
+                  description: "Covers practical language technology applications such as parsing, QA systems, and Linked Open Data."
+                  keywords: ["nlp", "question answering", "parsing", "rdf", "sparql", "linked data", "spell correction", "speech"]

@@ -21,7 +21,7 @@
   files: []
   priority: 2
   tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript"]
-  keywords: ["python", "portfolio", "website", "projects", "skills", "contact", "js"]
+  keywords: ["python", "flask", "jinja", "portfolio", "website", "personal site", "projects", "skills", "contact", "resume", "cv", "about", "static site", "web app", "frontend", "backend", "full stack", "html", "css", "javascript", "js", "yaml", "data driven", "templating", "routing", "blueprints", "responsive", "accessibility", "search", "filtering", "tags", "markdown", "syntax highlighting", "katex", "deployment", "linux", "gunicorn"]
 
 - name: "Marketplace"
   display_name: "Marketplace"
@@ -34,7 +34,7 @@
   files: []
   priority: 4
   tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
-  keywords: ["python", "website", "projects", "REST API", "CRUD", "Database", "Token Authentication", "JSON", "Faker", "Blueprints", "Migrations"]
+  keywords: ["python", "flask", "sqlite", "SQL", "database", "schema", "migrations", "alembic", "REST", "API", "CRUD", "authentication", "authorization", "token auth", "jwt", "sessions", "json", "faker", "seed data", "blueprints", "modular design", "web app", "frontend", "backend", "forms", "validation", "pagination", "filters", "sorting", "admin", "users", "listings", "categories", "uploads", "images", "image processing", "marketplace", "group project"]
 
 - name: "autodiff_engine"
   display_name: "Automatic Differentiation Engine"
@@ -47,7 +47,7 @@
   files: []
   priority: 3
   tags: ["Automatic Differentiation", "Gradient Descent", "Numpy", "OOP", "Machine Learning", "Unittest"]
-  keywords: ["python", "autodiff", "machine learning", "neural networks", "backpropagation", "encapsulation", "overloading", "inheritance", "polymorphism"]
+  keywords: ["python", "autodiff", "automatic differentiation", "backpropagation", "gradients", "gradient descent", "chain rule", "reverse mode", "forward mode", "machine learning", "neural networks", "optimization", "loss", "numpy", "vector", "matrix", "OOP", "object oriented", "encapsulation", "inheritance", "polymorphism", "overloading", "operator overloading", "unit tests", "unittest", "regression", "logistic regression", "linear regression", "modeling"]
 
 - name: "MLP"
   display_name: "AI detection using ensembles"
@@ -60,7 +60,7 @@
   files: []
   priority: 6
   tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation"]
-  keywords: ["python", "Torch", "data", "models", "evaluation", "classification", "analysis", "Finetuning", "BERT", "Naive Bayes", "SVM", "Logistic Regression", "LSTM", "Ensembles", "Cross-Validation"]
+  keywords: ["python", "pytorch", "torch", "machine learning", "ml", "neural networks", "nlp", "text", "ai detection", "ai generated", "classification", "binary classification", "ensemble", "ensembles", "stacking", "voting", "model selection", "feature engineering", "preprocessing", "tokenization", "vectorization", "tf-idf", "BERT", "finetuning", "transformers", "LSTM", "svm", "naive bayes", "logistic regression", "cross validation", "evaluation", "metrics", "accuracy", "precision", "recall", "f1", "confusion matrix", "analysis", "experiments", "k-fold"]
 
 - name: "Thesis"
   display_name: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
@@ -73,7 +73,7 @@
   files: []
   priority: 1
   tags: ["Research", "LLMs", "Code Generation", "Prompting", "Multi-Agent Systems"]
-  keywords: ["research", "thesis", "LLMs", "AI", "Multi agents", "efficiency", "academic writing", "analysis", "ablation studie", "Fine-tuning", "prompt engineering"]
+  keywords: ["research", "thesis", "bachelor thesis", "LLM", "LLM's", "AI", "code generation", "prompting", "prompt engineering", "multi agent", "multi agents", "agents", "reasoning", "planning", "automation", "efficiency", "cost", "quality", "evaluation", "metrics", "benchmarks", "ablation study", "fine tuning", "instruction tuning", "datasets", "analysis", "academic writing", "literature review", "experiments", "coding"]
 
 - name: "KTP"
   display_name: "Fastener Recommendation System"
@@ -86,7 +86,7 @@
   files: []
   priority: 5
   tags: ["Inference Engine", "Knowledge Representation", "Rule Base", "Expert Interviews"]
-  keywords: ["knowledge technology", "expert system", "RB-system", "Flask", "expert Knowledge", "Domain Model", "Rule Model", "Problem Solving Model", "Enums", "PyTest"]
+  keywords: ["knowledge technology", "expert system", "knowledge base", "rule based", "rule base", "inference engine", "forward chaining", "backward chaining", "domain model", "rule model", "problem solving model", "ontology", "knowledge representation", "decision support", "recommendation", "fasteners", "materials", "mechanical", "constraints", "user input", "flask", "web app", "python", "enums", "pytest", "expert interviews", "requirements", "UI", "forms", "explainability", "transparency", "debugging", "testing"]
 
 - name: "recipes"
   display_name: "Personal Recipe Website"
@@ -98,7 +98,7 @@
   files: []
   priority: 10
   tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
-  keywords: ["python", "flask", "recipes", "website", "web development", "filtering", "search", "accounts", "migrations"]
+  keywords: ["python", "flask", "recipes", "cooking", "food", "ingredients", "meal prep", "web app", "website", "web development", "CRUD", "create", "edit", "delete", "search", "filtering", "tags", "categories", "accounts", "authentication", "authorization", "SQLite", "database", "migrations", "bootstrap", "forms", "uploads", "images"]
 
 - name: "CompArch"
   display_name: "Computer Architecture - LC-3 Assembly"
@@ -111,4 +111,4 @@
   files: []
   priority: 10
   tags: ["Assembly", "LC-3", "Computer Architecture", "Digital Logic"]
-  keywords: ["lc-3", "assembly", "instruction set", "datapath", "control flow", "memory", "io", "von neumann", "finite state machines"]
+  keywords: ["lc-3", "assembly", "computer architecture", "instruction set", "datapath", "control flow", "registers", "memory", "stack", "io", "input output", "interrupts", "trap routines", "machine code", "binary", "encoding", "microarchitecture", "finite state machines", "digital logic", "low level", "systems"]

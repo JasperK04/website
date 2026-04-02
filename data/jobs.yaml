@@ -15,7 +15,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["assistant cook", "kitchen", "organization"]
-  keywords: ["assistant cook", "kitchen", "organization", "nederlands", "english", "food preparation", "cooking", "cleanliness", "new recipes", "menu"]
+  keywords: ["assistant cook", "kitchen", "organization", "nederlands", "english", "food preparation", "prep work", "cooking", "line cooking", "plating", "cleanliness", "sanitation", "food safety", "stock", "menu", "new recipes", "teamwork", "collaboration", "time management", "mise en place", "restaurant"]
   priority: 1
 
 - company: "Rijks Universiteit Groningen"
@@ -36,7 +36,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["teaching assistant", "programming", "university"]
-  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "python", "student support", "course materials", "feedback", "assignments"]
+  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "python", "intro to programming", "student support", "tutoring", "mentoring", "debugging", "code review", "grading", "feedback", "assignments", "labs", "lectures", "office hours", "course materials", "instructional design", "assessment", "education"]
   priority: 1
 
 - company: "NVAO"
@@ -56,8 +56,8 @@
   # link:
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
-  tags: ["teaching assistant", "programming", "university"]
-  keywords: ["teaching assistant", "programming", "university", "nederlands", "english", "student support", "course materials", "feedback", "assignments"]
+  tags: ["panel member", "accreditation", "university", "quality assurance"]
+  keywords: ["panel member", "accreditation", "quality assurance", "higher education", "university", "information science", "UVA", "site visit", "review", "evaluation", "committee", "documentation", "standards", "program review", "feedback", "policy", "nederlands", "english", "student perspective", "stakeholders", "meetings"]
   priority: 1
 
 - company: "Rijks Universiteit Groningen"
@@ -77,7 +77,7 @@
     url: "https://www.rug.nl/let/studeren-bij-ons/bachelor/voorlichting/studentambassadeurs/1-testimonials-25-26/jasper-kleine"
     label: "Profile"
   tags: ["student ambassador", "university"]
-  keywords: ["student ambassador", "university", "nederlands", "english", "prospective students", "events", "representation", "student perspective"]
+  keywords: ["student ambassador", "university", "nederlands", "english", "prospective students", "open days", "events", "representation", "student perspective", "outreach", "presentations", "campus tours", "q&a", "admissions", "program info", "communication", "public speaking"]
   priority: 5
 
 - company: "Rijks Universiteit Groningen"
@@ -98,7 +98,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["program committee", "university", "feedback", "representation", "discussions"]
-  keywords: ["program committee", "university", "feedback", "representation", "discussions", "nederlands", "english", "student perspective", "TER", "Information Science"]
+  keywords: ["program committee", "university", "information science", "feedback", "representation", "discussions", "nederlands", "english", "student perspective", "governance", "curriculum", "policy", "TER", "OER", "meetings", "quality assurance", "planning", "stakeholders"]
   priority: 6
 
 - company: "Rijks Universiteit Groningen"
@@ -117,7 +117,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["IT", "panel", "university", "feedback"]
-  keywords: ["IT", "panel", "university", "feedback", "nederlands", "english", "IT services", "IT policies", "meetings", "representation"]
+  keywords: ["IT", "panel", "university", "feedback", "nederlands", "english", "services", "policies", "meetings", "representation", "student input", "digital services", "support", "helpdesk", "systems", "security", "privacy", "user experience", "improvements"]
   priority: 9
 
 - company: "Hotel Aduard"
@@ -137,7 +137,7 @@
   #   url: "https://upwork.example.com/jasper"
   #   label: "Profile"
   tags: ["waiter", "host", "hospitality", "customer service", "teamwork"]
-  keywords: ["waiter", "host", "hospitality", "customer service", "teamwork", "nederlands", "english", "managing", "inventory", "purchasing", "training"]
+  keywords: ["waiter", "host", "hospitality", "customer service", "teamwork", "nederlands", "english", "front of house", "guest relations", "reservations", "seating", "POS", "cash handling", "inventory", "purchasing", "training", "service", "restaurant"]
   priority: 10
 
 - company: "Restaurant de Baron"
@@ -151,7 +151,7 @@
   responsibilities: []
   tech: []
   tags: ["bartender", "waiter", "hospitality", "summer job"]
-  keywords: ["bartender", "waiter", "hospitality", "summer job", "customer service", "nederlands", "english"]
+  keywords: ["bartender", "waiter", "hospitality", "summer job", "customer service", "nederlands", "english", "bar service", "cocktails", "drinks", "service", "front of house", "teamwork", "cash handling"]
   priority: 10
 
 

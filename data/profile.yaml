@@ -1,10 +1,23 @@
 name: "Jasper Kleine"
 title: "Information Science Student"
-tagline: ""
+tagline: 
+  - "Bridging AI and software to turn data, code, and curiosity into useful products."
+  - "Turning passion for software and machine learning into real solutions."
+  - "Where curiosity meets code and becomes something people can use."
+  - "Turning ideas, data, and algorithms into practical, working systems."
 bio: |
-  bla bla bla
+  I am an Information Science student with a strong interest in the intersection of software engineering and machine learning. I enjoy building systems that are not only technically sound, but also practical and usable. From structured back-end systems and data pipelines to machine learning models that balance performance, interpretability, and efficiency. I tend to gravitate toward clean abstractions, modular architectures, and designs that scale well over time.
+
+  Alongside my studies, I work as a teaching assistant for Introduction to Programming. In that role, I help students develop their coding skills, guide them through challenging concepts, and support them in building confidence as problem solvers. Explaining technical ideas in a clear and accessible way is something I genuinely enjoy. I also serve as a student ambassador for the IK program at the University of Groningen, where I represent the program during open days and help prospective students get a realistic sense of both the academic experience and student life.
+
+  Beyond machine learning, I have experience with software architecture and data management, including relational databases and structured system design. I enjoy thinking about how components fit together, how data flows through a system, and how to design software that remains maintainable as it grows. Whether it’s experimenting with ensemble models or structuring complex relationships in code, I like building things that are both elegant and functional.
+
+  Outside of my academic and technical work, I work as an assistant cook, which has taught me how to stay organized and perform under pressure in a fast-paced, team-oriented environment. In my free time, I enjoy working on side projects, cooking, and spending time with friends, often through game nights that revolve around fun and a bit of friendly competition. I also have a broad taste in music and enjoy unwinding with online content and animation.
+
+  Overall, I’m motivated by creating meaningful systems, continuously improving my skills, and contributing to environments where learning and collaboration are central.
+
 avatar: "/static/img/profile.png"
-location: "Netherlands"
+location: "Groningen"
 email: "contact@jasperkleine.nl"
 available: false
 skills:

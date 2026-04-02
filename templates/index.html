@@ -13,14 +13,17 @@
     </div>
     <div class="hero-info">
       <h1>{{ profile.name }}</h1>
+      {% if tagline %}
+        <div class="hero-tagline">{{ tagline }}</div>
+      {% elif profile.tagline %}
+        <div class="hero-tagline">{{ profile.tagline }}</div>
+      {% endif %}
       <p>{{ profile.title }}</p>
       {% if profile.available %}
         <div class="hero-availability">Open to opportunities</div>
       {% endif %}
     </div>
   </div>
-
-  <div class="hero-bio">{{ profile.bio }}</div>
 
   <div>
     {% if profile.location %}

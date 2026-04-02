@@ -17,7 +17,7 @@
     - "Have been part of the program committee for the bachelor's program in '24-'25."
     - "Active member of ASCI, currently active as treasurer of the Career Committee, and vice-chair of the web committee."
   tags: ["computer science", "software engineering", "algorithms", "LLM's"]
-  keywords: ["university", "bachelor", "degree", "cs", "programming", "machine learning", "computational linguistics", "LLM's", "thesis", "TA", "ASCI"]
+  keywords: ["university", "bachelor", "degree", "bsc", "information science", "CS", "computer science", "programming", "software development", "software engineering", "machine learning", "ML", "data science", "computational linguistics", "NLP", "LLM", "LLM's", "thesis", "research", "prompting", "multi agent", "code generation", "TA", "teaching assistant", "python", "labs", "program committee", "governance", "ASCI", "career committee", "web committee", "student society"]
   priority: 1
 
 
@@ -34,7 +34,7 @@
   #     grade: ""
   highlights: []
   tags: ["data science", "software engineering", "algorithms", "LLM's", "business"]
-  keywords: ["university", "master", "degree", "cs", "programming", "machine learning", "LLM's"]
+  keywords: ["university", "master", "MSc", "degree", "business information technology", "information science", "data science", "business analytics", "machine learning", "ML", "LLM", "LLM's", "software engineering", "algorithms", "programming", "python", "statistics", "decision support", "business context", "enterprise", "process optimization", "data management", "future", "planned", "Calculus", "linear algebra", "buisness", "management", "information systems", "IT", "technology", "innovation"]
   priority: 2
 
 
@@ -53,5 +53,5 @@
   highlights:
     - "Vise-Chair of the student council"
   tags: ["high school", "secondary education", "VWO", "NT&NG"]
-  keywords: ["high school", "secondary education", "VWO", "student council", "vice-chair", "NT", "NG"]
+  keywords: ["high school", "secondary education", "VWO", "NT&NG", "Science", "student council", "vice-chair", "profielwerkstuk", "energy storage", "literature review", "werkman college"]
   priority: 3
