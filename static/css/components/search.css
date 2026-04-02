@@ -1,0 +1,68 @@
+/* search.css - Search UI and results */
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.search-input-wrap:focus-within {
+  border-color: var(--border-active);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 0.6rem 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-results {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 1rem;
+}
+
+.search-results-query {
+  color: var(--text-primary);
+}
+
+.search-matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.search-matches-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}

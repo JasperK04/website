@@ -1,0 +1,48 @@
+<!-- ===== Sidebar ===== -->
+<aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+  <div class="sidebar-header">
+    <div class="sidebar-avatar">
+      {% if profile.avatar %}
+        <img src="{{ profile.avatar }}" alt="{{ profile.name }}" onerror="this.style.display='none';this.parentElement.textContent='👤'">
+      {% else %}
+        👤
+      {% endif %}
+    </div>
+    <div class="sidebar-name">{{ profile.name }}</div>
+    <div class="sidebar-title">{{ profile.title }}</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Menu</div>
+
+    <a href="{{ url_for('main.index') }}" class="nav-link">
+      <span class="nav-icon">🏠</span> Home
+    </a>
+    <a href="{{ url_for('main.about') }}" class="nav-link">
+      <span class="nav-icon">👤</span> About
+    </a>
+    <a href="{{ url_for('main.education') }}" class="nav-link">
+      <span class="nav-icon">🎓</span> Education
+    </a>
+    <a href="{{ url_for('main.jobs') }}" class="nav-link">
+      <span class="nav-icon">💼</span> Experience
+    </a>
+    <a href="{{ url_for('main.projects') }}" class="nav-link">
+      <span class="nav-icon">🔧</span> Projects
+    </a>
+  </nav>
+
+  <footer class="sidebar-footer">
+    {% for social in socials %}
+      <a href="{{ social.url }}" class="social-link" target="_blank" rel="noopener">
+        {{ social.platform }} - {{ social.label }}
+      </a>
+    {% endfor %}
+    <button
+      id="theme-toggle"
+      class="theme-toggle-btn"
+      aria-label="Switch to light mode"
+      title="Switch to light mode"
+    >☀️</button>
+  </footer>
+</aside>

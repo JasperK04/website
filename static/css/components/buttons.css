@@ -1,0 +1,74 @@
+/* buttons.css - Buttons and toggles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: background 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-active);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #fff;
+}
+
+.pill-toggle {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-surface);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.pill-toggle-option {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pill-toggle-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-toggle-option span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.pill-toggle-option input:checked + span {
+  background: var(--accent);
+  color: #fff;
+}

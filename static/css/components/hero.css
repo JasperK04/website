@@ -1,0 +1,74 @@
+/* hero.css - Hero/profile */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 30%;
+  background: var(--accent-subtle);
+  border: 3px solid var(--border-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-info h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.hero-info p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+.hero-bio {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 680px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--success);
+  margin-top: 0.5rem;
+}
+
+.hero-availability::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}

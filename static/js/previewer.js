@@ -87,6 +87,7 @@
       json: "JSON",
       yaml: "YAML",
       yml: "YAML",
+      xml: "XML",
       sh: "Shell",
       txt: "Text",
     };
@@ -105,6 +106,7 @@
       md: "📝",
       json: "📋",
       yaml: "📋",
+      xml: "🧩",
       sh: "⚙️",
     };
     return icons[ext] || "📄";

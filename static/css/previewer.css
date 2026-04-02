@@ -257,7 +257,9 @@
 .tok-comment   { color: var(--syn-comment); font-style: italic; }
 .tok-number    { color: var(--syn-number); }
 .tok-op        { color: var(--syn-operator); }
+.tok-punct     { color: var(--syn-code-text); }
 .tok-builtin   { color: var(--syn-builtin); }
+.tok-attr      { color: var(--syn-decorator); }
 .tok-decorator { color: var(--syn-decorator); }
 .tok-name      { color: var(--syn-name); }
 .tok-error     { color: var(--syn-error); }

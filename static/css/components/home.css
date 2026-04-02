@@ -1,0 +1,7 @@
+/* home.css - Home page */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
