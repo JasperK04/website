@@ -43,7 +43,6 @@
   department: "Accreditation for information Science at UVA"
   role: "Panel Member"
   type: "Contract"
-  start: "Jan 2026"
   end: "Jan 2026"
   location: "Amsterdam"
   description: "I visited the University of Amsterdam as part of the accreditation committee for the Information Science program. I provided feedback on and asked questions about the program from a students perspective and participated in discussions about the program's strengths, weaknesses and future."
@@ -76,7 +75,7 @@
   # tech: []
   link:
     url: "https://www.rug.nl/let/studeren-bij-ons/bachelor/voorlichting/studentambassadeurs/1-testimonials-25-26/jasper-kleine"
-    label: "external profile"
+    label: "Profile"
   tags: ["student ambassador", "university"]
   keywords: ["student ambassador", "university", "nederlands", "english", "prospective students", "events", "representation", "student perspective"]
   priority: 5

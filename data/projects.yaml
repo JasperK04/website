@@ -34,7 +34,7 @@
   files: []
   priority: 4
   tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
-  keywords: ["python", "website", "projects", "REST API", "CRUD", "Database", "Token Authentication", "JSON", "Faker"]
+  keywords: ["python", "website", "projects", "REST API", "CRUD", "Database", "Token Authentication", "JSON", "Faker", "Blueprints", "Migrations"]
 
 - name: "autodiff_engine"
   display_name: "Automatic Differentiation Engine"
@@ -98,4 +98,4 @@
   files: []
   priority: 10
   tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
-  keywords: ["python", "flask", "recipes", "website", "web development", "filtering", "search", "accounts"]
+  keywords: ["python", "flask", "recipes", "website", "web development", "filtering", "search", "accounts", "migrations"]

@@ -54,11 +54,6 @@
           blocks:
             - block: "A"
               courses:
-                - name: "Inleiding informatiekunde"
-                  grade: "5.7"
-                  ects: "5"
-                  topics: ["History of information science", "Literature", "research methods", "Jupyter Notebooks"]
-                  description: ""
                 - name: "Introduction to Programming I"
                   grade: "9.5"
                   ects: "5"
@@ -68,6 +63,11 @@
                   grade: "9.1"
                   ects: "5"
                   topics: ["Linguistics", "Syntax", "Semantics", "Pragmatics"]
+                  description: ""
+                - name: "Inleiding informatiekunde"
+                  grade: "5.7"
+                  ects: "5"
+                  topics: ["History of information science", "Literature", "research methods", "Jupyter Notebooks"]
                   description: ""
             - block: "B"
               courses:

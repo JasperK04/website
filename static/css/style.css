@@ -462,6 +462,21 @@ h1, h2, h3, h4 {
   gap: 0.5rem;
 }
 
+.search-matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.search-matches-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
 /* ==============================
    Education
    ============================== */
@@ -745,9 +760,9 @@ h1, h2, h3, h4 {
 }
 
 .hero-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 30%;
   background: var(--accent-subtle);
   border: 3px solid var(--border-muted);
   display: flex;
