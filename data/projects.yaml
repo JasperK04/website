@@ -99,3 +99,16 @@
   priority: 10
   tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
   keywords: ["python", "flask", "recipes", "website", "web development", "filtering", "search", "accounts", "migrations"]
+
+- name: "CompArch"
+  display_name: "Computer Architecture - LC-3 Assembly"
+  Course: "Computer Architecture"
+  description: "LC-3 assembly assignments focused on machine organization and low-level programming, covering control flow, I/O, and data representation."
+  # github: ""
+  # demo: ""
+  main_file: "README.md"
+  code_path: "CompArch/"
+  files: []
+  priority: 10
+  tags: ["Assembly", "LC-3", "Computer Architecture", "Digital Logic"]
+  keywords: ["lc-3", "assembly", "instruction set", "datapath", "control flow", "memory", "io", "von neumann", "finite state machines"]

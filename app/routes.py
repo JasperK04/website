@@ -337,6 +337,8 @@ def serve_tokens(project: str, filename: str):
         tokens = tokenize_code_source(
             source, "javascript", current_app.config["DATA_DIR"]
         )
+    elif file_path.name.endswith(".asm"):
+        tokens = tokenize_code_source(source, "asm", current_app.config["DATA_DIR"])
     elif file_path.name.endswith(".json"):
         tokens = tokenize_json(source)
     elif file_path.name.endswith((".yaml", ".yml")):
@@ -363,6 +365,7 @@ def serve_snippet_tokens(project: str):
         "python3": "python",
         "js": "javascript",
         "javascript": "javascript",
+        "asm": "asm",
         "sh": "shell",
         "bash": "shell",
         "zsh": "shell",

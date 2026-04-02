@@ -88,6 +88,7 @@
       yaml: "YAML",
       yml: "YAML",
       xml: "XML",
+      asm: "ASM",
       sh: "Shell",
       txt: "Text",
     };
@@ -107,6 +108,7 @@
       json: "📋",
       yaml: "📋",
       xml: "🧩",
+      asm: "🧠",
       sh: "⚙️",
     };
     return icons[ext] || "📄";
@@ -689,7 +691,8 @@
 
     const ext = getExt(filename);
 
-    if (ext === "py" || ext === "js") {
+    if (ext === "py" || ext === "js" || ext === "asm" || ext === "json" ||
+      ext === "yaml" || ext === "yml" || ext === "xml" || ext === "html") {
       // Fetch tokenized version for syntax highlighting
       fetch(buildCodeUrl(filename, "/tokens"))
         .then(function (res) {

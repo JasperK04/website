@@ -4,6 +4,7 @@ whitelist_exts:
   - .java
   - .cs
   - .sh
+  - .asm
   - .md
   - .json
   - .yaml
