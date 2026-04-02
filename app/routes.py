@@ -449,7 +449,7 @@ def _build_project_files(project_name: str, project_data: dict) -> list[str]:
     if main_file and main_file not in explicit_files:
         explicit_files = [main_file, *explicit_files]
 
-        render_config = load_yaml("code_rendering.yaml")
+        render_config = load_yaml("syntax_lists.yaml")
         render_config = render_config if isinstance(render_config, dict) else {}
     whitelist_exts = set(render_config.get("whitelist_exts", [".py", ".js", ".md"]))
     blacklist_dirs = set(render_config.get("blacklist_dirs", []))
