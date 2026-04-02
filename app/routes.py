@@ -8,7 +8,9 @@ from pathlib import Path
 
 from flask import Blueprint, abort, current_app, jsonify, render_template, request
 
-from .syntax import tokenize_plain, tokenize_source
+from .syntax_code import tokenize_plain
+from .syntax_code import tokenize_source as tokenize_code_source
+from .syntax_data import tokenize_json, tokenize_markup, tokenize_yaml
 from .utils import load_yaml, search_items
 
 main = Blueprint("main", __name__)
@@ -330,9 +332,19 @@ def serve_tokens(project: str, filename: str):
     file_path = _resolve_code_path(project, filename)
     source = file_path.read_text(encoding="utf-8")
     if file_path.name.endswith(".py"):
-        tokens = tokenize_source(source, "python", current_app.config["DATA_DIR"])
+        tokens = tokenize_code_source(source, "python", current_app.config["DATA_DIR"])
     elif file_path.name.endswith(".js"):
-        tokens = tokenize_source(source, "javascript", current_app.config["DATA_DIR"])
+        tokens = tokenize_code_source(
+            source, "javascript", current_app.config["DATA_DIR"]
+        )
+    elif file_path.name.endswith(".json"):
+        tokens = tokenize_json(source)
+    elif file_path.name.endswith((".yaml", ".yml")):
+        tokens = tokenize_yaml(source)
+    elif file_path.name.endswith(".xml"):
+        tokens = tokenize_markup(source)
+    elif file_path.name.endswith(".html"):
+        tokens = tokenize_markup(source)
     else:
         tokens = tokenize_plain(source)
     return jsonify({"tokens": tokens, "source": source})
@@ -356,10 +368,24 @@ def serve_snippet_tokens(project: str):
         "zsh": "shell",
         "shell": "shell",
     }
+    data_map = {
+        "json": "json",
+        "yaml": "yaml",
+        "yml": "yaml",
+        "xml": "xml",
+        "html": "html",
+    }
     lang_key = lang_map.get(language, "")
+    data_key = data_map.get(language, "")
 
-    if lang_key:
-        tokens = tokenize_source(source, lang_key, current_app.config["DATA_DIR"])
+    if data_key == "json":
+        tokens = tokenize_json(source)
+    elif data_key == "yaml":
+        tokens = tokenize_yaml(source)
+    elif data_key in {"xml", "html"}:
+        tokens = tokenize_markup(source)
+    elif lang_key:
+        tokens = tokenize_code_source(source, lang_key, current_app.config["DATA_DIR"])
     else:
         tokens = tokenize_plain(source)
 

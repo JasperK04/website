@@ -1,7 +1,5 @@
 """
-Config-driven syntax parser for multiple languages.
-
-Loads per-language keywords and builtins from a server-side JSON file.
+Tokenizer for code-like languages loaded from syntax_languages.json.
 """
 
 from __future__ import annotations
@@ -23,13 +21,6 @@ def load_language_config(data_dir: Path) -> dict:
 
 def tokenize_source(source: str, language: str, data_dir: Path) -> "list[dict]":
     config = load_language_config(data_dir)
-    alias_map = {
-        "bash": "shell",
-        "sh": "shell",
-        "zsh": "shell",
-        "python3": "python",
-    }
-    language = alias_map.get(language, language)
     lang = config.get(language)
     if not lang:
         return tokenize_plain(source)

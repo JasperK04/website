@@ -562,5 +562,135 @@
       "extra_start": "_",
       "extra_part": "_"
     }
+  },
+  "json": {
+    "line_comments": [],
+    "block_comments": [],
+    "string_delimiters": ["\""],
+    "keywords": [
+      "true",
+      "false",
+      "null"
+    ],
+    "builtins": [],
+    "operators": [
+      "{",
+      "}",
+      "[",
+      "]",
+      ":",
+      ","
+    ],
+    "identifier": {
+      "extra_start": "_",
+      "extra_part": "_-"
+    }
+  },
+  "yaml": {
+    "line_comments": ["#"],
+    "block_comments": [],
+    "string_delimiters": ["\"", "'"],
+    "keywords": [
+      "true",
+      "false",
+      "null",
+      "yes",
+      "no",
+      "on",
+      "off"
+    ],
+    "builtins": [],
+    "operators": [
+      ":",
+      "-"
+    ],
+    "identifier": {
+      "extra_start": "_",
+      "extra_part": "_-"
+    }
+  },
+  "xml": {
+    "line_comments": [],
+    "block_comments": [
+      {"start": "<!--", "end": "-->"}
+    ],
+    "string_delimiters": ["\"", "'"],
+    "keywords": [],
+    "builtins": [],
+    "operators": [
+      "</",
+      "/>",
+      "<",
+      ">",
+      "=",
+      ":"
+    ],
+    "identifier": {
+      "extra_start": "_:",
+      "extra_part": "_-:."
+    }
+  },
+  "html": {
+    "line_comments": [],
+    "block_comments": [
+      {"start": "<!--", "end": "-->"}
+    ],
+    "string_delimiters": ["\"", "'"],
+    "keywords": [
+      "html",
+      "head",
+      "body",
+      "title",
+      "meta",
+      "link",
+      "script",
+      "style",
+      "div",
+      "span",
+      "p",
+      "a",
+      "img",
+      "ul",
+      "ol",
+      "li",
+      "header",
+      "footer",
+      "main",
+      "section",
+      "nav",
+      "article",
+      "aside",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "th",
+      "td",
+      "form",
+      "input",
+      "button",
+      "label",
+      "select",
+      "option"
+    ],
+    "builtins": [],
+    "operators": [
+      "</",
+      "/>",
+      "<",
+      ">",
+      "=",
+      ":"
+    ],
+    "identifier": {
+      "extra_start": "_-",
+      "extra_part": "_-:."
+    }
   }
 }

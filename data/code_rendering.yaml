@@ -2,7 +2,14 @@ whitelist_exts:
   - .py
   - .js
   - .java
+  - .cs
+  - .sh
   - .md
+  - .json
+  - .yaml
+  - .yml
+  - .xml
+  - .html
 
 blacklist_dirs:
   - .git
