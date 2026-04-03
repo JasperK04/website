@@ -31,7 +31,7 @@
       grade: "8.5"
       ects: "5"
       topics: ["Python", "Inheritance", "Encapsulation", "Polymorphism", "Abstraction", "Duck typing"]
-      description: "Introduces object-oriented programming in Python, covering encapsulation, inheritance, polymorphism, and testing practices for building robust applications."
+      description: "Introduces object-oriented programming in Python, covering encapsulation, inheritance, polymorphism, and testing."
       keywords: ["oop", "python", "classes", "encapsulation", "inheritance", "polymorphism", "abstraction", "unit testing", "design patterns", "software design"]
     - name: "Computer Architecture"
       grade: "8.5"
@@ -234,7 +234,7 @@
           - name: "Neem Regie"
             grade: ""
             ects: "10"
-            topics: ["Leadership", "Authority", "Communication", "Motivate Student"]
+            topics: ["Leadership", "Authority", "Communication", "Motivate Students"]
             description: ""
           - name: "Geef Les"
             grade: ""

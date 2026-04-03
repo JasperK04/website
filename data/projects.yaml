@@ -54,7 +54,7 @@
   Course: "Machine Learning Project"
   description: "A machine learning project focused on detecting AI-generated content using multiple models and ensembling them."
   github: "https://github.com/JasperK04/MLP_final_project"
-  # demo: "https://autodiff-engine.jasperkleine.nl"
+  # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
   code_path: "MLP_project/"
   files: []
@@ -67,7 +67,7 @@
   Course: "Bachelor Thesis"
   description: "Future work"
   github: "https://github.com/JasperK04/thesis"
-  # demo: "https://autodiff-engine.jasperkleine.nl"
+  # demo: "https://BSc-thesis.jasperkleine.nl"
   main_file: "README.md"
   code_path: "BSc_Thesis/"
   files: []
