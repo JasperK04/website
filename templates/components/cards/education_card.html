@@ -12,9 +12,7 @@
           {{ item.start or item.end }}
         {% endif %}
       </div>
-      {% if item.gpa %}
-        <div class="badge badge-info edu-badge">GPA {{ item.gpa }}</div>
-      {% endif %}
+
       {% if item.average_grade %}
         <div class="badge badge-info edu-badge">Average {{ item.average_grade }}</div>
       {% endif %}

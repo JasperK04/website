@@ -31,3 +31,4 @@
 .badge-info    { background: rgba(121,192,255,0.1); color: var(--info); }
 .badge-warning { background: rgba(210,153,34,0.15); color: var(--warning); }
 .badge-danger  { background: rgba(248,81,73,0.15); color: var(--danger); }
+.badge-purple  { background: rgba(155,89,182,0.2); color: var(--success); }
