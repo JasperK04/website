@@ -22,17 +22,17 @@ All site content lives under the `data/` directory.
 
 ```yaml
 - name: "project_slug"
-	display_name: "Project Display Name"
-	description: "Short description"
-	Course: "Course name" # optional
-	github: "https://github.com/..." # optional
-	demo: "https://..." # optional
-	main_file: "README.md"
-	code_path: "project_folder/" # under static/projects
-	files: [] # optional explicit list; otherwise auto-discovered
-	priority: 1 # low number means a high priority
-	tags: ["tag1", "tag2"]
-	keywords: ["keyword1", "keyword2"]
+  display_name: "Project Display Name"
+  description: "Short description"
+  Course: "Course name" # optional
+  github: "https://github.com/..." # optional
+  demo: "https://..." # optional
+  main_file: "README.md"
+  code_path: "project_folder/" # under static/projects
+  files: [] # optional explicit list; otherwise auto-discovered
+  priority: 1 # low number means a high priority
+  tags: ["tag1", "tag2"]
+  keywords: ["keyword1", "keyword2"]
 ```
 
 ## Backend (Flask)
@@ -118,4 +118,47 @@ flask run --debug
 
 ```bash
 gunicorn "run:app"
+```
+
+## Project CLI Commands
+
+
+### Recipes
+
+```bash
+docker exec -it recipes bash
+```
+
+```bash
+exit
+```
+
+#### commands
+```bash
+flask create-user <username> <email>
+flask create-admin <username> <email>
+flask seed-data
+flask seed-data --users 10 --recipes 50
+flask clear-data
+flask db-stats
+flask add-machine "Oven"
+flask list-machines
+flask seed-machines
+```
+
+### Marketplace
+
+```bash
+docker exec -it recipes bash
+```
+
+```bash
+exit
+```
+
+#### commands
+```bash
+flask cli recreate-db
+flask cli recreate-db --users 50 --listings 200
+flask cli create-admin
 ```
