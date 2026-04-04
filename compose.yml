@@ -1,0 +1,10 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    networks:
+      - jasper
+
+networks:
+  jasper:
+    external: true
