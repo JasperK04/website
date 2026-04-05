@@ -20,8 +20,8 @@
   code_path: "../../"
   files: []
   priority: 2
-  tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript"]
-  keywords: ["python", "flask", "jinja", "portfolio", "website", "personal site", "projects", "skills", "contact", "resume", "cv", "about", "static site", "web app", "frontend", "backend", "full stack", "html", "css", "javascript", "js", "yaml", "data driven", "templating", "routing", "blueprints", "responsive", "accessibility", "search", "filtering", "tags", "markdown", "syntax highlighting", "katex", "deployment", "linux", "gunicorn"]
+  tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript", "Docker", "Deployment"]
+  keywords: ["python", "flask", "jinja", "portfolio", "website", "personal site", "projects", "skills", "contact", "resume", "cv", "about", "static site", "web app", "frontend", "backend", "full stack", "html", "css", "javascript", "js", "yaml", "data driven", "templating", "routing", "blueprints", "responsive", "accessibility", "search", "filtering", "tags", "markdown", "syntax highlighting", "katex", "deployment", "linux", "gunicorn", "nginx", "docker", "docker compose"]
 
 - name: "Marketplace"
   display_name: "Marketplace"
@@ -34,7 +34,7 @@
   files: []
   priority: 4
   tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
-  keywords: ["python", "flask", "sqlite", "SQL", "database", "schema", "migrations", "alembic", "REST", "API", "CRUD", "authentication", "authorization", "token auth", "jwt", "sessions", "json", "faker", "seed data", "blueprints", "modular design", "web app", "frontend", "backend", "forms", "validation", "pagination", "filters", "sorting", "admin", "users", "listings", "categories", "uploads", "images", "image processing", "marketplace", "group project"]
+  keywords: ["python", "Docker", "flask", "sqlite", "SQL", "database", "schema", "migrations", "alembic", "REST", "API", "CRUD", "authentication", "authorization", "token auth", "jwt", "sessions", "json", "faker", "seed data", "blueprints", "modular design", "web app", "frontend", "backend", "forms", "validation", "pagination", "filters", "sorting", "admin", "users", "listings", "categories", "uploads", "images", "image processing", "marketplace", "group project"]
 
 - name: "autodiff_engine"
   display_name: "Automatic Differentiation Engine"
@@ -53,7 +53,7 @@
   display_name: "AI detection using ensembles"
   Course: "Machine Learning Project"
   description: "A machine learning project focused on detecting AI-generated content using multiple models and ensembling them."
-  github: "https://github.com/JasperK04/MLP_final_project"
+  # github: "https://github.com/JasperK04/MLP_final_project"
   # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
   code_path: "MLP_project/"
@@ -80,13 +80,13 @@
   Course: "Knowledge Technology Practical"
   description: "The Fastener Recommendation System is a web application designed to assist users in selecting the appropriate fasteners for their projects. It provides recommendations based on user input, such as material type, load requirements, and environmental conditions. The system utilizes an expert knowledge base of fasteners and their properties to generate suggestions. The system has three main models; A Domain Model, A Rule Model and A Problem Solving Model. The system required a user interface for which we used Flask."
   github: "https://github.com/JasperK04/KTP"
-  demo: "https://fastener-system.jasperkleine.nl"
+  demo: "https://fasteners.jasperkleine.nl"
   main_file: "README.md"
   code_path: "KTP_project/"
   files: []
   priority: 5
   tags: ["Inference Engine", "Knowledge Representation", "Rule Base", "Expert Interviews"]
-  keywords: ["knowledge technology", "expert system", "knowledge base", "rule based", "rule base", "inference engine", "forward chaining", "backward chaining", "domain model", "rule model", "problem solving model", "ontology", "knowledge representation", "decision support", "recommendation", "fasteners", "materials", "mechanical", "constraints", "user input", "flask", "web app", "python", "enums", "pytest", "expert interviews", "requirements", "UI", "forms", "explainability", "transparency", "debugging", "testing"]
+  keywords: ["knowledge technology", "Docker", "expert system", "knowledge base", "rule based", "rule base", "inference engine", "forward chaining", "backward chaining", "domain model", "rule model", "problem solving model", "ontology", "knowledge representation", "decision support", "recommendation", "fasteners", "materials", "mechanical", "constraints", "user input", "flask", "web app", "python", "enums", "pytest", "expert interviews", "requirements", "UI", "forms", "explainability", "transparency", "debugging", "testing"]
 
 - name: "recipes"
   display_name: "Personal Recipe Website"
@@ -98,7 +98,7 @@
   files: []
   priority: 10
   tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
-  keywords: ["python", "flask", "recipes", "cooking", "food", "ingredients", "meal prep", "web app", "website", "web development", "CRUD", "create", "edit", "delete", "search", "filtering", "tags", "categories", "accounts", "authentication", "authorization", "SQLite", "database", "migrations", "bootstrap", "forms", "uploads", "images"]
+  keywords: ["python", "flask", "Docker", "recipes", "cooking", "food", "ingredients", "meal prep", "web app", "website", "web development", "CRUD", "create", "edit", "delete", "search", "filtering", "tags", "categories", "accounts", "authentication", "authorization", "SQLite", "database", "migrations", "bootstrap", "forms", "uploads", "images"]
 
 - name: "CompArch"
   display_name: "Computer Architecture - LC-3 Assembly"
