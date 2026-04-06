@@ -29,11 +29,21 @@ All site content lives under the `data/` directory.
   demo: "https://..." # optional
   main_file: "README.md"
   code_path: "project_folder/" # under static/projects
-  files: [] # optional explicit list; otherwise auto-discovered
-  priority: 1 # low number means a high priority
-  tags: ["tag1", "tag2"]
-  keywords: ["keyword1", "keyword2"]
+  file_whitelist: [] # optional explicit allow list (extensions/files)
+  file_blacklist: [] # optional explicit deny list (dirs/files)
+  tags: []
+  keywords: []
 ```
+
+File discovery uses `data/syntax_lists.yaml` for:
+
+- `global_whitelist`: explicit list of allowed folders, files and file-extentions
+- `global_blacklist`: explicit list of denied folders, files and extentions
+
+Priority order:
+
+- Project whitelist (extensions/files) > project blacklist (dirs/files)
+- Global files > global dirs > global extensions
 
 ## Backend (Flask)
 

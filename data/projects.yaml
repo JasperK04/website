@@ -5,8 +5,10 @@
 #   demo: "https://project_name.jasperkleine.nl" # Optional: URL to a live demo
 #   main_file: "app.py" # The main entry point of the project, used for running or testing.
 #   code_path: "project_name/" # The directory where the project's code is located, relative to the root of the repository.
-#   files:
-#     - "app.py" # List of all files.
+#   file_whitelist:
+#     - ".py" # Explicit extension/file allow list.
+#   file_blacklist:
+#     - "node_modules/" # Explicit dir/file deny list.
 #   priority: 1 # A lower number indicates higher priority for display.
 #   tags: ["any tags"]
 #   keywords: ["any keywords"]
@@ -18,7 +20,8 @@
   demo: ""
   main_file: "README.md"
   code_path: "../../"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 2
   tags: ["Flask", "YAML", "HTML", "CSS", "JavaScript", "Docker", "Deployment"]
   keywords: ["python", "flask", "jinja", "portfolio", "website", "personal site", "projects", "skills", "contact", "resume", "cv", "about", "static site", "web app", "frontend", "backend", "full stack", "html", "css", "javascript", "js", "yaml", "data driven", "templating", "routing", "blueprints", "responsive", "accessibility", "search", "filtering", "tags", "markdown", "syntax highlighting", "katex", "deployment", "linux", "gunicorn", "nginx", "docker", "docker compose"]
@@ -31,7 +34,8 @@
   demo: "https://marketplace.jasperkleine.nl"
   main_file: "README.md"
   code_path: "marketplace/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 4
   tags: ["Flask", "SQLite", "API", "CRUD", "Authentication", "Modularized design"]
   keywords: ["python", "Docker", "flask", "sqlite", "SQL", "database", "schema", "migrations", "alembic", "REST", "API", "CRUD", "authentication", "authorization", "token auth", "jwt", "sessions", "json", "faker", "seed data", "blueprints", "modular design", "web app", "frontend", "backend", "forms", "validation", "pagination", "filters", "sorting", "admin", "users", "listings", "categories", "uploads", "images", "image processing", "marketplace", "group project"]
@@ -44,7 +48,8 @@
   # demo: "https://autodiff-engine.jasperkleine.nl"
   main_file: "README.md"
   code_path: "OOP_autodiff/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 3
   tags: ["Automatic Differentiation", "Gradient Descent", "Numpy", "OOP", "Machine Learning", "Unittest"]
   keywords: ["python", "autodiff", "automatic differentiation", "backpropagation", "gradients", "gradient descent", "chain rule", "reverse mode", "forward mode", "machine learning", "neural networks", "optimization", "loss", "numpy", "vector", "matrix", "OOP", "object oriented", "encapsulation", "inheritance", "polymorphism", "overloading", "operator overloading", "unit tests", "unittest", "regression", "logistic regression", "linear regression", "modeling"]
@@ -57,7 +62,8 @@
   # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
   code_path: "MLP_project/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 6
   tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation"]
   keywords: ["python", "pytorch", "torch", "machine learning", "ml", "neural networks", "nlp", "text", "ai detection", "ai generated", "classification", "binary classification", "ensemble", "ensembles", "stacking", "voting", "model selection", "feature engineering", "preprocessing", "tokenization", "vectorization", "tf-idf", "BERT", "finetuning", "transformers", "LSTM", "svm", "naive bayes", "logistic regression", "cross validation", "evaluation", "metrics", "accuracy", "precision", "recall", "f1", "confusion matrix", "analysis", "experiments", "k-fold"]
@@ -70,7 +76,8 @@
   # demo: "https://BSc-thesis.jasperkleine.nl"
   main_file: "README.md"
   code_path: "BSc_Thesis/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 1
   tags: ["Research", "LLMs", "Code Generation", "Prompting", "Multi-Agent Systems"]
   keywords: ["research", "thesis", "bachelor thesis", "LLM", "LLM's", "AI", "code generation", "prompting", "prompt engineering", "multi agent", "multi agents", "agents", "reasoning", "planning", "automation", "efficiency", "cost", "quality", "evaluation", "metrics", "benchmarks", "ablation study", "fine tuning", "instruction tuning", "datasets", "analysis", "academic writing", "literature review", "experiments", "coding"]
@@ -83,7 +90,8 @@
   demo: "https://fasteners.jasperkleine.nl"
   main_file: "README.md"
   code_path: "KTP_project/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 5
   tags: ["Inference Engine", "Knowledge Representation", "Rule Base", "Expert Interviews"]
   keywords: ["knowledge technology", "Docker", "expert system", "knowledge base", "rule based", "rule base", "inference engine", "forward chaining", "backward chaining", "domain model", "rule model", "problem solving model", "ontology", "knowledge representation", "decision support", "recommendation", "fasteners", "materials", "mechanical", "constraints", "user input", "flask", "web app", "python", "enums", "pytest", "expert interviews", "requirements", "UI", "forms", "explainability", "transparency", "debugging", "testing"]
@@ -95,7 +103,8 @@
   demo: "https://recipes.jasperkleine.nl"
   main_file: "README.md"
   code_path: "recipes/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 10
   tags: ["Flask", "Authentication", "CRUD", "SQLite", "Bootstrap 5"]
   keywords: ["python", "flask", "Docker", "recipes", "cooking", "food", "ingredients", "meal prep", "web app", "website", "web development", "CRUD", "create", "edit", "delete", "search", "filtering", "tags", "categories", "accounts", "authentication", "authorization", "SQLite", "database", "migrations", "bootstrap", "forms", "uploads", "images"]
@@ -108,7 +117,8 @@
   # demo: ""
   main_file: "README.md"
   code_path: "CompArch/"
-  files: []
+  file_whitelist: []
+  file_blacklist: []
   priority: 10
   tags: ["Assembly", "LC-3", "Computer Architecture", "Digital Logic"]
   keywords: ["lc-3", "assembly", "computer architecture", "instruction set", "datapath", "control flow", "registers", "memory", "stack", "io", "input output", "interrupts", "trap routines", "machine code", "binary", "encoding", "microarchitecture", "finite state machines", "digital logic", "low level", "systems"]

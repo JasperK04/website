@@ -3,7 +3,7 @@ URL routes for the portfolio application.
 Registered as the 'main' Blueprint.
 """
 
-import os
+import fnmatch
 import random
 from pathlib import Path
 
@@ -485,6 +485,16 @@ def serve_snippet_tokens(project: str):
 def _resolve_code_path(project: str, filename: str) -> Path:
     """Sanitize and resolve a code file path; abort 404 if not found."""
     base_dir = Path(current_app.config["BASE_DIR"]).resolve()
+
+    def _has_wildcards(value: str) -> bool:
+        return any(ch in value for ch in "*?[")
+
+    def _is_safe_pattern(value: str) -> bool:
+        if value.startswith("/"):
+            return False
+        parts = [p for p in value.split("/") if p not in ("", ".")]
+        return ".." not in parts
+
     project_data = _get_project_by_name(project)
     code_root = _resolve_project_root(project, project_data)
     requested_path = Path(filename)
@@ -526,46 +536,201 @@ def _resolve_project_root(project_name: str, project_data: dict | None) -> Path:
 
 def _build_project_files(project_name: str, project_data: dict) -> list[str]:
     code_root = _resolve_project_root(project_name, project_data)
-    explicit_files = project_data.get("files", []) or []
+    render_config = load_yaml("syntax_lists.yaml")
+    render_config = render_config if isinstance(render_config, dict) else {}
+    global_whitelist = render_config.get("global_whitelist", []) or []
+    global_blacklist = render_config.get("global_blacklist", []) or []
+
     main_file = project_data.get("main_file")
-    if main_file and main_file not in explicit_files:
-        explicit_files = [main_file, *explicit_files]
+    project_whitelist = project_data.get("file_whitelist", []) or []
+    legacy_files = project_data.get("files", []) or []
+    project_blacklist = project_data.get("file_blacklist", []) or []
+    if main_file:
+        project_whitelist = [main_file, *project_whitelist]
+    if legacy_files:
+        project_whitelist = [*legacy_files, *project_whitelist]
 
-        render_config = load_yaml("syntax_lists.yaml")
-        render_config = render_config if isinstance(render_config, dict) else {}
-    whitelist_exts = set(render_config.get("whitelist_exts", [".py", ".js", ".md"]))
-    blacklist_dirs = set(render_config.get("blacklist_dirs", []))
+    base_dir = Path(current_app.config["BASE_DIR"]).resolve()
 
-    auto_files: list[str] = []
+    def _has_wildcards(value: str) -> bool:
+        return any(ch in value for ch in "*?[")
+
+    def _is_safe_pattern(value: str) -> bool:
+        if value.startswith("/"):
+            return False
+        parts = [p for p in value.split("/") if p not in ("", ".")]
+        return ".." not in parts
+
+    def _prepare_filters(
+        entries: list[str],
+        allow_exts: bool = True,
+        allow_dirs: bool = True,
+        allow_files: bool = True,
+    ) -> list[tuple[str, str]]:
+        prepared: list[tuple[str, str]] = []
+        for entry in entries:
+            if not entry:
+                continue
+            entry_text = str(entry).strip()
+            if not entry_text:
+                continue
+            if not _is_safe_pattern(entry_text):
+                continue
+            if entry_text.startswith(".") and "/" not in entry_text:
+                if not allow_exts:
+                    continue
+                prepared.append((entry_text.lower(), "ext"))
+                continue
+            is_dir = entry_text.endswith("/")
+            entry_clean = entry_text.rstrip("/")
+            if _has_wildcards(entry_clean):
+                rel = entry_clean
+            else:
+                entry_path = Path(entry_clean)
+                if entry_path.is_absolute():
+                    continue
+                resolved = (code_root / entry_clean).resolve()
+                try:
+                    resolved.relative_to(base_dir)
+                    resolved.relative_to(code_root)
+                except ValueError:
+                    continue
+                if not resolved.exists():
+                    continue
+                rel = resolved.relative_to(code_root).as_posix()
+                if resolved.is_dir():
+                    is_dir = True
+            if is_dir:
+                if not allow_dirs:
+                    continue
+                prepared.append((f"{rel.rstrip('/')}/", "dir"))
+            else:
+                if not allow_files:
+                    continue
+                prepared.append((rel, "file"))
+        return prepared
+
+    project_whitelist_filters = _prepare_filters(
+        project_whitelist,
+        allow_exts=True,
+        allow_dirs=False,
+        allow_files=True,
+    )
+    project_blacklist_filters = _prepare_filters(
+        project_blacklist,
+        allow_exts=False,
+        allow_dirs=True,
+        allow_files=True,
+    )
+    global_whitelist_filters = _prepare_filters(
+        global_whitelist,
+        allow_exts=True,
+        allow_dirs=True,
+        allow_files=True,
+    )
+    global_blacklist_filters = _prepare_filters(
+        global_blacklist,
+        allow_exts=False,
+        allow_dirs=True,
+        allow_files=True,
+    )
+
+    def _split_filters(
+        filters: list[tuple[str, str]],
+    ) -> tuple[set[str], list[str], set[str]]:
+        exts: set[str] = set()
+        dirs: list[str] = []
+        files: set[str] = set()
+        for filter_path, filter_type in filters:
+            if filter_type == "ext":
+                exts.add(filter_path)
+            elif filter_type == "dir":
+                dirs.append(filter_path)
+            else:
+                files.add(filter_path)
+        return exts, dirs, files
+
+    global_whitelist_exts, global_whitelist_dirs, global_whitelist_files = (
+        _split_filters(global_whitelist_filters)
+    )
+    global_blacklist_exts, global_blacklist_dirs, global_blacklist_files = (
+        _split_filters(global_blacklist_filters)
+    )
+
+    def _matches_dirs(rel_path: str, dirs: list[str]) -> bool:
+        for dir_path in dirs:
+            if _has_wildcards(dir_path):
+                if fnmatch.fnmatch(rel_path, f"{dir_path}*"):
+                    return True
+            else:
+                if rel_path == dir_path.rstrip("/") or rel_path.startswith(dir_path):
+                    return True
+        return False
+
+    def _matches_filters(rel_path: str, filters: list[tuple[str, str]]) -> bool:
+        rel_lower = rel_path.lower()
+        for filter_path, filter_type in filters:
+            if filter_type == "dir":
+                if _matches_dirs(rel_path, [filter_path]):
+                    return True
+            elif filter_type == "file":
+                if _has_wildcards(filter_path):
+                    if fnmatch.fnmatch(rel_path, filter_path):
+                        return True
+                elif rel_path == filter_path:
+                    return True
+            elif _has_wildcards(filter_path):
+                if fnmatch.fnmatch(path.suffix.lower(), filter_path):
+                    return True
+            elif rel_lower.endswith(filter_path):
+                return True
+        return False
+
+    if not code_root.exists():
+        return []
+
+    visible_files: list[str] = []
     for path in code_root.rglob("*"):
         if not path.is_file():
             continue
-        rel_parts = path.relative_to(code_root).parts
-        if any(part in blacklist_dirs for part in rel_parts):
-            continue
-        if path.suffix.lower() not in whitelist_exts:
-            continue
-        rel = path.relative_to(code_root).as_posix()
-        auto_files.append(rel)
+        rel_path = path.relative_to(code_root).as_posix()
+        project_whitelisted = _matches_filters(rel_path, project_whitelist_filters)
+        project_blacklisted = _matches_filters(rel_path, project_blacklist_filters)
 
-    explicit_normalized: list[str] = []
-    base_dir = Path(current_app.config["BASE_DIR"]).resolve()
-    for explicit in explicit_files:
-        if not explicit:
+        if project_whitelisted:
+            visible_files.append(rel_path)
             continue
-        explicit_path = Path(str(explicit))
-        if explicit_path.is_absolute():
+        if project_blacklisted:
             continue
-        resolved = (code_root / explicit_path).resolve()
-        try:
-            resolved.relative_to(base_dir)
-        except ValueError:
-            continue
-        if not resolved.exists():
-            continue
-        rel = Path(os.path.relpath(resolved, code_root)).as_posix()
-        explicit_normalized.append(rel)
 
-    combined = list(dict.fromkeys(explicit_normalized + auto_files))
-    combined.sort()
-    return combined
+        if any(
+            fnmatch.fnmatch(rel_path, pattern)
+            if _has_wildcards(pattern)
+            else rel_path == pattern
+            for pattern in global_whitelist_files
+        ):
+            visible_files.append(rel_path)
+            continue
+        if any(
+            fnmatch.fnmatch(rel_path, pattern)
+            if _has_wildcards(pattern)
+            else rel_path == pattern
+            for pattern in global_blacklist_files
+        ):
+            continue
+
+        if _matches_dirs(rel_path, global_whitelist_dirs):
+            visible_files.append(rel_path)
+            continue
+        if _matches_dirs(rel_path, global_blacklist_dirs):
+            continue
+
+        if global_blacklist_exts and path.suffix.lower() in global_blacklist_exts:
+            continue
+        if global_whitelist_exts and path.suffix.lower() not in global_whitelist_exts:
+            continue
+        visible_files.append(rel_path)
+
+    visible_files = list(dict.fromkeys(visible_files))
+    visible_files.sort()
+    return visible_files

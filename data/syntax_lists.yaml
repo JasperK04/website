@@ -1,4 +1,4 @@
-whitelist_exts:
+global_whitelist:
   - .py
   - .js
   - .java
@@ -12,16 +12,24 @@ whitelist_exts:
   - .xml
   - .html
 
-blacklist_dirs:
-  - .git
-  - .venv
-  - __pycache__
-  - build
-  - data
-  - dist
-  - node_modules
-  - img
-  - projects
-  - css
-  - migrations
-  - templates
+global_blacklist:
+  - "*.git/"
+  - "*.github/"
+  - "*.vscode/"
+  - "*.venv/"
+  - "*venv/"
+  - "*env/"
+  - "*.env/"
+  - "*/__pycache__/"
+  - "*/build/"
+  - "*data/"
+  - "*dist/"
+  - "*node_modules/"
+  - "*img/"
+  - "*projects/"
+  - "*css/"
+  - "*gunicorn/"
+  - "*nginx/"
+  - "*migrations/"
+  - "*templates/"
+  - "*compose.y*"
