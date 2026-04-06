@@ -16,10 +16,10 @@ bio: |
 
   Overall, I’m motivated by creating meaningful systems, continuously improving my skills, and contributing to environments where learning and collaboration are central.
 
-avatar: "/static/img/profile.png"
+avatar: "/static/img/profile.webp"
 location: "Groningen"
 email: "contact@jasperkleine.nl"
-available: false
+available: true
 skills:
   languages:
     - Python
