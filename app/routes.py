@@ -734,3 +734,9 @@ def _build_project_files(project_name: str, project_data: dict) -> list[str]:
     visible_files = list(dict.fromkeys(visible_files))
     visible_files.sort()
     return visible_files
+
+
+@main.app_errorhandler(404)
+@main.route("/404")
+def error_404(error=None):
+    return render_template("404.html"), 404
