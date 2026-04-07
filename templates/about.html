@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}About{% endblock %}
+{% set page_title = "About" %}
+{% set meta_description = "Learn more about " ~ profile.name ~ " - " ~ profile.title ~ ". Background, skills, and current focus areas." %}
 
 {% block content %}
 <div class="page-header">
@@ -55,5 +56,12 @@
     {{ social.platform }} - {{ social.label }}
   </a>
   {% endfor %}
+</div>
+
+<div class="section-title">Explore</div>
+<div class="quick-links">
+  <a href="{{ url_for('main.projects') }}" class="btn">🔧 Projects</a>
+  <a href="{{ url_for('main.education') }}" class="btn">🎓 Education</a>
+  <a href="{{ url_for('main.jobs') }}" class="btn">💼 Experience</a>
 </div>
 {% endblock %}

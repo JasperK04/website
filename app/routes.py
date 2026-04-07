@@ -7,7 +7,16 @@ import fnmatch
 import random
 from pathlib import Path
 
-from flask import Blueprint, abort, current_app, jsonify, render_template, request
+from flask import (
+    Blueprint,
+    Response,
+    abort,
+    current_app,
+    jsonify,
+    render_template,
+    request,
+    url_for,
+)
 
 from .syntax_code import tokenize_plain
 from .syntax_code import tokenize_source as tokenize_code_source
@@ -234,9 +243,23 @@ def _build_course_search_items() -> list[dict]:
 
 @main.context_processor
 def inject_globals():
+    profile = load_yaml("profile.yaml")
+    socials = load_yaml("socials.yaml")
+    if not isinstance(profile, dict):
+        profile = {}
+    if not isinstance(socials, list):
+        socials = []
+    site_url = _get_site_url()
+    canonical_url = f"{site_url}{request.path}"
+    og_image_url = _build_og_image_url(profile, site_url)
+    structured_data = _build_structured_data(profile, socials, site_url, og_image_url)
     return {
-        "profile": load_yaml("profile.yaml"),
-        "socials": load_yaml("socials.yaml"),
+        "profile": profile,
+        "socials": socials,
+        "site_url": site_url,
+        "canonical_url": canonical_url,
+        "og_image_url": og_image_url,
+        "structured_data": structured_data,
     }
 
 
@@ -388,7 +411,60 @@ def project_detail(project_name: str):
     except ValueError:
         project_data["asset_root"] = None
     project_data["files"] = _build_project_files(project_name, project_data)
-    return render_template("project_detail.html", project=project_data)
+    related_projects = _build_related_projects(project_data, projects_data)
+    return render_template(
+        "project_detail.html",
+        project=project_data,
+        related_projects=related_projects,
+    )
+
+
+@main.route("/sitemap.xml")
+def sitemap():
+    site_url = _get_site_url()
+    pages = [
+        url_for("main.index"),
+        url_for("main.about"),
+        url_for("main.education"),
+        url_for("main.courses"),
+        url_for("main.jobs"),
+        url_for("main.projects"),
+    ]
+    programs = _load_list("courses.yaml")
+    for program in programs:
+        program_id = program.get("id")
+        if program_id:
+            pages.append(url_for("main.courses", program_id=program_id))
+
+    projects = _load_list("projects.yaml")
+    for project in projects:
+        name = project.get("name")
+        if name:
+            pages.append(url_for("main.project_detail", project_name=name))
+
+    urls = "\n".join(
+        f"  <url><loc>{site_url}{path}</loc></url>" for path in sorted(set(pages))
+    )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{urls}\n"
+        "</urlset>\n"
+    )
+    return Response(xml, mimetype="application/xml")
+
+
+@main.route("/robots.txt")
+def robots():
+    site_url = _get_site_url()
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /search",
+        "Disallow: /code/",
+        f"Sitemap: {site_url}/sitemap.xml",
+    ]
+    return Response("\n".join(lines) + "\n", mimetype="text/plain")
 
 
 # ---------------------------------------------------------------------------
@@ -516,6 +592,77 @@ def _resolve_code_path(project: str, filename: str) -> Path:
 def _get_project_by_name(project_name: str) -> dict | None:
     projects_data = _load_list("projects.yaml")
     return next((p for p in projects_data if p.get("name") == project_name), None)
+
+
+def _get_site_url() -> str:
+    configured = current_app.config.get("SITE_URL") or ""
+    if configured:
+        return configured.rstrip("/")
+    return request.url_root.rstrip("/")
+
+
+def _build_og_image_url(profile: dict, site_url: str) -> str | None:
+    if not isinstance(profile, dict):
+        return None
+    avatar = profile.get("avatar")
+    if not avatar:
+        return None
+    avatar_text = str(avatar)
+    if avatar_text.startswith("http://") or avatar_text.startswith("https://"):
+        return avatar_text
+    if avatar_text.startswith("/"):
+        return f"{site_url}{avatar_text}"
+    return f"{site_url}/{avatar_text}"
+
+
+def _build_structured_data(
+    profile: dict,
+    socials: list[dict],
+    site_url: str,
+    og_image_url: str | None,
+) -> list[dict]:
+    same_as = []
+    for social in socials or []:
+        url = social.get("url") if isinstance(social, dict) else None
+        if url and isinstance(url, str) and url.startswith("http"):
+            same_as.append(url)
+    person = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": profile.get("name"),
+        "jobTitle": profile.get("title"),
+        "url": site_url,
+    }
+    if same_as:
+        person["sameAs"] = same_as
+    if og_image_url:
+        person["image"] = og_image_url
+
+    website = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": profile.get("name"),
+        "url": site_url,
+    }
+    return [website, person]
+
+
+def _build_related_projects(project: dict, projects: list[dict]) -> list[dict]:
+    tags = {str(tag).lower() for tag in project.get("tags", []) if tag}
+    if not tags:
+        return []
+    scored: list[tuple[int, int, dict]] = []
+    for candidate in projects:
+        if candidate.get("name") == project.get("name"):
+            continue
+        candidate_tags = {str(tag).lower() for tag in candidate.get("tags", []) if tag}
+        overlap = tags.intersection(candidate_tags)
+        if overlap:
+            scored.append(
+                (len(overlap), candidate.get("priority", 99), dict(candidate))
+            )
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return [item for _, _, item in scored[:3]]
 
 
 def _resolve_project_root(project_name: str, project_data: dict | None) -> Path:

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}{{ project.display_name or project.name }}{% endblock %}
+{% set page_title = project.display_name or project.name %}
+{% set meta_description = project.description or (project.display_name or project.name) %}
+{% set og_type = "article" %}
 {% block body_class %}previewer-page{% endblock %}
 
 {% block extra_css %}
@@ -88,6 +90,17 @@
     <div class="card-title">Project Goal</div>
   </div>
   <div class="card-body">{{ project.goal }}</div>
+</div>
+{% endif %}
+
+{% if related_projects %}
+<div class="section-title">Related projects</div>
+<div class="project-grid">
+  {% for related in related_projects %}
+    {% with project=related %}
+      {% include "components/cards/project_card.html" %}
+    {% endwith %}
+  {% endfor %}
 </div>
 {% endif %}
 {% endblock %}

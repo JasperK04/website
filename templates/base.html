@@ -3,16 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Portfolio{% endblock %} - {{ profile.name }}</title>
   {% set tagline_value = profile.tagline %}
   {% if profile.tagline is sequence and profile.tagline is not string %}
     {% set tagline_value = profile.tagline | random %}
   {% endif %}
-  <meta name="description" content="{{ tagline_value }}">
+  {% set page_title_value = page_title | default("Portfolio", true) %}
+  {% set full_title = page_title_value ~ " - " ~ profile.name %}
+  {% set meta_description_value = meta_description | default(tagline_value, true) %}
+  {% set meta_robots_value = meta_robots | default("", true) %}
+  {% set og_type_value = og_type | default("website", true) %}
+
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ meta_description_value }}">
+  {% if meta_robots_value %}
+    <meta name="robots" content="{{ meta_robots_value }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <meta property="og:title" content="{{ full_title }}">
+  <meta property="og:description" content="{{ meta_description_value }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="{{ og_type_value }}">
+  <meta property="og:site_name" content="{{ profile.name }}">
+  {% if og_image_url %}
+    <meta property="og:image" content="{{ og_image_url }}">
+  {% endif %}
+
+  <meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ full_title }}">
+  <meta name="twitter:description" content="{{ meta_description_value }}">
+  {% if og_image_url %}
+    <meta name="twitter:image" content="{{ og_image_url }}">
+  {% endif %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   {% block extra_css %}{% endblock %}
   <!-- Load theme script in <head> to apply data-theme before first paint -->
   <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  {% if structured_data %}
+    <script type="application/ld+json">{{ structured_data | tojson }}</script>
+  {% endif %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% set page_title = "Home" %}
+{% set meta_description = "Portfolio of " ~ profile.name ~ ", " ~ profile.title ~ " based in " ~ profile.location ~ ". Projects, skills, education, and experience." %}
 
 {% block content %}
 <div class="hero">

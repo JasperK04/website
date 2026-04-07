@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{{ page_title or "Courses & Grades" }}{% endblock %}
+{% set page_title = page_title or "Courses & Grades" %}
+{% set meta_description = "Coursework, grades, and key topics studied by " ~ profile.name ~ "." %}
 
 {% macro render_courses(courses) %}
   {% if courses %}
