@@ -4,6 +4,8 @@ services:
     container_name: portfolio
     networks:
       - jasper
+    env_file:
+      - .env
 
 networks:
   jasper:
