@@ -6,6 +6,8 @@ services:
       - jasper
     env_file:
       - .env
+    volumes:
+      - ./logs:/app/logs
 
 networks:
   jasper:

@@ -7,11 +7,14 @@ Usage::
     app = create_app()          # production
     app = create_app('development')   # dev / debug
 """
+
 from pathlib import Path
 
 from flask import Flask
 
+from .cli import logs_summary
 from .config import get_config
+from .logging_setup import setup_logging
 from .routes import main
 
 _BASE_DIR = Path(__file__).parent.parent
@@ -38,6 +41,10 @@ def create_app(env: str | None = None) -> Flask:
 
     app.config.from_object(get_config(env))
     app.config["BASE_DIR"] = _BASE_DIR
+
+    setup_logging(app)
+
+    app.cli.add_command(logs_summary)
 
     app.register_blueprint(main)
 

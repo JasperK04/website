@@ -22,6 +22,11 @@ class Config:
     if not SITE_URL:
         raise RuntimeError("Missing required environment variable: SITE_URL")
     SITE_URL = SITE_URL.rstrip("/")
+    LOG_DIR = Path(os.environ.get("LOG_DIR", BASE_DIR / "logs"))
+    LOG_MAX_BYTES = int(os.environ.get("LOG_MAX_BYTES", "5242880"))
+    LOG_BACKUP_COUNT = int(os.environ.get("LOG_BACKUP_COUNT", "5"))
+    LOG_SLOW_TTFB_MS = int(os.environ.get("LOG_SLOW_TTFB_MS", "1000"))
+    ANALYTICS_SESSION_SECONDS = int(os.environ.get("ANALYTICS_SESSION_SECONDS", "1800"))
 
 
 class DevelopmentConfig(Config):

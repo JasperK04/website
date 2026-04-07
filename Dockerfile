@@ -15,4 +15,6 @@ ENV PATH="/app/.venv/bin:$PATH"
 
 COPY . .
 
+RUN mkdir -p /app/logs
+
 CMD ["uv", "run", "-m", "gunicorn", "-w", "2", "-b", "0.0.0.0:80", "run:app"]

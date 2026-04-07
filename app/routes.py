@@ -18,6 +18,7 @@ from flask import (
     url_for,
 )
 
+from .logging_setup import log_search_query
 from .syntax_code import tokenize_plain
 from .syntax_code import tokenize_source as tokenize_code_source
 from .syntax_data import tokenize_json, tokenize_markup, tokenize_yaml
@@ -385,6 +386,12 @@ def global_search():
         courses_items = search_items(_build_course_search_items(), query)[:3]
 
         has_results = any([projects, education_items, jobs_items, courses_items])
+
+        log_search_query(
+            query,
+            has_results,
+            len(projects) + len(education_items) + len(jobs_items) + len(courses_items),
+        )
 
     return render_template(
         "search.html",
