@@ -1,17 +1,17 @@
 # This portfolio website
-- Tighten accessibility: ensure keyboard nav, visible focus states, and alt text coverage across templates.
-- Strengthen SEO: improve how search engines crawl, index, and display your pages.
+- Done: Tighten accessibility: ensure keyboard nav, visible focus states, and alt text coverage across templates.
+- WIP: Strengthen SEO: improve how search engines crawl, index, and display your pages.
   - Add a sitemap.xml and submit it in Google Search Console and Bing Webmaster Tools.
   - Create robots.txt
   - Add canonical tags to avoid duplicate content issues across similar pages.
   - Add OpenGraph cards so shared links show rich previews.
   - Use descriptive titles/meta descriptions on each template to target search intent.
   - Ensure internal linking between related pages/projects to pass relevance signals.
-- Add website logging
+- DONE: Add website logging
   - Log 404s/500s with request path and referrer to identify broken links.
   - Track basic analytics (page views, top pages, bounce) with privacy-friendly tooling.
   - Capture search queries from the site search to surface content gaps.
-  - Add performance logging for slow pages (e.g., >1s TTFB) to target fixes.
+  - Add performance logging for slow pages (e.g., >2s TTFB) to target fixes.
 
 # Projects
 

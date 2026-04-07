@@ -418,11 +418,9 @@ def project_detail(project_name: str):
     except ValueError:
         project_data["asset_root"] = None
     project_data["files"] = _build_project_files(project_name, project_data)
-    related_projects = _build_related_projects(project_data, projects_data)
     return render_template(
         "project_detail.html",
         project=project_data,
-        related_projects=related_projects,
     )
 
 
@@ -652,24 +650,6 @@ def _build_structured_data(
         "url": site_url,
     }
     return [website, person]
-
-
-def _build_related_projects(project: dict, projects: list[dict]) -> list[dict]:
-    tags = {str(tag).lower() for tag in project.get("tags", []) if tag}
-    if not tags:
-        return []
-    scored: list[tuple[int, int, dict]] = []
-    for candidate in projects:
-        if candidate.get("name") == project.get("name"):
-            continue
-        candidate_tags = {str(tag).lower() for tag in candidate.get("tags", []) if tag}
-        overlap = tags.intersection(candidate_tags)
-        if overlap:
-            scored.append(
-                (len(overlap), candidate.get("priority", 99), dict(candidate))
-            )
-    scored.sort(key=lambda item: (-item[0], item[1]))
-    return [item for _, _, item in scored[:3]]
 
 
 def _resolve_project_root(project_name: str, project_data: dict | None) -> Path:

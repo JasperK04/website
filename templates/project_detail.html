@@ -93,16 +93,6 @@
 </div>
 {% endif %}
 
-{% if related_projects %}
-<div class="section-title">Related projects</div>
-<div class="project-grid">
-  {% for related in related_projects %}
-    {% with project=related %}
-      {% include "components/cards/project_card.html" %}
-    {% endwith %}
-  {% endfor %}
-</div>
-{% endif %}
 {% endblock %}
 
 {% block extra_js %}
