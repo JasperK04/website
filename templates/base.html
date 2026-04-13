@@ -35,10 +35,9 @@
   {% if og_image_url %}
     <meta name="twitter:image" content="{{ og_image_url }}">
   {% endif %}
-  <link rel="icon" type="image/webp" href="/static/img/favicon.webp">
+  <link rel="icon" href="/static/img/favicon.ico">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   {% block extra_css %}{% endblock %}
-  <!-- Load theme script in <head> to apply data-theme before first paint -->
   <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
   {% if structured_data %}
     <script type="application/ld+json">{{ structured_data | tojson }}</script>
