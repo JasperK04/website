@@ -58,12 +58,12 @@
   display_name: "AI detection using ensembles"
   Course: "Machine Learning Project"
   description: "A machine learning project focused on detecting AI-generated content using multiple models and ensembling them."
-  # github: "https://github.com/JasperK04/MLP_final_project"
+  github: "https://github.com/JasperK04/MLP_final"
   # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
   code_path: "MLP_project/"
   file_whitelist: []
-  file_blacklist: []
+  file_blacklist: ["*experiment*", "optimiser*", "stats.py"]
   priority: 6
   tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation"]
   keywords: ["python", "pytorch", "torch", "machine learning", "ml", "neural networks", "nlp", "text", "ai detection", "ai generated", "classification", "binary classification", "ensemble", "ensembles", "stacking", "voting", "model selection", "feature engineering", "preprocessing", "tokenization", "vectorization", "tf-idf", "BERT", "finetuning", "transformers", "LSTM", "svm", "naive bayes", "logistic regression", "cross validation", "evaluation", "metrics", "accuracy", "precision", "recall", "f1", "confusion matrix", "analysis", "experiments", "k-fold"]

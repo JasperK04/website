@@ -10,3 +10,6 @@
 [submodule "static/projects/KTP_project"]
 	path = static/projects/KTP_project
 	url = git@github.com:JasperK04/KTP.git
+[submodule "static/projects/MLP_project"]
+	path = static/projects/MLP_project
+	url = git@github.com:JasperK04/MLP_final.git
