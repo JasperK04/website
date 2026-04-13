@@ -9,7 +9,7 @@
   {% endif %}
   {% set page_title_value = page_title | default("Portfolio", true) %}
   {% set full_title = page_title_value ~ " - " ~ profile.name %}
-  {% set meta_description_value = meta_description | default(tagline_value, true) %}
+  {% set meta_description_value = meta_description | default((tagline_value ~ ' ' ~ (profile.bio | striptags | truncate(240, True, '...'))), true) %}
   {% set meta_robots_value = meta_robots | default("", true) %}
   {% set og_type_value = og_type | default("website", true) %}
 
