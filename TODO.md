@@ -1,6 +1,6 @@
 # This portfolio website
 - Done: Tighten accessibility: ensure keyboard nav, visible focus states, and alt text coverage across templates.
-- WIP: Strengthen SEO: improve how search engines crawl, index, and display your pages.
+- DONE: Strengthen SEO: improve how search engines crawl, index, and display your pages.
   - Add a sitemap.xml and submit it in Google Search Console and Bing Webmaster Tools.
   - Create robots.txt
   - Add canonical tags to avoid duplicate content issues across similar pages.
@@ -16,16 +16,16 @@
 # Projects
 
 ## marketplace
-- Convert all uploaded images to WebP on upload to reduce bandwidth and improve load time.
-- Add product search filters (price, category, condition) for better discovery.
-- Add searchbar such that users can actually find products more easily.
-- Create admin account from .env instead of being coded in.
-- Admins can view deactivated listing and users
-- Users can see their own deactivated listings and profile
-- Disable buy option for deactivated accounts.
-- Users should be logged out if the db is reseeded  
-- Automatically Re-seed (faker) or restore (from backup) db 2x a day to prevent spam. 
-  - Add info banners to user and listing creation that informs users of this.
+- DONE: Convert all uploaded images to WebP on upload to reduce bandwidth and improve load time.
+- DONE: Add product search filters (price, category, condition) for better discovery.
+- DONE: Add searchbar such that users can actually find products more easily.
+- DONE: Create admin account from .env instead of being coded in.
+- DONE: Admins can view deactivated listing and users
+- DONE: Users can see their own deactivated listings and profile
+- DONE: Disable buy option for deactivated accounts.
+- DONE: Users should be logged out if the db is reseeded  
+- DONE: Automatically Re-seed (faker) or restore (from backup) db 2x a day to prevent spam. 
+  - DONE: Add info banners to user and listing creation that informs users of this.
 
 ## recipes
 - Introduce three account roles: reviewer, creator, and admin with clearly scoped permissions.
