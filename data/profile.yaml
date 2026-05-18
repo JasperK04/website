@@ -1,6 +1,6 @@
 name: "Jasper Kleine"
 title: "Information Science Student"
-tagline: 
+tagline:
   - "Bridging AI and software to turn data, code, and curiosity into useful products."
   - "Turning passion for software and machine learning into real solutions."
   - "Where curiosity meets code and becomes something people can use."
@@ -41,5 +41,3 @@ skills:
   experience:
     - role: Teaching Assistant
       focus: Assisting students with Programming
-    - role: Educational Minor
-      focus: Teaching & Computer Science
