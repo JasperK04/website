@@ -229,23 +229,6 @@
                   keywords: ["multivariate", "anova", "multiple regression", "logistic regression", "mixed effects", "r", "statistical reporting"]
     - year: 3
       semesters:
-        - semester: 1
-          courses:
-          - name: "Neem Regie"
-            grade: ""
-            ects: "10"
-            topics: ["Leadership", "Authority", "Communication", "Motivate Students"]
-            description: ""
-          - name: "Geef Les"
-            grade: ""
-            ects: "10"
-            topics: ["Curriculum design", "Teaching", "Stimulate Learning"]
-            description: ""
-          - name: "Verken je schoolvak"
-            grade: ""
-            ects: "10"
-            topics: ["Curriculum Integration", "Practical skills", "Subject didactics"]
-            description: ""
         - semester: 2
           courses:
             - name: "Thesis"
