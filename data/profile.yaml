@@ -8,7 +8,7 @@ tagline:
 bio: |
   I am an Information Science student with a strong interest in the intersection of software engineering and machine learning. I enjoy building systems that are not only technically sound, but also practical and usable. From structured back-end systems and data pipelines to machine learning models that balance performance, interpretability, and efficiency. I tend to gravitate toward clean abstractions, modular architectures, and designs that scale well over time.
 
-  Alongside my studies, I work as a teaching assistant for Introduction to Programming. In that role, I help students develop their coding skills, guide them through challenging concepts, and support them in building confidence as problem solvers. Explaining technical ideas in a clear and accessible way is something I genuinely enjoy. I also serve as a student ambassador for the IK program at the University of Groningen, where I represent the program during open days and help prospective students get a realistic sense of both the academic experience and student life.
+  Alongside my studies, I worked as a teaching assistant for Introduction to Programming. In that role, I helped students develop their coding skills, guide them through challenging concepts, and support them in building confidence as problem solvers. Explaining technical ideas in a clear and accessible way is something I genuinely enjoy. I also serve as a student ambassador for the IK program at the University of Groningen, where I represent the program during open days and help prospective students get a realistic sense of both the academic experience and student life.
 
   Beyond machine learning, I have experience with software architecture and data management, including relational databases and structured system design. I enjoy thinking about how components fit together, how data flows through a system, and how to design software that remains maintainable as it grows. Whether it’s experimenting with ensemble models or structuring complex relationships in code, I like building things that are both elegant and functional.
 
@@ -41,5 +41,3 @@ skills:
   experience:
     - role: Teaching Assistant
       focus: Assisting students with Programming
-    - role: Educational Minor
-      focus: Teaching & Computer Science

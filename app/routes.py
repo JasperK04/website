@@ -331,8 +331,8 @@ def courses(program_id: str | None = None):
 @main.route("/jobs")
 def jobs():
     query = request.args.get("q", "")
-    tech = request.args.get("tech", "all")
-    tech = "tech" if tech == "tech" else "all"
+    tech = request.args.get("tech", "tech")
+    tech = "all" if tech == "all" else "tech"
     items = _load_list("jobs.yaml")
     if query:
         items = search_items(items, query)

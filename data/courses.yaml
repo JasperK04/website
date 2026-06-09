@@ -26,31 +26,6 @@
   program: "BSc Information Science"
   layout: "grouped"
   description: "Grouped by year, semester, and block."
-  extra:
-    - name: "Object Oriented Programming for AI"
-      grade: "8.5"
-      ects: "5"
-      topics: ["Python", "Inheritance", "Encapsulation", "Polymorphism", "Abstraction", "Duck typing"]
-      description: "Introduces object-oriented programming in Python, covering encapsulation, inheritance, polymorphism, and testing."
-      keywords: ["oop", "python", "classes", "encapsulation", "inheritance", "polymorphism", "abstraction", "unit testing", "design patterns", "software design"]
-    - name: "Computer Architecture"
-      grade: "8.5"
-      ects: "5"
-      topics: ["Assembly language", "architectures", "Binary Operations", "Input/Output systems"]
-      description: "Covers the LC-3 ISA, assembly programming, and core architecture topics like datapaths, memory, I/O, and digital logic."
-      keywords: ["computer architecture", "lc-3", "assembly", "isa", "datapath", "memory", "io", "binary", "logic gates", "finite state machines"]
-    - name: "Knowledge Technology Practical"
-      grade: "6.5"
-      ects: "5"
-      topics: ["Python", "Knowledge Base Systems", "Inference Engines", "Group project", "Knowledge representation"]
-      description: "Designs and builds a knowledge system based on expert input, focusing on rule-based representation, inference, and system evaluation."
-      keywords: ["knowledge systems", "expert system", "rule-based", "inference", "knowledge acquisition", "knowledge representation", "evaluation", "project"]
-    - name: "Algorithms and Data Structures for AI"
-      grade: ""
-      ects: "5"
-      topics: ["Python", "Algorithms", "Data structures", "Complexity analysis"]
-      description: "Introduces core data structures and algorithms in Python with an emphasis on complexity analysis and correct program design."
-      keywords: ["algorithms", "data structures", "complexity", "python", "graphs", "trees", "queues", "stacks", "analysis", "pseudocode"]
   years:
     - year: 1
       semesters:
@@ -229,42 +204,67 @@
                   keywords: ["multivariate", "anova", "multiple regression", "logistic regression", "mixed effects", "r", "statistical reporting"]
     - year: 3
       semesters:
-        - semester: 1
-          courses:
-          - name: "Neem Regie"
-            grade: ""
-            ects: "10"
-            topics: ["Leadership", "Authority", "Communication", "Motivate Students"]
-            description: ""
-          - name: "Geef Les"
-            grade: ""
-            ects: "10"
-            topics: ["Curriculum design", "Teaching", "Stimulate Learning"]
-            description: ""
-          - name: "Verken je schoolvak"
-            grade: ""
-            ects: "10"
-            topics: ["Curriculum Integration", "Practical skills", "Subject didactics"]
-            description: ""
+        - semester: "1: Minor"
+          blocks:
+            - block: "A"
+              courses:
+                - name: "Introduction to Computer Science"
+                  grade: "7.0"
+                  ects: "5"
+                  topics: ["C", "Languages", "logic circuits", "processors", "Computational Complexity"]
+                  description: "Introduction to Computer Science in Groningen, and a basic training in research skills, including presentation, analytical and programming skills"
+                  keywords: ["C", "computer science", "programming", "languages", "logic circuits", "processors", "complexity", "research skills", "presentation", "analysis", "compilers", "projects"]
+                - name: "Imperative Programming"
+                  grade: "6.0"
+                  ects: "5"
+                  topics: ["C", "Pointers", "Memory management", "Recursion", "Search algorithms", "Sorting algorithms", "Mathematical algorithms"]
+                  description: "Basics of C programming with imperative constructs, memory management, and algorithm implementation. later in the course more complex topics are covered such as recursion and time complexity analysis."
+                  keywords: ["C", "imperative programming", "pointers", "memory management", "recursion", "search algorithms", "sorting algorithms", "mathematical algorithms", "complexity analysis", "assignments", "projects", "C fundamentals"]
+                - name: "Object Oriented Programming for AI"
+                  grade: "8.5"
+                  ects: "5"
+                  topics: ["Python", "Inheritance", "Encapsulation", "Polymorphism", "Abstraction", "Duck typing"]
+                  description: "Introduces object-oriented programming in Python, covering encapsulation, inheritance, polymorphism, and testing."
+                  keywords: ["oop", "python", "classes", "encapsulation", "inheritance", "polymorphism", "abstraction", "unit testing", "design patterns", "software design"]
+            - block: "B"  
+              courses:  
+                - name: "Computer Architecture"
+                  grade: "8.5"
+                  ects: "5"
+                  topics: ["Assembly language", "architectures", "Binary Operations", "Input/Output systems"]
+                  description: "Covers the LC-3 ISA, assembly programming, and core architecture topics like datapaths, memory, I/O, and digital logic."
+                  keywords: ["computer architecture", "lc-3", "assembly", "isa", "datapath", "memory", "io", "binary", "logic gates", "finite state machines"]            
+                - name: "Knowledge Technology Practical"
+                  grade: "6.5"
+                  ects: "5"
+                  topics: ["Python", "Knowledge Base Systems", "Inference Engines", "Group project", "Knowledge representation"]
+                  description: "Designs and builds a knowledge system based on expert input, focusing on rule-based representation, inference, and system evaluation."
+                  keywords: ["knowledge systems", "expert system", "rule-based", "inference", "knowledge acquisition", "knowledge representation", "evaluation", "project"]
+                - name: "Algorithms and Data Structures for AI"
+                  grade: "9.0"
+                  ects: "5"
+                  topics: ["Python", "Algorithms", "Data structures", "Complexity analysis"]
+                  description: "Introduces data structures and algorithms in Python with an emphasis on complexity analysis and correct program design."
+                  keywords: ["algorithms", "data structures", "complexity", "python", "graphs", "trees", "queues", "stacks", "analysis", "pseudocode", "dijksta", "a*", "astar"]
         - semester: 2
           courses:
             - name: "Thesis"
               grade: ""
               ects: "10"
               topics: ["Python", "Research", "LLM's", "Prompt engineering", "Code generation", "Evaluation", "Multi-agent systems"]
-              description: "Independent research project in Information Science, including literature study, experiments, and formal reporting."
+              description: "Independent research project in Information Science, Title: 'PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation'"
               keywords: ["thesis", "research", "information science", "literature review", "experiments", "reporting", "programming"]
           blocks:
             - block: "A"
               courses:
                 - name: "Machine Learning Project"
-                  grade: ""
+                  grade: "8.3"
                   ects: "5"
                   topics: ["Python", "PyTorch", "SVM", "Clustering", "Neural Networks", "BERT"]
                   description: "Group project applying machine learning to real-world tasks with emphasis on evaluation and literature review."
                   keywords: ["machine learning", "classification", "clustering", "image classification", "text classification", "literature review", "group project", "evaluation"]
                 - name: "Machine Translation"
-                  grade: ""
+                  grade: "7.9"
                   ects: "5"
                   topics: ["Python", "NMT", "BLEU", "Transformer architecture", "Attention", "Fine-tuning"]
                   description: "Introduces machine translation paradigms and neural MT, including training, evaluation, and societal implications."

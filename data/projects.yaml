@@ -55,9 +55,9 @@
   keywords: ["python", "autodiff", "automatic differentiation", "backpropagation", "gradients", "gradient descent", "chain rule", "reverse mode", "forward mode", "machine learning", "neural networks", "optimization", "loss", "numpy", "vector", "matrix", "OOP", "object oriented", "encapsulation", "inheritance", "polymorphism", "overloading", "operator overloading", "unit tests", "unittest", "regression", "logistic regression", "linear regression", "modeling"]
 
 - name: "MLP"
-  display_name: "AI detection using ensembles"
+  display_name: "Machine Learning Project for AI detection"
   Course: "Machine Learning Project"
-  description: "A machine learning project focused on detecting AI-generated content using multiple models and ensembling them."
+  description: "A machine learning project focused on detecting AI-generated content using multiple classifiers as well as ensembled combinations of these models."
   github: "https://github.com/JasperK04/MLP_final"
   # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
@@ -65,7 +65,7 @@
   file_whitelist: []
   file_blacklist: ["*experiment*", "optimiser*", "stats.py"]
   priority: 6
-  tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation"]
+  tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation", "Grid Search"]
   keywords: ["python", "pytorch", "torch", "machine learning", "ml", "neural networks", "nlp", "text", "ai detection", "ai generated", "classification", "binary classification", "ensemble", "ensembles", "stacking", "voting", "model selection", "feature engineering", "preprocessing", "tokenization", "vectorization", "tf-idf", "BERT", "finetuning", "transformers", "LSTM", "svm", "naive bayes", "logistic regression", "cross validation", "evaluation", "metrics", "accuracy", "precision", "recall", "f1", "confusion matrix", "analysis", "experiments", "k-fold"]
 
 - name: "Thesis"
@@ -77,7 +77,7 @@
   main_file: "README.md"
   code_path: "BSc_Thesis/"
   file_whitelist: []
-  file_blacklist: []
+  file_blacklist: ["**.html"]
   priority: 1
   tags: ["Research", "LLMs", "Code Generation", "Prompting", "Multi-Agent Systems"]
   keywords: ["research", "thesis", "bachelor thesis", "LLM", "LLM's", "AI", "code generation", "prompting", "prompt engineering", "multi agent", "multi agents", "agents", "reasoning", "planning", "automation", "efficiency", "cost", "quality", "evaluation", "metrics", "benchmarks", "ablation study", "fine tuning", "instruction tuning", "datasets", "analysis", "academic writing", "literature review", "experiments", "coding"]

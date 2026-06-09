@@ -4,14 +4,14 @@
   start: "2023"
   end: "current"
   courses_id: "rug-bsc-information-science"
-  description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in January 2027."
+  description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in June 2026."
   project:
     - name: "Thesis"
-      title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation: An Evaluation under Execution Constraints"
+      title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
       grade: ""
   minor:
-    name: "Educational Minor"
-    description: "Completed an educational minor focused on learning how to teach in the domain of computer science, gaining experience in curriculum design and completed an internship at a high school."
+    name: "AI/CS Minor"
+    description: "Completed an personal minor in AI and CS to deepen my knowledge in software engineering, machine learning, and computational linguistics."
   highlights:
     - "Have been a TA for 'Programmeren I en II' since 2024, assisting students with Python programming assignments and providing support during lab sessions."
     - "Have been part of the program committee for the bachelor's program in '24-'25."
@@ -25,9 +25,9 @@
 - institution: "University of Twente"
   degree: "MSc Business Information Technology"
   field: "Information Science"
-  start: "2027"
+  start: "2026"
   end: "future"
-  description: "Planning to pursue a Master's degree in Business Information Technology at the University of Twente, with a focus on data science, and the application of machine learning in business contexts. Expected to start in February 2027."
+  description: "Planning to pursue a Master's degree in Business Information Technology at the University of Twente, with a focus on data science, and the application of machine learning in business contexts. Expected to start in September 2026."
   # project: 
   #   - name: ""
   #     title: ""
