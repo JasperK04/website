@@ -68,16 +68,16 @@
   tags: ["Machine Learning", "Neural Networks", "PyTorch", "Preprocessing", "Data Analysis", "Model Evaluation", "Grid Search"]
   keywords: ["python", "pytorch", "torch", "machine learning", "ml", "neural networks", "nlp", "text", "ai detection", "ai generated", "classification", "binary classification", "ensemble", "ensembles", "stacking", "voting", "model selection", "feature engineering", "preprocessing", "tokenization", "vectorization", "tf-idf", "BERT", "finetuning", "transformers", "LSTM", "svm", "naive bayes", "logistic regression", "cross validation", "evaluation", "metrics", "accuracy", "precision", "recall", "f1", "confusion matrix", "analysis", "experiments", "k-fold"]
 
-- name: "Thesis"
+- name: "Bachelor Thesis"
   display_name: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
   Course: "Bachelor Thesis"
-  description: "Future work"
+  description: "This project is my bachelor thesis, which focuses on the efficiency of code generation using large language models (LLMs) in multi-agent systems. The research investigates how different prompting strategies can improve the quality and efficiency of code generation tasks, with a particular emphasis on multi-agent collaboration and reasoning. The thesis includes a comprehensive literature review, experimental design, and evaluation of various prompting techniques to assess their impact on code generation performance."
   github: "https://github.com/JasperK04/thesis"
   # demo: "https://BSc-thesis.jasperkleine.nl"
   main_file: "README.md"
   code_path: "BSc_Thesis/"
-  file_whitelist: []
-  file_blacklist: ["**.html"]
+  file_whitelist: [literature/**.pdf]
+  file_blacklist: ["**.html", "issues.md", "todo.md", "outputs/", "future_work/", "dataset/", "to_data.py"]
   priority: 1
   tags: ["Research", "LLMs", "Code Generation", "Prompting", "Multi-Agent Systems"]
   keywords: ["research", "thesis", "bachelor thesis", "LLM", "LLM's", "AI", "code generation", "prompting", "prompt engineering", "multi agent", "multi agents", "agents", "reasoning", "planning", "automation", "efficiency", "cost", "quality", "evaluation", "metrics", "benchmarks", "ablation study", "fine tuning", "instruction tuning", "datasets", "analysis", "academic writing", "literature review", "experiments", "coding"]

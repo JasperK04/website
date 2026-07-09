@@ -249,7 +249,7 @@
         - semester: 2
           courses:
             - name: "Thesis"
-              grade: ""
+              grade: "8.1"
               ects: "10"
               topics: ["Python", "Research", "LLM's", "Prompt engineering", "Code generation", "Evaluation", "Multi-agent systems"]
               description: "Independent research project in Information Science, Title: 'PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation'"
@@ -272,13 +272,13 @@
             - block: "B"
               courses:
                 - name: "Ethical aspects in NLP"
-                  grade: ""
+                  grade: "9.2"
                   ects: "5"
                   topics: ["Ethics", "AI", "NLP", "Bias", "Fairness", "Accountability"]
                   description: "Discusses ethical challenges in NLP, including bias, privacy, explainability, and responsible deployment."
                   keywords: ["ethics", "bias", "fairness", "privacy", "explainability", "nlp", "responsibility", "open science"]
                 - name: "Language Technology"
-                  grade: ""
+                  grade: "8.8"
                   ects: "5"
                   topics: ["Python", "NLP", "Computational Linguistics", "Text analysis"]
                   description: "Covers practical language technology applications such as parsing, QA systems, and Linked Open Data."

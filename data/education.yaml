@@ -2,13 +2,13 @@
   degree: "BSc Information Science"
   field: "Information Science"
   start: "2023"
-  end: "current"
+  end: "2026"
   courses_id: "rug-bsc-information-science"
   description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in June 2026."
   project:
     - name: "Thesis"
       title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
-      grade: ""
+      grade: "8.1"
   minor:
     name: "AI/CS Minor"
     description: "Completed an personal minor in AI and CS to deepen my knowledge in software engineering, machine learning, and computational linguistics."
@@ -26,7 +26,7 @@
   degree: "MSc Business Information Technology"
   field: "Information Science"
   start: "2026"
-  end: "future"
+  end: "expected 2029"
   description: "Planning to pursue a Master's degree in Business Information Technology at the University of Twente, with a focus on data science, and the application of machine learning in business contexts. Expected to start in September 2026."
   # project: 
   #   - name: ""

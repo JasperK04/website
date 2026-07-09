@@ -13,3 +13,6 @@
 [submodule "static/projects/MLP_project"]
 	path = static/projects/MLP_project
 	url = git@github.com:JasperK04/MLP_final.git
+[submodule "static/projects/BSc_Thesis"]
+	path = static/projects/BSc_Thesis
+	url = https://github.com/JasperK04/Thesis.git
