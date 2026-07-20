@@ -15,6 +15,7 @@ from flask import (
     jsonify,
     render_template,
     request,
+    send_file,
     url_for,
 )
 
@@ -479,9 +480,16 @@ def robots():
 
 @main.route("/code/<project>/<path:filename>")
 def serve_code(project: str, filename: str):
-    """Return raw source file content as plain text."""
+    """Return project file content for the previewer."""
     file_path = _resolve_code_path(project, filename)
     print(f"Serving code file: {file_path}")
+    if file_path.suffix.lower() == ".pdf":
+        return send_file(
+            file_path,
+            mimetype="application/pdf",
+            as_attachment=False,
+            download_name=file_path.name,
+        )
     return (
         file_path.read_text(encoding="utf-8"),
         200,

@@ -90,6 +90,7 @@
       xml: "XML",
       asm: "ASM",
       sh: "Shell",
+      pdf: "PDF",
       txt: "Text",
     };
     return map[ext] || ext.toUpperCase() || "Text";
@@ -110,6 +111,7 @@
       xml: "🧩",
       asm: "🧠",
       sh: "⚙️",
+      pdf: "📕",
     };
     return icons[ext] || "📄";
   }
@@ -441,6 +443,33 @@
     renderMarkdownCodeBlocks(div);
   }
 
+  function renderPdf(filename) {
+    const pdfUrl = buildCodeUrl(filename);
+    const wrapper = document.createElement("div");
+    wrapper.className = "pdf-preview";
+
+    const frame = document.createElement("object");
+    frame.className = "pdf-preview-frame";
+    frame.data = pdfUrl;
+    frame.type = "application/pdf";
+    frame.setAttribute("aria-label", "PDF preview: " + filename);
+
+    const fallback = document.createElement("p");
+    fallback.className = "pdf-preview-fallback";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Open PDF";
+    fallback.appendChild(document.createTextNode("PDF preview is unavailable in this browser. "));
+    fallback.appendChild(link);
+
+    frame.appendChild(fallback);
+    wrapper.appendChild(frame);
+    codePane.innerHTML = "";
+    codePane.appendChild(wrapper);
+  }
+
   function renderMarkdownCodeBlocks(container) {
     const blocks = Array.from(container.querySelectorAll(".md-codeblock[data-lang][data-code]"));
     if (blocks.length === 0) return;
@@ -611,7 +640,7 @@
     currentFile = filename;
     codeFilename.textContent = filename;
     codeLangBadge.textContent = getLang(filename);
-    if (copyBtn) copyBtn.disabled = false;
+    if (copyBtn) copyBtn.disabled = getExt(filename) === "pdf";
 
     // Update active state in file list
     fileListEl.querySelectorAll(".file-item").forEach(function (li) {
@@ -718,6 +747,8 @@
         .catch(function (err) {
           showError(err.message);
         });
+    } else if (ext === "pdf") {
+      renderPdf(filename);
     } else {
       // Fetch raw content and render with line numbers (no highlighting)
       fetch(buildCodeUrl(filename))
