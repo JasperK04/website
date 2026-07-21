@@ -51,6 +51,18 @@ def log_search_query(query: str, has_results: bool, result_count: int) -> None:
     )
 
 
+def log_cv_download() -> None:
+    """Log a CV download event for analytics."""
+    _log_event(
+        "analytics",
+        {
+            "event": "cv_download",
+            "path": request.path,
+            "referrer": request.referrer,
+        },
+    )
+
+
 def _build_logger(app, name: str, path: Path) -> logging.Logger:
     logger = logging.getLogger(f"website.{name}")
     logger.setLevel(logging.INFO)

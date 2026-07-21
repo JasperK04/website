@@ -24,11 +24,13 @@ def logs_summary(limit: int) -> None:
 
     page_views = [e for e in analytics if e.get("event") == "page_view"]
     search_events = [e for e in analytics if e.get("event") == "search"]
+    download_events = [e for e in analytics if e.get("event") == "cv_download"]
 
     click.echo("\nAnalytics")
     click.echo("----------")
     click.echo(f"Total page views: {len(page_views)}")
     click.echo(f"Total searches: {len(search_events)}")
+    click.echo(f"CV downloads: {len(download_events)}")
     click.echo(
         f"Distinct sessions: {len({e.get('session_id') for e in page_views if e.get('session_id')})}"
     )
