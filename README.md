@@ -64,14 +64,11 @@ Key endpoints:
 - `GET /` and other content pages rendered from YAML.
 - `GET /projects` list view.
 - `GET /projects/<name>` code previewer page.
-- `GET /download/cv` tracked CV download endpoint with optional GeoIP lookup.
 - `GET /code/<project>/<path:filename>` raw file content.
 - `GET /code/<project>/<path:filename>/tokens` tokenized source for syntax highlighting.
 - `POST /code/<project>/snippet/tokens` tokenized Markdown code fences.
 
 Project file roots are resolved from `CODE_DIR` in `app/config.py` (default `static/projects`).
-
-GeoIP lookups are optional. To enable approximate location logging for CV downloads, set `GEOIP_DB_PATH` to a local MaxMind GeoLite2 City database file. If the file is missing, the download still works and only the anonymous analytics event is recorded.
 
 ## Syntax Highlighting
 

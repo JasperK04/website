@@ -21,7 +21,7 @@
   <p class="hero-bio">{{ profile.value_proposition or profile.bio }}</p>
 
   <div class="hero-actions">
-    {% if profile.cv_path %}<a href="{{ url_for('main.download_cv') }}" class="btn btn-primary" download>Download CV <span aria-hidden="true">↓</span></a>{% endif %}
+    {% if profile.cv_path %}<a href="{{ url_for('static', filename=profile.cv_path) }}" class="btn btn-primary" download>Download CV <span aria-hidden="true">↓</span></a>{% endif %}
     <a href="{{ url_for('main.projects') }}" class="btn">View projects</a>
   </div>
 

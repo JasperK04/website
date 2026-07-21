@@ -2,7 +2,7 @@
   role: "Assistant cook"
   type: "part-time"
   start: "Jan 2025"
-  end: "Jul 2026"
+  end: "Juli 2026"
   location: "Aduard"
   description: "Assistant cook in a fast-paced restaurant kitchen, supporting consistent service and menu preparation."
   tech_relevant: false
@@ -28,7 +28,7 @@
   role: "Teaching Assistant"
   type: "part-time"
   start: "Sep 2024"
-  end: "Feb 2026"
+  end: "feb 2026"
   location: "Groningen"
   description: "Teaching assistant for Introduction to Programming at the University of Groningen, helping students build sound programming and debugging habits."
   tech_relevant: True
@@ -80,7 +80,7 @@
   role: "Student Ambassador"
   type: "casual part-time"
   start: "Sep 2025"
-  end: "Jul 2026"
+  end: "Current"
   location: "Groningen"
   description: "Student ambassador representing the Information Science programme at open days and prospective-student events."
   tech_relevant: false

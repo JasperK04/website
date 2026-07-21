@@ -19,7 +19,7 @@ from flask import (
     url_for,
 )
 
-from .logging_setup import log_cv_download, log_search_query
+from .logging_setup import log_search_query
 from .syntax_code import tokenize_plain
 from .syntax_code import tokenize_source as tokenize_code_source
 from .syntax_data import tokenize_json, tokenize_markup, tokenize_yaml
@@ -484,28 +484,6 @@ def robots():
         f"Sitemap: {site_url}/sitemap.xml",
     ]
     return Response("\n".join(lines) + "\n", mimetype="text/plain")
-
-
-@main.route("/download/cv")
-def download_cv():
-    profile = load_yaml("profile.yaml")
-    if not isinstance(profile, dict):
-        abort(404)
-
-    cv_path = str(profile.get("cv_path", "")).lstrip("/")
-    if not cv_path:
-        abort(404)
-
-    file_path = Path(current_app.static_folder) / cv_path
-    if not file_path.is_file():
-        abort(404)
-
-    log_cv_download()
-    return send_file(
-        file_path,
-        as_attachment=True,
-        download_name=file_path.name,
-    )
 
 
 # ---------------------------------------------------------------------------
