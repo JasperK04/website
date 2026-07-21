@@ -27,6 +27,11 @@ class Config:
     LOG_BACKUP_COUNT = int(os.environ.get("LOG_BACKUP_COUNT", "5"))
     LOG_SLOW_TTFB_MS = int(os.environ.get("LOG_SLOW_TTFB_MS", "1000"))
     ANALYTICS_SESSION_SECONDS = int(os.environ.get("ANALYTICS_SESSION_SECONDS", "1800"))
+    GEOIP_DB_PATH = Path(
+        os.environ.get(
+            "GEOIP_DB_PATH", BASE_DIR / "data/GeoLite2-City_20260717/GeoLite2-City.mmdb"
+        )
+    )
 
 
 class DevelopmentConfig(Config):

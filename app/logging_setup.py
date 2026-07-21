@@ -8,6 +8,7 @@ import json
 import logging
 import time
 import uuid
+from ipaddress import ip_address
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
@@ -25,6 +26,7 @@ def setup_logging(app) -> None:
         "errors": _build_logger(app, "errors", log_dir / "errors.log"),
     }
     app.extensions["loggers"] = loggers
+    app.extensions["geoip_reader"] = _build_geoip_reader(app)
 
     app.before_request(_start_timer)
     app.after_request(_after_request)
@@ -49,6 +51,24 @@ def log_search_query(query: str, has_results: bool, result_count: int) -> None:
             "referrer": request.referrer,
         },
     )
+
+
+def log_cv_download() -> None:
+    """Log a CV download event and include an approximate location when available."""
+    session_id, page_count = _get_session_state()
+    payload = {
+        "event": "cv_download",
+        "path": request.path,
+        "referrer": request.referrer,
+        "session_id": session_id,
+        "page_count": page_count,
+    }
+
+    geoip = _lookup_geoip_location(_get_client_ip())
+    if geoip:
+        payload.update(geoip)
+
+    _log_event("analytics", payload)
 
 
 def _build_logger(app, name: str, path: Path) -> logging.Logger:
@@ -80,6 +100,22 @@ def _handler_registered(logger: logging.Logger, handler: RotatingFileHandler) ->
 
 def _start_timer() -> None:
     g.request_start = time.perf_counter()
+
+
+def _build_geoip_reader(app):
+    db_path = Path(app.config.get("GEOIP_DB_PATH", ""))
+    if not db_path or not db_path.is_file():
+        return None
+
+    try:
+        from geoip2.database import Reader
+    except ImportError:
+        return None
+
+    try:
+        return Reader(str(db_path))
+    except Exception:
+        return None
 
 
 def _after_request(response):
@@ -175,6 +211,56 @@ def _handle_500(error):
         },
     )
     return render_template("500.html"), 500
+
+
+def _get_client_ip() -> str | None:
+    if request.remote_addr:
+        return request.remote_addr
+    forwarded_for = request.headers.get("X-Forwarded-For", "").strip()
+    if forwarded_for:
+        return forwarded_for.split(",", 1)[0].strip() or None
+    return None
+
+
+def _lookup_geoip_location(client_ip: str | None) -> dict:
+    if not client_ip:
+        return {}
+
+    try:
+        ip_address(client_ip)
+    except ValueError:
+        return {}
+
+    reader = current_app.extensions.get("geoip_reader")
+    if reader is None:
+        return {}
+
+    try:
+        lookup = reader.city(client_ip)
+    except Exception:
+        return {}
+
+    country = lookup.country.names.get("en") if lookup.country.names else None
+    region = (
+        lookup.subdivisions.most_specific.names.get("en")
+        if lookup.subdivisions
+        else None
+    )
+    city = lookup.city.names.get("en") if lookup.city.names else None
+
+    payload = {}
+    if country:
+        payload["geo_country"] = country
+    if region:
+        payload["geo_region"] = region
+    if city:
+        payload["geo_city"] = city
+
+    location_parts = [part for part in (city, region, country) if part]
+    if location_parts:
+        payload["geo_location"] = ", ".join(location_parts)
+
+    return payload
 
 
 def _log_event(logger_key: str, payload: dict) -> None:
