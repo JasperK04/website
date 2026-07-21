@@ -56,8 +56,6 @@ def log_search_query(query: str, has_results: bool, result_count: int) -> None:
 def log_cv_download() -> None:
     """Log a CV download event and include an approximate location when available."""
     session_id, page_count = _get_session_state()
-    client_ip = _get_client_ip()
-    geoip = _lookup_geoip_location(client_ip)
     payload = {
         "event": "cv_download",
         "path": request.path,
@@ -66,9 +64,7 @@ def log_cv_download() -> None:
         "page_count": page_count,
     }
 
-    if client_ip:
-        payload["geo_lookup_status"] = _geoip_lookup_status(client_ip, geoip)
-
+    geoip = _lookup_geoip_location(_get_client_ip())
     if geoip:
         payload.update(geoip)
 
@@ -265,24 +261,6 @@ def _lookup_geoip_location(client_ip: str | None) -> dict:
         payload["geo_location"] = ", ".join(location_parts)
 
     return payload
-
-
-def _geoip_lookup_status(client_ip: str, geoip: dict) -> str:
-    try:
-        parsed_ip = ip_address(client_ip)
-    except ValueError:
-        return "invalid_ip"
-
-    if parsed_ip.is_private or parsed_ip.is_loopback or parsed_ip.is_link_local:
-        return "private_ip"
-
-    if geoip:
-        return "ok"
-
-    if current_app.extensions.get("geoip_reader") is None:
-        return "geoip_unavailable"
-
-    return "not_found"
 
 
 def _log_event(logger_key: str, payload: dict) -> None:

@@ -24,32 +24,15 @@ def logs_summary(limit: int) -> None:
 
     page_views = [e for e in analytics if e.get("event") == "page_view"]
     search_events = [e for e in analytics if e.get("event") == "search"]
-    download_events = [e for e in analytics if e.get("event") == "cv_download"]
 
     click.echo("\nAnalytics")
     click.echo("----------")
     click.echo(f"Total page views: {len(page_views)}")
     click.echo(f"Total searches: {len(search_events)}")
-    click.echo(f"CV downloads: {len(download_events)}")
     click.echo(
         f"Distinct sessions: {len({e.get('session_id') for e in page_views if e.get('session_id')})}"
     )
     click.echo(f"Bounces: {len([e for e in page_views if e.get('bounce_candidate')])}")
-
-    if download_events:
-        geo_statuses = Counter(
-            e.get("geo_lookup_status") for e in download_events if e.get("geo_lookup_status")
-        )
-        if geo_statuses:
-            click.echo("\nCV download geo lookup status")
-            _render_counter(geo_statuses, limit)
-
-        geo_locations = Counter(
-            e.get("geo_location") for e in download_events if e.get("geo_location")
-        )
-        if geo_locations:
-            click.echo("\nCV download locations")
-            _render_counter(geo_locations, limit)
 
     if page_views:
         top_pages = Counter(e.get("path") for e in page_views if e.get("path"))
