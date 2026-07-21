@@ -48,6 +48,13 @@
   margin-top: 0.5rem;
 }
 
+.content-label { color: var(--text-primary); font-size: 0.76rem; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 1rem; }
+.job-summary { margin-top: 0.25rem; }
+.job-technologies { margin-top: 0.45rem; }
+.achievements { list-style: none; padding: 0; margin-top: 0.45rem; }
+.achievements li { font-size: 0.84rem; color: var(--text-secondary); padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
+.achievements li::before { content: "✓"; color: var(--success); left: 0; position: absolute; }
+
 .responsibilities li {
   font-size: 0.82rem;
   color: var(--text-secondary);

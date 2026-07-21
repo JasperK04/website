@@ -1,4 +1,7 @@
-<div class="card">
+<article class="card project-card{% if project.featured %} project-card-featured{% endif %}{% if project.thesis %} project-card-thesis{% endif %}">
+  {% if project.image %}
+    <img class="project-image" src="{{ url_for('static', filename=project.image) }}" alt="{{ project.image_alt or ('Screenshot of ' ~ (project.display_name or project.name)) }}">
+  {% endif %}
   <div class="card-header">
     <div class="card-header-main">
       <div class="card-title">{{ project.display_name or project.name }}</div>
@@ -7,17 +10,31 @@
       {% endif %}
     </div>
     <div class="card-meta">
-      {% if "demo" in project %}
+      {% if project.thesis %}<span class="badge badge-purple">Bachelor Thesis · 8.1</span>{% endif %}
+      {% if project.featured and not project.thesis %}<span class="badge badge-info">Featured</span>{% endif %}
+      {% if project.demo %}
         <span class="badge badge-info">Live</span>
       {% endif %}
     </div>
   </div>
 
-  {% if project.description %}
-  <div class="card-body">{{ project.description }}</div>
+  {% if project.description %}<div class="card-body project-summary">{{ project.description }}</div>{% endif %}
+
+  {% if project.problem or project.implementation or project.result %}
+  <div class="project-case-study">
+    {% if project.problem %}<div><h3>Problem</h3><p>{{ project.problem }}</p></div>{% endif %}
+    {% if project.implementation %}<div><h3>Implementation</h3><p>{{ project.implementation }}</p></div>{% endif %}
+    {% if project.result %}<div><h3>Result</h3><p>{{ project.result }}</p></div>{% endif %}
+  </div>
   {% endif %}
 
-  {% if project.tags %}
+  {% if project.technology_groups %}
+  <div class="technology-groups" aria-label="Technologies used">
+    {% for category, technologies in project.technology_groups.items() %}
+    <div class="technology-group"><span>{{ category }}</span><div>{% for technology in technologies %}<span class="tag">{{ technology }}</span>{% endfor %}</div></div>
+    {% endfor %}
+  </div>
+  {% elif project.tags %}
   <div class="project-tag-list">
     {% for tag in project.tags %}
       <span class="tag">{{ tag }}</span>
@@ -28,7 +45,7 @@
   <div class="card-footer">
     <a href="{{ url_for('main.project_detail', project_name=project.name) }}" class="btn"
        aria-label="View code for {{ project.display_name or project.name }}">
-      🔍 View Code
+      🔍 View
     </a>
 
     {% if project.github %}
@@ -39,8 +56,8 @@
 
     {% if project.demo %}
       <a href="{{ project.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
-        🚀 Live Demo
+        🚀 Demo
       </a>
     {% endif %}
   </div>
-</div>
+</article>

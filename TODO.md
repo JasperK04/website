@@ -26,7 +26,7 @@
   - Average grade should be more prominent
   - Same for thesis grade
 
-download cv pdf
+- Download button for cv pdf
 
 # Projects
 

@@ -34,18 +34,33 @@
       </a>
     {% endif %}
   </div>
-  {% if "demo" in project %}
+  {% if project.demo %}
     <span class="badge badge-info">Live</span>
   {% endif %}
 </div>
 
-<!-- Tags -->
-{% if project.tags %}
-<div class="project-tags">
-  {% for tag in project.tags %}
-    <span class="tag">{{ tag }}</span>
+{% if project.thesis %}<div class="thesis-spotlight">Bachelor thesis · Grade 8.1 · Independent research</div>{% endif %}
+
+{% if project.image %}
+  <img class="project-detail-image" src="{{ url_for('static', filename=project.image) }}" alt="{{ project.image_alt or ('Screenshot of ' ~ (project.display_name or project.name)) }}">
+{% endif %}
+
+{% if project.problem or project.implementation or project.result %}
+<section class="project-detail-case-study" aria-label="Project case study">
+  {% if project.problem %}<div><h2>Problem</h2><p>{{ project.problem }}</p></div>{% endif %}
+  {% if project.implementation %}<div><h2>Implementation</h2><p>{{ project.implementation }}</p></div>{% endif %}
+  {% if project.result %}<div><h2>Result</h2><p>{{ project.result }}</p></div>{% endif %}
+</section>
+{% endif %}
+
+{% if project.technology_groups %}
+<div class="technology-groups project-detail-technologies" aria-label="Technologies used">
+  {% for category, technologies in project.technology_groups.items() %}
+  <div class="technology-group"><span>{{ category }}</span><div>{% for technology in technologies %}<span class="tag">{{ technology }}</span>{% endfor %}</div></div>
   {% endfor %}
 </div>
+{% elif project.tags %}
+<div class="project-tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
 {% endif %}
 
 

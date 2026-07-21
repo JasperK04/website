@@ -4,7 +4,6 @@ Registered as the 'main' Blueprint.
 """
 
 import fnmatch
-import random
 from pathlib import Path
 
 from flask import (
@@ -13,6 +12,7 @@ from flask import (
     abort,
     current_app,
     jsonify,
+    redirect,
     render_template,
     request,
     send_file,
@@ -239,7 +239,7 @@ def _build_course_search_items() -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Context processor — inject profile + socials into every template
+# Context processor - inject profile + socials into every template
 # ---------------------------------------------------------------------------
 
 
@@ -273,19 +273,33 @@ def inject_globals():
 @main.route("/")
 def index():
     profile = load_yaml("profile.yaml")
-    tagline = None
-    if isinstance(profile, dict):
-        value = profile.get("tagline")
-        if isinstance(value, list) and value:
-            tagline = random.choice(value)
-        elif isinstance(value, str):
-            tagline = value
-    return render_template("index.html", tagline=tagline)
+    projects = sorted(_load_list("projects.yaml"), key=lambda x: x.get("priority", 99))
+    featured_projects = sorted(
+        (project for project in projects if project.get("featured")),
+        key=lambda project: project.get(
+            "featured_priority", project.get("priority", 99)
+        ),
+    )[:3]
+    education_items = _load_list("education.yaml")
+    averages = _build_course_average_lookup()
+    for item in education_items:
+        courses_id = item.get("courses_id")
+        if courses_id and courses_id in averages:
+            item["average_grade"] = f"{averages[courses_id]:.1f}"
+    primary_education = next(
+        (item for item in education_items if item.get("degree", "").startswith("BSc")),
+        None,
+    )
+    return render_template(
+        "index.html",
+        featured_projects=featured_projects,
+        primary_education=primary_education,
+    )
 
 
 @main.route("/about")
 def about():
-    return render_template("about.html")
+    return redirect(url_for("main.index"), code=301)
 
 
 @main.route("/education")
@@ -430,7 +444,6 @@ def sitemap():
     site_url = _get_site_url()
     pages = [
         url_for("main.index"),
-        url_for("main.about"),
         url_for("main.education"),
         url_for("main.courses"),
         url_for("main.jobs"),

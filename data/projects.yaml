@@ -15,7 +15,17 @@
 
 - name: "this_project"
   display_name: "This Portfolio Website"
-  description: "A personal portfolio website built using Flask, showcasing my projects, skills, and contact information. It serves as a central hub for potential employers and collaborators to learn more about me and my work. all information is stored in YAML files, making it easy to update and maintain."
+  description: "A data-driven portfolio designed for fast recruiter scanning and maintainable content updates."
+  featured: true
+  featured_priority: 5
+  problem: "Provide one place to present project code, experience, and education in a browsable format."
+  implementation: "The Flask application renders YAML-backed profile, project, education, and experience data; it also provides fuzzy project search and a source-code previewer with syntax highlighting and Markdown rendering."
+  result: "Content is separated from the templates, so portfolio entries can be updated through the YAML data files."
+  technology_groups:
+    Languages: [Python, JavaScript, HTML/CSS]
+    Frameworks: [Flask, Jinja]
+    Cloud & DevOps: [Docker, Nginx]
+    Tools: [YAML, Git]
   github: "https://github.com/JasperK04/website"
   demo: ""
   main_file: "README.md"
@@ -29,7 +39,18 @@
 - name: "Marketplace"
   display_name: "Marketplace"
   Course: "Database Driven Web Technology"
-  description: "A group project about building a web applition using Flask and SQLite. The project had to include Authentication, CRUD operations via a custom API, frontend and backend development."
+  description: "A database-backed marketplace with authenticated users, listing management, and a custom API."
+  featured: true
+  featured_priority: 5
+  problem: "Support marketplace users, listings, categories, and images through both browser workflows and an API."
+  implementation: "The repository contains a 22-module Flask application with models for users, listings, categories, and images; browser routes and API endpoints cover authentication, CRUD operations, filtering, pagination, and image handling."
+  result: "The source separates browser routes, API blueprints, models, forms, and extensions in a database-driven marketplace application."
+  technology_groups:
+    Languages: [Python, JavaScript, HTML/CSS, SQL]
+    Frameworks: [Flask, Jinja]
+    Databases: [SQLite, SQLAlchemy]
+    Cloud & DevOps: [Docker]
+    Tools: [REST API, Git]
   github: "https://github.com/JasperK04/marketplace_project"
   demo: "https://marketplace.jasperkleine.nl"
   main_file: "README.md"
@@ -43,7 +64,17 @@
 - name: "autodiff_engine"
   display_name: "Automatic Differentiation Engine"
   Course: "Object Oriented Programming for AI"
-  description: "An automatic differentiation engine in Python for gradient descent, also includes several simple models that use the engine. The implementation involves encapsulation, overloading, backpropagation and much more. The system is build upon Numpy for efficiency and ease of use."
+  description: "A NumPy-based automatic-differentiation engine that powers gradient-descent models."
+  featured: true
+  featured_priority: 2
+  problem: "Implement the computation-graph and gradient-propagation mechanics needed by gradient-based models without a high-level autodiff framework."
+  implementation: "The six-module Python package defines Variable and Operation abstractions, overloaded arithmetic, backward propagation, and NumPy-based linear and logistic regression models."
+  result: "The repository provides a compact implementation of automatic differentiation alongside example models that use gradient descent."
+  technology_groups:
+    Languages: [Python]
+    Frameworks: [NumPy]
+    Practices: [Object-oriented design, Unit testing]
+    Concepts: [Backpropagation, Gradient descent, Computation graphs]
   github: "https://github.com/JasperK04/OOP_final_project"
   # demo: "https://autodiff-engine.jasperkleine.nl"
   main_file: "README.md"
@@ -57,7 +88,17 @@
 - name: "MLP"
   display_name: "Machine Learning Project for AI detection"
   Course: "Machine Learning Project"
-  description: "A machine learning project focused on detecting AI-generated content using multiple classifiers as well as ensembled combinations of these models."
+  description: "A text-boundary classifier for detecting transitions between human and AI-generated content."
+  featured: true
+  featured_priority: 4
+  problem: "Detect the boundary between human- and machine-generated text in an imbalanced classification dataset."
+  implementation: "The repository contains 18 Python files that convert JSONL documents into overlapping word windows, apply preprocessing, construct word/character TF-IDF and position features, and compare five baseline models with voting and stacking ensembles."
+  result: "The checked-in evaluation README reports a best complex Linear SVM test macro F1 of 0.9301 at window size 4; the repository uses macro F1 for evaluation."
+  technology_groups:
+    Languages: [Python]
+    Frameworks: [scikit-learn]
+    Data & ML: [TF-IDF, Linear SVM, Logistic Regression, Random Forest, Ensembles]
+    Tools: [pytest, Grid search]
   github: "https://github.com/JasperK04/MLP_final"
   # demo: "https://ML-project.jasperkleine.nl"
   main_file: "README.md"
@@ -71,7 +112,18 @@
 - name: "Bachelor Thesis"
   display_name: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
   Course: "Bachelor Thesis"
-  description: "This project is my bachelor thesis, which focuses on the efficiency of code generation using large language models (LLMs) in multi-agent systems. The research investigates how different prompting strategies can improve the quality and efficiency of code generation tasks, with a particular emphasis on multi-agent collaboration and reasoning. The thesis includes a comprehensive literature review, experimental design, and evaluation of various prompting techniques to assess their impact on code generation performance."
+  description: "Bachelor thesis on improving the efficiency of multi-agent LLM code generation."
+  featured: true
+  featured_priority: 1
+  thesis: true
+  problem: "Evaluate whether efficiency-oriented prompting and multi-agent workflows improve code-generation pass rates under execution constraints."
+  implementation: "The experiment runner configures a dataset, prompting strategy, model, temperature, pass-at-k value, and execution limit; it supports Direct, MapCoder, and PACEcoding strategies and writes each run to a JSONL results path."
+  result: "The repository includes experiment scripts, datasets, evaluation helpers, result files, and a thesis proposal defining pass/fail evaluation under a fixed time limit."
+  technology_groups:
+    Languages: [Python]
+    Data & ML: [Large Language Models, Prompt engineering, Multi-agent systems]
+    Research: [Experimental design, Evaluation, Literature review]
+    Tools: [Git]
   github: "https://github.com/JasperK04/thesis"
   # demo: "https://BSc-thesis.jasperkleine.nl"
   main_file: "README.md"
@@ -85,7 +137,16 @@
 - name: "KTP"
   display_name: "Fastener Recommendation System"
   Course: "Knowledge Technology Practical"
-  description: "The Fastener Recommendation System is a web application designed to assist users in selecting the appropriate fasteners for their projects. It provides recommendations based on user input, such as material type, load requirements, and environmental conditions. The system utilizes an expert knowledge base of fasteners and their properties to generate suggestions. The system has three main models; A Domain Model, A Rule Model and A Problem Solving Model. The system required a user interface for which we used Flask."
+  description: "An explainable expert system that recommends fasteners from material, load, and environmental requirements."
+  problem: "Recommend suitable fasteners from material, load, and environmental requirements."
+  implementation: "The Python application defines a domain model, JSON knowledge base, executable rule factory, forward-chaining inference engine, problem-solving model, command-line interface, and Flask questionnaire interface."
+  result: "The command-line flow writes YAML debug snapshots containing answers, derived requirements, question history, and recommendations; the repository also includes unit and scenario-test documentation."
+  technology_groups:
+    Languages: [Python]
+    Frameworks: [Flask]
+    Concepts: [Knowledge representation, Forward chaining, Rule-based systems]
+    Cloud & DevOps: [Docker]
+    Tools: [pytest, JSON]
   github: "https://github.com/JasperK04/KTP"
   demo: "https://fasteners.jasperkleine.nl"
   main_file: "README.md"
@@ -98,7 +159,18 @@
 
 - name: "recipes"
   display_name: "Personal Recipe Website"
-  description: "A website where I store my personal recipes. The website allows me to easily add, edit and view my recipes. This is currently a work in progress"
+  description: "A Flask application for managing and sharing recipes."
+  featured: true
+  featured_priority: 3
+  problem: "Provide authenticated users with a way to create, organise, discover, and manage recipes."
+  implementation: "The application uses Flask-Login, Flask-SQLAlchemy, Flask-WTF, Flask-Migrate, and SQLite; its routes implement registration, recipe CRUD, search, category filtering, image handling, favourites, ratings, and administration workflows."
+  result: "The source provides browser routes and API endpoints for recipe management, with responsive Bootstrap 5 templates described in the README."
+  technology_groups:
+    Languages: [Python, HTML/CSS]
+    Frameworks: [Flask, Bootstrap 5]
+    Databases: [SQLite]
+    Cloud & DevOps: [Docker]
+    Practices: [Authentication, CRUD]
   github: "https://github.com/JasperK04/recipe_site"
   demo: "https://recipes.jasperkleine.nl"
   main_file: "README.md"
@@ -112,7 +184,13 @@
 - name: "CompArch"
   display_name: "Computer Architecture - LC-3 Assembly"
   Course: "Computer Architecture"
-  description: "LC-3 assembly assignments focused on machine organization and low-level programming, covering control flow, I/O, and data representation."
+  description: "Low-level LC-3 programs exploring how instructions, memory, and I/O work beneath high-level languages."
+  problem: "Apply LC-3 assembly concepts from the Computer Architecture course to programs involving control flow, I/O, and memory."
+  implementation: "The repository contains LC-3 assembly programs for pseudo-random number generation, prime-number detection, and a Brainfuck-like interpreter with character I/O and memory manipulation."
+  result: "The three programs are intended for assembly and execution in an LC-3 simulator, as documented in the project README."
+  technology_groups:
+    Languages: [LC-3 Assembly]
+    Concepts: [Computer architecture, Digital logic, Memory, I/O]
   # github: ""
   # demo: ""
   main_file: "README.md"

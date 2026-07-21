@@ -5,7 +5,7 @@
 {% block content %}
 <div class="page-header">
   <h1 class="page-title">Projects</h1>
-  <p class="page-subtitle">Open source work and personal builds</p>
+  <p class="page-subtitle">Selected engineering, machine-learning, and research case studies</p>
 </div>
 
 <!-- Search -->
@@ -32,7 +32,7 @@
   {% if query %}
     <p class="search-results">
       Results for <strong class="search-results-query">"{{ query }}"</strong>
-      — {{ items|length }} found
+      - {{ items|length }} found
     </p>
     {% set ns = namespace(matches=[]) %}
     {% for project in items %}

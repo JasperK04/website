@@ -4,7 +4,7 @@
   start: "2023"
   end: "2026"
   courses_id: "rug-bsc-information-science"
-  description: "Currently pursuing a Bachelor's degree in Information Science, focusing on software development, Machine Learning, and Computational Linguistics like LLM's. Expected to graduate in June 2026."
+  description: "Completed a Bachelor's degree in Information Science, focused on software development, machine learning, and computational linguistics. Graduated in 2026."
   project:
     - name: "Thesis"
       title: "PACEcoding: Efficiency-Oriented Prompting in Multi-Agent LLM Code Generation"
@@ -13,8 +13,8 @@
     name: "AI/CS Minor"
     description: "Completed an personal minor in AI and CS to deepen my knowledge in software engineering, machine learning, and computational linguistics."
   highlights:
-    - "Have been a TA for 'Programmeren I en II' since 2024, assisting students with Python programming assignments and providing support during lab sessions."
-    - "Have been part of the program committee for the bachelor's program in '24-'25."
+    - "Teaching assistant for 'Programmeren I en II' since 2024, supporting Python assignments and lab sessions."
+    - "Served on the bachelor's programme committee in 2024–25."
     - "Active member of ASCI, currently active as treasurer of the Career Committee, and vice-chair of the web committee."
   tags: ["computer science", "software engineering", "algorithms", "LLM's"]
   keywords: ["university", "bachelor", "degree", "bsc", "information science", "CS", "computer science", "programming", "software development", "software engineering", "machine learning", "ML", "data science", "computational linguistics", "NLP", "LLM", "LLM's", "thesis", "research", "prompting", "multi agent", "code generation", "TA", "teaching assistant", "python", "labs", "program committee", "governance", "ASCI", "career committee", "web committee", "student society"]

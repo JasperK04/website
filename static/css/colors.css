@@ -1,8 +1,8 @@
 /* colors.css - UI and syntax-highlighting design tokens
  *
  * Two themes are defined:
- *   [data-theme="dark"]  — default dark theme (GitHub-dark palette)
- *   [data-theme="light"] — light theme (GitHub-light palette)
+ *   [data-theme="dark"]  - default dark theme (GitHub-dark palette)
+ *   [data-theme="light"] - light theme (GitHub-light palette)
  *
  * The <html> element carries the data-theme attribute.
  * theme.js toggles it and persists the choice in localStorage.

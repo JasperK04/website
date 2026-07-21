@@ -68,7 +68,7 @@
   }
 
   // ------------------------------------------------------------------
-  // Init — runs as early as possible to avoid flash
+  // Init - runs as early as possible to avoid flash
   // ------------------------------------------------------------------
   applyTheme(resolveTheme());
 

@@ -1,68 +1,66 @@
 {% extends "base.html" %}
 {% set page_title = "Home" %}
-{% set meta_description = "Portfolio of " ~ profile.name ~ ", " ~ profile.title ~ " based in " ~ profile.location ~ ". Projects, skills, education, and experience." %}
+{% set meta_description = profile.value_proposition or ("Portfolio of " ~ profile.name ~ ", " ~ profile.title ~ ".") %}
 
 {% block content %}
-<div class="hero">
+<section class="hero landing-hero" aria-labelledby="intro-title">
   <div class="hero-top">
     <div class="hero-avatar">
       {% if profile.avatar %}
         <img src="{{ profile.avatar }}" alt="{{ profile.name }}" onerror="this.style.display='none';this.parentElement.textContent='👤'">
-      {% else %}
-        👤
-      {% endif %}
+      {% else %}👤{% endif %}
     </div>
     <div class="hero-info">
-      <h1>{{ profile.name }}</h1>
-      {% if tagline %}
-        <div class="hero-tagline">{{ tagline }}</div>
-      {% elif profile.tagline %}
-        <div class="hero-tagline">{{ profile.tagline }}</div>
-      {% endif %}
-      <p>{{ profile.title }}</p>
-      {% if profile.available %}
-        <div class="hero-availability">Open to opportunities</div>
-      {% endif %}
+      <p class="eyebrow">{{ profile.title }}</p>
+      <h1 id="intro-title">{{ profile.name }}</h1>
+      <p class="hero-tagline">{{ profile.tagline }}</p>
+      {% if profile.available %}<div class="hero-availability">Open to opportunities</div>{% endif %}
     </div>
   </div>
 
+  <p class="hero-bio">{{ profile.value_proposition or profile.bio }}</p>
+
+  <div class="hero-actions">
+    {% if profile.cv_path %}<a href="{{ url_for('static', filename=profile.cv_path) }}" class="btn btn-primary" download>Download CV <span aria-hidden="true">↓</span></a>{% endif %}
+    <a href="{{ url_for('main.projects') }}" class="btn">View projects</a>
+  </div>
+
+  <div class="hero-facts" aria-label="Quick facts">
+    {% if profile.location %}<span>📍 {{ profile.location }}</span>{% endif %}
+    <span>Focus: software engineering &amp; applied ML</span>
+    <span>University of Groningen</span>
+  </div>
+</section>
+
+{% if primary_education %}
+<section class="academic-snapshot" aria-label="Academic highlights">
   <div>
-    {% if profile.location %}
-      <span class="tag">📍 {{ profile.location }}</span>
-    {% endif %}
-    {% if profile.email %}
-      <span class="tag">✉ {{ profile.email }}</span>
-    {% endif %}
+    <p class="eyebrow">Academic performance</p>
+    <h2>{{ primary_education.degree }}</h2>
+    <p>{{ primary_education.institution }}</p>
   </div>
-</div>
+  <div class="metric-grid">
+    {% if primary_education.average_grade %}<div class="metric"><span class="metric-value">{{ primary_education.average_grade }}</span><span>Average grade</span></div>{% endif %}
+    {% for project in primary_education.project or [] %}{% if project.grade %}<div class="metric"><span class="metric-value">{{ project.grade }}</span><span>{{ project.name }} grade</span></div>{% endif %}{% endfor %}
+  </div>
+</section>
+{% endif %}
 
-<!-- Quick links -->
-<div class="section-title">Quick links</div>
-<div class="quick-links">
-  <a href="{{ url_for('main.about') }}" class="btn">👤 About Me</a>
-  <a href="{{ url_for('main.education') }}" class="btn">🎓 Education</a>
-  <a href="{{ url_for('main.jobs') }}" class="btn">💼 Experience</a>
-  <a href="{{ url_for('main.projects') }}" class="btn">🔧 Projects</a>
-</div>
+<section class="content-section" aria-labelledby="featured-projects-title">
+  <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2 id="featured-projects-title">Featured Projects</h2></div><a href="{{ url_for('main.projects') }}" class="text-link">All projects →</a></div>
+  <div class="featured-project-grid">
+    {% for project in featured_projects %}{% include "components/cards/project_card.html" %}{% endfor %}
+  </div>
+</section>
 
-<!-- Skills -->
 {% if profile.skills %}
-<div class="section-title">Skills</div>
-<div class="skills-grid">
-  {% for category, items in profile.skills.items() %}
-  <div class="skill-category">
-    <div class="skill-category-title">{{ category | replace("_", " ") | title }}</div>
-    <div class="skill-items">
-      {% for item in items %}
-        {% if item.role is defined %}
-          <span class="tag tag-accent">{{ item.role }} - {{ item.focus }}</span>
-        {% else %}
-          <span class="tag tag-accent">{{ item }}</span>
-        {% endif %}
-      {% endfor %}
-    </div>
+<section class="content-section" aria-labelledby="skills-title">
+  <div class="section-heading"><div><p class="eyebrow">Technical toolkit</p><h2 id="skills-title">Skills</h2></div></div>
+  <div class="skills-grid">
+    {% for category, items in profile.skills.items() %}
+      <div class="skill-category"><h3 class="skill-category-title">{{ category | replace("_", " ") | title }}</h3><div class="skill-items">{% for item in items %}<span class="tag tag-accent">{{ item }}</span>{% endfor %}</div></div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
+</section>
 {% endif %}
 {% endblock %}

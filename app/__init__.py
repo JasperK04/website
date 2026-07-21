@@ -1,5 +1,5 @@
 """
-Portfolio Flask application — app factory.
+Portfolio Flask application - app factory.
 
 Usage::
 

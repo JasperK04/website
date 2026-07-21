@@ -4,12 +4,17 @@
   start: "Jan 2025"
   end: "Juli 2026"
   location: "Aduard"
-  description: "Working as an assistant cook at restaurant Aduard."
+  description: "Assistant cook in a fast-paced restaurant kitchen, supporting consistent service and menu preparation."
   tech_relevant: false
   responsibilities:
-    - "Assisting with food preparation and cooking"
-    - "Maintaining cleanliness and organization in the kitchen"
-    - "Coming up with new recipes and dishes to add to the menu"
+    - "Prepare ingredients and support cooking during service."
+    - "Maintain an organised, food-safe kitchen and stock workflow."
+    - "Contribute new recipe and dish ideas for the menu."
+  technology_groups:
+    Operations: [Mise en place, Food safety, Inventory]
+    Ways of working: [Team coordination, Time management]
+  achievements:
+    - "Contributed ideas for new dishes while working reliably under the time constraints of live service."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -25,12 +30,19 @@
   start: "Sep 2024"
   end: "feb 2026"
   location: "Groningen"
-  description: "Working as a teaching assistant for the course 'Introduction to Programming' at the University of Groningen. Assisting students with programming assignments and providing support during lectures."
+  description: "Teaching assistant for Introduction to Programming at the University of Groningen, helping students build sound programming and debugging habits."
   tech_relevant: True
   responsibilities:
-    - "Assisting students with programming assignments and questions"
-    - "Assisting the professors with tasks such as providing feedback on assignments."
-    - "Helping to create and maintain course materials, such as assignment instructions."
+    - "Guide students through Python assignments, debugging, and programming concepts during teaching sessions."
+    - "Provide assignment feedback and support instructors with assessment-related work."
+    - "Create and maintain clear assignment instructions and course materials."
+  technology_groups:
+    Languages: [Python]
+    Tools: [Git, pytest]
+    Practices: [Code review, Debugging, Technical communication]
+  achievements:
+    - "Turned complex programming questions into actionable feedback for first-year students."
+    - "Improved the clarity of assignment guidance by maintaining course materials alongside the teaching team."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -45,13 +57,16 @@
   type: "Contract"
   end: "Jan 2026"
   location: "Amsterdam"
-  description: "I visited the University of Amsterdam as part of the accreditation committee for the Information Science program. I provided feedback on and asked questions about the program from a students perspective and participated in discussions about the program's strengths, weaknesses and future."
+  description: "Student panel member for the accreditation review of the University of Amsterdam's Information Science programme."
   tech_relevant: True
   responsibilities:
-    - "Read and evaluate the provided documents about the program."
-    - "Formulate and ask questions about the program during the site visit."
-    - "Provide feedback on the program during discussions with the committee and UVA's staff."
-    - "UVA passed the accreditation."
+    - "Review programme documentation against accreditation requirements."
+    - "Prepare and ask evidence-based questions during the site visit."
+    - "Represent the student perspective in committee discussions with programme staff."
+  technology_groups:
+    Practices: [Quality assurance, Document review, Stakeholder communication]
+  achievements:
+    - "Contributed the student perspective to a successful accreditation outcome for the programme."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -67,11 +82,15 @@
   start: "Sep 2025"
   end: "Current"
   location: "Groningen"
-  description: "Working as a student ambassador for the Information Science program at the University of Groningen. representing the student perspective open days and other events for prospective students."
+  description: "Student ambassador representing the Information Science programme at open days and prospective-student events."
   tech_relevant: false
   responsibilities:
-    - "Assisting with open days and other events for prospective students."
-    - "First point of contact for prospective students with questions about the program."
+    - "Represent the student experience at open days and recruitment events."
+    - "Serve as a first point of contact for prospective students' programme questions."
+  technology_groups:
+    Practices: [Public speaking, Event support, Stakeholder communication]
+  achievements:
+    - "Help prospective students make informed study choices through direct, experience-based guidance."
   # tech: []
   link:
     url: "https://www.rug.nl/let/studeren-bij-ons/bachelor/voorlichting/studentambassadeurs/1-testimonials-25-26/jasper-kleine"
@@ -87,12 +106,16 @@
   start: "Sep 2024"
   end: "Aug 2025"
   location: "Groningen"
-  description: "as part of this committee, I participate in meetings about current affairs and future plans for the Information Science program at the University of Groningen"
+  description: "Student representative on the CIW & IK Programme Committee, contributing to programme governance and quality assurance."
   tech_relevant: true
   responsibilities:
-    - "Providing feedback on current affairs and future plans for the Information Science program."
-    - "Representing the student perspective in discussions about the program."
-    - "Approving the TER for the program."
+    - "Review current issues and planned changes affecting the Information Science programme."
+    - "Represent student feedback in discussions with programme stakeholders."
+    - "Review and approve the programme's TER regulations."
+  technology_groups:
+    Practices: [Governance, Policy review, Quality assurance]
+  achievements:
+    - "Represented the student perspective in formal programme decisions, including TER approval."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -108,10 +131,14 @@
   start: "Nov 2024"
   end: "Oct 2025"
   location: "Groningen"
-  description: "as part of this panel, I participate in meetings about IT related topics at the University of Groningen and provide feedback on IT services and policies."
+  description: "Student representative on the University of Groningen IT panel, providing user-centred input on digital services and policy."
   tech_relevant: True
   responsibilities:
-    - "Providing feedback on current and future IT services and policies at the University of Groningen"
+    - "Assess current and planned IT services and policies from the student-user perspective."
+  technology_groups:
+    Practices: [User experience, IT service review, Stakeholder communication]
+  achievements:
+    - "Brought direct student feedback into discussions on university-wide digital services."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -126,12 +153,18 @@
   start: "Jan 2022"
   end: "Jan 2025"
   location: "Aduard"
-  description: "Worked as a waiter and host at restaurant Aduard. Gained experience with hospitality and teamwork."
+  description: "Waiter and host at Hotel Aduard, delivering guest service while supporting front-of-house operations."
   tech_relevant: false
   responsibilities:
-    - "Provided excellent customer service to guests"
-    - "Assisted in training new staff members"
-    - "Purchasing and Inventory management for the waiting staff"
+    - "Manage guest service, reservations, and front-of-house coordination."
+    - "Support onboarding and day-to-day guidance for new staff."
+    - "Handle purchasing and inventory for the waiting team."
+  technology_groups:
+    Operations: [Reservations, Inventory, Purchasing]
+    Ways of working: [Teamwork, Customer communication]
+  achievements:
+    - "Took ownership of purchasing and inventory responsibilities for the waiting team."
+    - "Helped onboard new colleagues in service standards and daily routines."
   # tech: []
   # link:
   #   url: "https://upwork.example.com/jasper"
@@ -146,10 +179,15 @@
   start: "Jul 2021"
   end: "Aug 2021"
   location: "Wassenaar"
-  description: "Worked as a bartender and waiter as a summer job. Gained more experience in customer service and hospitality."
+  description: "Seasonal bartender and waiter supporting high-quality guest service in a busy hospitality setting."
   tech_relevant: false
-  responsibilities: []
-  tech: []
+  responsibilities:
+    - "Serve guests across bar and floor while keeping service flow organised."
+  technology_groups:
+    Operations: [Bar service, Cash handling]
+    Ways of working: [Customer communication, Teamwork]
+  achievements:
+    - "Adapted quickly to a new service team and maintained reliable guest-facing support throughout the summer season."
   tags: ["bartender", "waiter", "hospitality", "summer job"]
   keywords: ["bartender", "waiter", "hospitality", "summer job", "customer service", "nederlands", "english", "bar service", "cocktails", "drinks", "service", "front of house", "teamwork", "cash handling"]
   priority: 10
@@ -161,10 +199,15 @@
   start: "Jul 2020"
   end: "Aug 2020"
   location: "Scheveningen"
-  description: "Worked as a bartender as a summer job again."
+  description: "Seasonal bartender responsible for efficient, guest-focused bar service."
   tech_relevant: false
-  # responsibilities: []
-  # tech: []
+  responsibilities:
+    - "Prepare and serve drinks while maintaining an organised bar station."
+  technology_groups:
+    Operations: [Bar service, Cash handling]
+    Ways of working: [Customer communication, Time management]
+  achievements:
+    - "Delivered dependable service in a high-turnover seasonal environment."
   # link:
   #   url: "https://techstartup.example.com"
   #   label: "Company Website"
@@ -178,10 +221,15 @@
   start: "Jul 2019"
   end: "Aug 2019"
   location: "Scheveningen"
-  description: "Worked as a bartender as a summer job."
+  description: "Seasonal bartender supporting a busy hospitality team."
   tech_relevant: false
-  # responsibilities: []
-  # tech: []
+  responsibilities:
+    - "Prepare drinks and support smooth bar operations during service."
+  technology_groups:
+    Operations: [Bar service, Cash handling]
+    Ways of working: [Teamwork, Customer communication]
+  achievements:
+    - "Built an early foundation in reliable customer service and team-based operations."
   # link:
   #   url: "https://techstartup.example.com"
   #   label: "Company Website"

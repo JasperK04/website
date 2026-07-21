@@ -24,6 +24,16 @@ All site content lives under the `data/` directory.
 - name: "project_slug"
   display_name: "Project Display Name"
   description: "Short description"
+  problem: "The user or business challenge"
+  implementation: "Concrete technical contribution"
+  result: "Outcome or measured impact"
+  featured: false # optional; surfaces the project on the home page
+  thesis: false # optional; adds thesis prominence
+  image: "projects/project_slug/screenshot.webp" # optional
+  image_alt: "Screenshot description" # optional
+  technology_groups: # optional; replaces the flat tag display
+    Languages: [Python]
+    Frameworks: [Flask]
   Course: "Course name" # optional
   github: "https://github.com/..." # optional
   demo: "https://..." # optional

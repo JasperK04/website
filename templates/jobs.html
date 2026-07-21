@@ -42,7 +42,7 @@
   {% if query %}
     <p class="search-results">
       Results for <strong class="search-results-query">"{{ query }}"</strong>
-      — {{ items|length }} found
+      - {{ items|length }} found
     </p>
     {% set ns = namespace(matches=[]) %}
     {% for item in items %}

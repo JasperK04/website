@@ -1,4 +1,4 @@
-<div class="card">
+<article class="card job-card">
   <div class="card-header">
     <div>
       <div class="card-title">{{ item.role }}</div>
@@ -39,11 +39,10 @@
     </div>
   </div>
 
-  {% if item.description %}
-  <div class="card-body">{{ item.description }}</div>
-  {% endif %}
+  {% if item.description %}<div class="card-body job-summary">{{ item.description }}</div>{% endif %}
 
   {% if item.responsibilities %}
+  <h3 class="content-label">Responsibilities</h3>
   <ul class="responsibilities">
     {% for r in item.responsibilities %}
       <li>{{ r }}</li>
@@ -51,12 +50,22 @@
   </ul>
   {% endif %}
 
-  {% if item.tech %}
-  <div class="tech-stack">
-    {% for t in item.tech %}
-      <span class="tag tag-accent">{{ t }}</span>
+  {% if item.technology_groups or item.tech %}
+  <h3 class="content-label">Technologies</h3>
+  {% if item.technology_groups %}
+  <div class="technology-groups job-technologies">
+    {% for category, technologies in item.technology_groups.items() %}
+      <div class="technology-group"><span>{{ category }}</span><div>{% for technology in technologies %}<span class="tag tag-accent">{{ technology }}</span>{% endfor %}</div></div>
     {% endfor %}
   </div>
+  {% else %}
+  <div class="tech-stack">{% for t in item.tech %}<span class="tag tag-accent">{{ t }}</span>{% endfor %}</div>
+  {% endif %}
+  {% endif %}
+
+  {% if item.achievements %}
+  <h3 class="content-label">Achievements</h3>
+  <ul class="achievements">{% for achievement in item.achievements %}<li>{{ achievement }}</li>{% endfor %}</ul>
   {% endif %}
 
   {% if item.tags %}
@@ -66,4 +75,4 @@
     {% endfor %}
   </div>
   {% endif %}
-</div>
+</article>
