@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  {% if item.average_grade or item.project %}
+  {% if (item.average_grade or item.project) and not item.grades_hidden %}
   <div class="education-metrics">
     {% if item.average_grade %}<div class="education-metric"><span>{{ item.average_grade }}</span><small>Average grade</small></div>{% endif %}
     {% for project in item.project or [] %}{% if project.grade %}<div class="education-metric"><span>{{ project.grade }}</span><small>{{ project.name }} grade</small></div>{% endif %}{% endfor %}
@@ -66,7 +66,7 @@
   </div>
   {% endif %}
 
-  {% if item.courses_id %}
+  {% if item.courses_id and not item.courses_hidden %}
   <div class="edu-courses-link">
     <a class="btn" href="{{ url_for('main.courses', program_id=item.courses_id) }}">Courses & Grades</a>
   </div>

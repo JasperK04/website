@@ -9,215 +9,204 @@
  * The OS preference is respected as the initial fallback via
  * @media (prefers-color-scheme) inside each theme block.
  */
-
 /* ============================================================
    DARK THEME
    ============================================================ */
-:root,
-[data-theme="dark"] {
-  color-scheme: dark;
-
-  /* --- Background layers --- */
-  --bg-base:       #0f1117;
-  --bg-surface:    #161b22;
-  --bg-elevated:   #1c2128;
-  --bg-overlay:    #21262d;
-
-  /* --- Borders --- */
-  --border-subtle: #21262d;
-  --border-muted:  #30363d;
-  --border-active: #b565f2;
-
-  /* --- Text --- */
-  --text-primary:    #e6edf3;
-  --text-secondary:  #8b949e;
-  --text-muted:      #6e7681;
-  --text-link:       #c77dff;
-  --text-link-hover: #e0aaff;
-
-  /* --- Accent / brand --- */
-  --accent:        #c77dff;
-  --accent-hover:  #a55eea;
-  --accent-subtle: #3b1f4a;
-
-  /* --- Status --- */
-  --success:  #ff6b6b;
-  --warning:  #ff8fab;
-  --danger:   #ff4d6d;
-  --info:     #c77dff;
-
-  /* --- Tag / badge --- */
-  --tag-bg:     #21262d;
-  --tag-text:   #c3b3ff;
-  --tag-border: #4a345f;
-
-  /* --- Sidebar --- */
-  --sidebar-bg:    #0d1117;
-  --sidebar-width: 240px;
-
-  /* --- Scrollbar --- */
-  --scrollbar-bg:    #161b22;
-  --scrollbar-thumb: #30363d;
-
-  /* --- Theme toggle button --- */
-  --theme-btn-bg:     #21262d;
-  --theme-btn-border: #30363d;
-  --theme-btn-text:   #8b949e;
-  --theme-btn-hover:  #30363d;
-
-  /* ------------------------------------------------------------------ */
-  /* Syntax highlighting                                                  */
-  /* ------------------------------------------------------------------ */
-  --syn-keyword:   #ff6b6b;   /* def, class, if, for, return … */
-  --syn-string:    #e0aaff;   /* "hello", 'world', """docstrings""" */
-  --syn-comment:   #9a8c98;   /* # comment */
-  --syn-number:    #ff8fab;   /* 42, 3.14, 0xff */
-  --syn-operator:  #ff6b6b;   /* +, -, =, ==, (, ) … */
-  --syn-builtin:   #c77dff;   /* print, len, range … */
-  --syn-decorator: #a55eea;   /* @property, @app.route … */
-  --syn-name:      #e6edf3;   /* regular identifiers */
-  --syn-error:     #ff4d6d;   /* tokenization errors */
-
-  /* Line number gutter */
-  --syn-lineno-bg:     #161b22;
-  --syn-lineno-text:   #6e7681;
-  --syn-lineno-border: #21262d;
-
-  /* Code block */
-  --syn-code-bg:    #0d1117;
-  --syn-code-text:  #e6edf3;
-  --syn-line-hover: #1c2128;
+:root,[data-theme="dark"] {
+    color-scheme: dark;
+/* --- Background layers --- */
+    --bg-base:       #0f1117;
+    --bg-surface:    #161b22;
+    --bg-elevated:   #1c2128;
+    --bg-overlay:    #21262d;
+/* --- Borders --- */
+    --border-subtle: #21262d;
+    --border-muted:  #30363d;
+    --border-active: #b565f2;
+/* --- Text --- */
+    --text-primary:    #e6edf3;
+    --text-secondary:  #8b949e;
+    --text-muted:      #6e7681;
+    --text-link:       #c77dff;
+    --text-link-hover: #e0aaff;
+/* --- Accent / brand --- */
+    --accent:        #c77dff;
+    --accent-hover:  #a55eea;
+    --accent-subtle: #3b1f4a;
+/* --- Status --- */
+    --success:  #ff6b6b;
+    --warning:  #ff8fab;
+    --danger:   #ff4d6d;
+    --info:     #c77dff;
+/* --- Tag / badge --- */
+    --tag-bg:     #21262d;
+    --tag-text:   #c3b3ff;
+    --tag-border: #4a345f;
+/* --- Sidebar --- */
+    --sidebar-bg:    #0d1117;
+    --sidebar-width: 240px;
+/* --- Scrollbar --- */
+    --scrollbar-bg:    #161b22;
+    --scrollbar-thumb: #30363d;
+/* --- Theme toggle button --- */
+    --theme-btn-bg:     #21262d;
+    --theme-btn-border: #30363d;
+    --theme-btn-text:   #8b949e;
+    --theme-btn-hover:  #30363d;
+/* ------------------------------------------------------------------ */
+/* Syntax highlighting                                                  */
+/* ------------------------------------------------------------------ */
+    --syn-keyword:   #ff6b6b;
+/* def, class, if, for, return … */
+    --syn-string:    #e0aaff;
+/* "hello", 'world', """docstrings""" */
+    --syn-comment:   #9a8c98;
+/* # comment */
+    --syn-number:    #ff8fab;
+/* 42, 3.14, 0xff */
+    --syn-operator:  #ff6b6b;
+/* +, -, =, ==, (, ) … */
+    --syn-builtin:   #c77dff;
+/* print, len, range … */
+    --syn-decorator: #a55eea;
+/* @property, @app.route … */
+    --syn-name:      #e6edf3;
+/* regular identifiers */
+    --syn-error:     #ff4d6d;
+/* tokenization errors */
+/* Line number gutter */
+    --syn-lineno-bg:     #161b22;
+    --syn-lineno-text:   #6e7681;
+    --syn-lineno-border: #21262d;
+/* Code block */
+    --syn-code-bg:    #0d1117;
+    --syn-code-text:  #e6edf3;
+    --syn-line-hover: #1c2128;
 }
-
 /* ============================================================
    LIGHT THEME
    ============================================================ */
 [data-theme="light"] {
-  color-scheme: light;
-
-  /* --- Background layers --- */
-  --bg-base:       #ffffff;
-  --bg-surface:    #f6f8fa;
-  --bg-elevated:   #eaeef2;
-  --bg-overlay:    #d0d7de;
-
-  /* --- Borders --- */
-  --border-subtle: #d0d7de;
-  --border-muted:  #9aa4b2;
-  --border-active: #7b2cbf;
-
-  /* --- Text --- */
-  --text-primary:    #24292f;
-  --text-secondary:  #3f4751;
-  --text-muted:      #5b6672;
-  --text-link:       #7b2cbf;
-  --text-link-hover: #5a189a;
-
-  /* --- Accent / brand --- */
-  --accent:        #7b2cbf;
-  --accent-hover:  #5a189a;
-  --accent-subtle: #f2e9ff;
-
-  /* --- Status --- */
-  --success:  #c1121f;
-  --warning:  #ff758f;
-  --danger:   #a4133c;
-  --info:     #7b2cbf;
-
-  /* --- Tag / badge --- */
-  --tag-bg:     #eaeef2;
-  --tag-text:   #5a189a;
-  --tag-border: #d3b7ff;
-
-  /* --- Sidebar --- */
-  --sidebar-bg:    #f6f8fa;
-  --sidebar-width: 240px;
-
-  /* --- Scrollbar --- */
-  --scrollbar-bg:    #f6f8fa;
-  --scrollbar-thumb: #d0d7de;
-
-  /* --- Theme toggle button --- */
-  --theme-btn-bg:     #eaeef2;
-  --theme-btn-border: #d0d7de;
-  --theme-btn-text:   #57606a;
-  --theme-btn-hover:  #d0d7de;
-
-  /* ------------------------------------------------------------------ */
-  /* Syntax highlighting (GitHub Light palette)                           */
-  /* ------------------------------------------------------------------ */
-  --syn-keyword:   #c1121f;   /* def, class, if, for, return … */
-  --syn-string:    #7b2cbf;   /* strings */
-  --syn-comment:   #8c7a90;   /* # comment */
-  --syn-number:    #ff758f;   /* numbers */
-  --syn-operator:  #c1121f;   /* operators */
-  --syn-builtin:   #5a189a;   /* print, len, range … */
-  --syn-decorator: #9d4edd;   /* @property, @app.route … */
-  --syn-name:      #24292f;   /* regular identifiers */
-  --syn-error:     #a4133c;   /* tokenization errors */
-
-  /* Line number gutter */
-  --syn-lineno-bg:     #f6f8fa;
-  --syn-lineno-text:   #8c959f;
-  --syn-lineno-border: #d0d7de;
-
-  /* Code block */
-  --syn-code-bg:    #ffffff;
-  --syn-code-text:  #24292f;
-  --syn-line-hover: #f6f8fa;
-}
-
-/* ============================================================
-   OS-level preference fallback (no stored preference yet)
-   ============================================================ */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
     color-scheme: light;
-
+/* --- Background layers --- */
     --bg-base:       #ffffff;
     --bg-surface:    #f6f8fa;
     --bg-elevated:   #eaeef2;
     --bg-overlay:    #d0d7de;
+/* --- Borders --- */
     --border-subtle: #d0d7de;
     --border-muted:  #9aa4b2;
     --border-active: #7b2cbf;
+/* --- Text --- */
     --text-primary:    #24292f;
     --text-secondary:  #3f4751;
     --text-muted:      #5b6672;
     --text-link:       #7b2cbf;
     --text-link-hover: #5a189a;
+/* --- Accent / brand --- */
     --accent:        #7b2cbf;
     --accent-hover:  #5a189a;
     --accent-subtle: #f2e9ff;
+/* --- Status --- */
     --success:  #c1121f;
     --warning:  #ff758f;
     --danger:   #a4133c;
     --info:     #7b2cbf;
+/* --- Tag / badge --- */
     --tag-bg:     #eaeef2;
     --tag-text:   #5a189a;
     --tag-border: #d3b7ff;
+/* --- Sidebar --- */
     --sidebar-bg:    #f6f8fa;
     --sidebar-width: 240px;
+/* --- Scrollbar --- */
     --scrollbar-bg:    #f6f8fa;
     --scrollbar-thumb: #d0d7de;
+/* --- Theme toggle button --- */
     --theme-btn-bg:     #eaeef2;
     --theme-btn-border: #d0d7de;
     --theme-btn-text:   #57606a;
     --theme-btn-hover:  #d0d7de;
+/* ------------------------------------------------------------------ */
+/* Syntax highlighting (GitHub Light palette)                           */
+/* ------------------------------------------------------------------ */
     --syn-keyword:   #c1121f;
+/* def, class, if, for, return … */
     --syn-string:    #7b2cbf;
+/* strings */
     --syn-comment:   #8c7a90;
+/* # comment */
     --syn-number:    #ff758f;
+/* numbers */
     --syn-operator:  #c1121f;
+/* operators */
     --syn-builtin:   #5a189a;
+/* print, len, range … */
     --syn-decorator: #9d4edd;
+/* @property, @app.route … */
     --syn-name:      #24292f;
+/* regular identifiers */
     --syn-error:     #a4133c;
+/* tokenization errors */
+/* Line number gutter */
     --syn-lineno-bg:     #f6f8fa;
     --syn-lineno-text:   #8c959f;
     --syn-lineno-border: #d0d7de;
+/* Code block */
     --syn-code-bg:    #ffffff;
     --syn-code-text:  #24292f;
     --syn-line-hover: #f6f8fa;
-  }
+}
+/* ============================================================
+   OS-level preference fallback (no stored preference yet)
+   ============================================================ */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        color-scheme: light;
+        --bg-base:       #ffffff;
+        --bg-surface:    #f6f8fa;
+        --bg-elevated:   #eaeef2;
+        --bg-overlay:    #d0d7de;
+        --border-subtle: #d0d7de;
+        --border-muted:  #9aa4b2;
+        --border-active: #7b2cbf;
+        --text-primary:    #24292f;
+        --text-secondary:  #3f4751;
+        --text-muted:      #5b6672;
+        --text-link:       #7b2cbf;
+        --text-link-hover: #5a189a;
+        --accent:        #7b2cbf;
+        --accent-hover:  #5a189a;
+        --accent-subtle: #f2e9ff;
+        --success:  #c1121f;
+        --warning:  #ff758f;
+        --danger:   #a4133c;
+        --info:     #7b2cbf;
+        --tag-bg:     #eaeef2;
+        --tag-text:   #5a189a;
+        --tag-border: #d3b7ff;
+        --sidebar-bg:    #f6f8fa;
+        --sidebar-width: 240px;
+        --scrollbar-bg:    #f6f8fa;
+        --scrollbar-thumb: #d0d7de;
+        --theme-btn-bg:     #eaeef2;
+        --theme-btn-border: #d0d7de;
+        --theme-btn-text:   #57606a;
+        --theme-btn-hover:  #d0d7de;
+        --syn-keyword:   #c1121f;
+        --syn-string:    #7b2cbf;
+        --syn-comment:   #8c7a90;
+        --syn-number:    #ff758f;
+        --syn-operator:  #c1121f;
+        --syn-builtin:   #5a189a;
+        --syn-decorator: #9d4edd;
+        --syn-name:      #24292f;
+        --syn-error:     #a4133c;
+        --syn-lineno-bg:     #f6f8fa;
+        --syn-lineno-text:   #8c959f;
+        --syn-lineno-border: #d0d7de;
+        --syn-code-bg:    #ffffff;
+        --syn-code-text:  #24292f;
+        --syn-line-hover: #f6f8fa;
+    }
 }

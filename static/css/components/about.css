@@ -1,22 +1,18 @@
 /* about.css - About page */
 .about-card {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
-
 .about-bio {
-  white-space: pre-line;
+    white-space: pre-line;
 }
-
 .about-skills-grid {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
-
 .connect-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
-
 .connect-link {
-  max-width: 280px;
+    max-width: 280px;
 }

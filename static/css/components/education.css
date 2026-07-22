@@ -1,99 +1,105 @@
 /* education.css - Education page */
 .edu-meta {
-  text-align: right;
+    text-align: right;
 }
-
 .edu-badge {
-  margin-top: 0.25rem;
+    margin-top: 0.25rem;
 }
-
-.education-metrics { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 0.85rem 0 0.25rem; }
-.education-metric { background: var(--accent-subtle); border: 1px solid var(--accent); border-radius: 8px; padding: 0.6rem 0.85rem; display: flex; flex-direction: column; min-width: 115px; }
-.education-metric span { font-size: 1.45rem; color: var(--text-primary); font-weight: 700; line-height: 1.15; }
-.education-metric small { color: var(--text-secondary); font-size: 0.72rem; margin-top: 0.2rem; }
-
-.edu-section {
-  margin-top: 0.5rem;
-}
-
-.edu-section-title {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.edu-grade {
-  color: var(--text-muted);
-}
-
-.edu-minor-description {
-  margin-top: 0.35rem;
-}
-
-.edu-highlights-title {
-  margin-top: 0.75rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.edu-highlights {
-  margin-top: 0.75rem;
-}
-
-.edu-card .card-title { font-size: 1rem; }
-
-.edu-degree {
-  font-size: 0.85rem;
-  color: var(--info);
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-
-.highlights {
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-}
-
-.highlights li {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  padding-left: 1rem;
-  position: relative;
-  margin-bottom: 0.2rem;
-}
-
-.highlights li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-.edu-courses-link {
-  margin-top: 0.75rem;
-}
-
-@media (max-width: 480px) {
-  .edu-card .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .edu-meta {
-    text-align: left;
-    width: 100%;
-    margin-top: 0.35rem;
+.education-metrics {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 0.6rem;
-    align-items: center;
-  }
-
-  .edu-meta .card-meta {
-    margin-right: 0;
-  }
-
-  .edu-badge {
-    margin-top: 0;
-  }
+    gap: 0.65rem;
+    margin: 0.85rem 0 0.25rem;
+}
+.education-metric {
+    background: radial-gradient(circle at 0% -50%, var(--accent-subtle) 50%, var(--bg-surface) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 115px;
+}
+.education-metric span {
+    font-size: 1.45rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.15;
+}
+.education-metric small {
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    margin-top: 0.2rem;
+}
+.edu-section {
+    margin-top: 0.5rem;
+}
+.edu-section-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.edu-grade {
+    color: var(--text-muted);
+}
+.edu-minor-description {
+    margin-top: 0.35rem;
+}
+.edu-highlights-title {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.edu-highlights {
+    margin-top: 0.75rem;
+}
+.edu-card .card-title {
+    font-size: 1rem;
+}
+.edu-degree {
+    font-size: 0.85rem;
+    color: var(--info);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+.highlights {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+.highlights li {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.2rem;
+}
+.highlights li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+.edu-courses-link {
+    margin-top: 0.75rem;
+}
+@media (max-width: 480px) {
+    .edu-card .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .edu-meta {
+        text-align: left;
+        width: 100%;
+        margin-top: 0.35rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 0.6rem;
+        align-items: center;
+    }
+    .edu-meta .card-meta {
+        margin-right: 0;
+    }
+    .edu-badge {
+        margin-top: 0;
+    }
 }

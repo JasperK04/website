@@ -1,74 +1,96 @@
 /* buttons.css - Buttons and toggles */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid var(--border-muted);
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  transition: background 0.15s, border-color 0.15s;
-  text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border-muted);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
 }
-
 .btn:hover {
-  background: var(--bg-elevated);
-  border-color: var(--border-active);
-  text-decoration: none;
-  color: var(--text-primary);
+    background: var(--bg-elevated);
+    border-color: var(--border-active);
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: 0 0 8px var(--accent-subtle), 0 0 16px var(--accent-subtle);
+    transform: translateY(-1px);
 }
-
 .btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff;
 }
-
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: #fff;
+    box-shadow: 0 0 10px var(--accent-subtle), 0 0 24px var(--accent-subtle);
+    transform: translateY(-2px);
 }
-
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        135deg,
+        var(--accent) 40%,
+        var(--accent-subtle) 100%
+    );
+    transition: opacity 0.3s ease;
+}
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        225deg,
+        var(--accent) 80%,
+        var(--accent-subtle) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.btn-primary:hover::after {
+    opacity: 1;
+}
 .pill-toggle {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--border-muted);
-  background: var(--bg-surface);
-  border-radius: 999px;
-  padding: 2px;
-  gap: 2px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border-muted);
+    background: var(--bg-surface);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
 }
-
 .pill-toggle-option {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
 }
-
 .pill-toggle-option input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
-
 .pill-toggle-option span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: background 0.15s, color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: background 0.15s, color 0.15s;
 }
-
 .pill-toggle-option input:checked + span {
-  background: var(--accent);
-  color: #fff;
+    background: var(--accent);
+    color: #fff;
 }

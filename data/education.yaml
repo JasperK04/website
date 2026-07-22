@@ -4,6 +4,8 @@
   start: "2023"
   end: "2026"
   courses_id: "rug-bsc-information-science"
+  courses_hidden: false
+  grades_hidden: false
   description: "Completed a Bachelor's degree in Information Science, focused on software development, machine learning, and computational linguistics. Graduated in 2026."
   project:
     - name: "Thesis"
@@ -44,6 +46,8 @@
   start: "2018"
   end: "2022"
   courses_id: "vwo-werkman"
+  courses_hidden: true
+  grades_hidden: true
   description: "Completed VWO education with NT&NG profile."
   project: 
     - name: "Profielwerkstuk"
